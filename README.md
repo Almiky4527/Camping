@@ -10,3 +10,6 @@ To run the game:
  * Download all files in the same directory
  * Install pygame `pip install pygame`
  * Run the `main.py` script
+
+*Disclaimer*  
+Pretty much everything you see is subject to change..

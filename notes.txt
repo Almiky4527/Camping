@@ -1,0 +1,29 @@
+Began: 15. 09. 2022
+
+
+Textures:
+ - Object containging all needed textures - TextureContainer
+ - Also fonts?
+
+
+TO DO:
+ - Better generation
+      Place obejcts in a grid pattern - little offset form generating position
+ - Saving world
+ - Entities/Animals
+ - Revamp player:
+      Collision(?)
+      Energy, Hunger, Thirst(?)
+      Inventory
+         Inventory menu, slots, crafting
+ - Other objects
+      Campfire, Tent, Cabin
+      Item Container - Inventory-like system
+      Cabin/Tent will act as Item Container, as well as a place to sleep and save world
+
+
+Possibly:
+ - Seasons
+ - Day/Night cycle
+
+

@@ -23,3 +23,7 @@ Controls:
 *Disclaimer*  
 Game is still in early stages.  
 Pretty much everything you see is subject to change..
+
+*P.S.*  
+Pixelart done by me.  
+You are free to use it, just link to this repo so others can find it too, i guess.

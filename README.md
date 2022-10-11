@@ -10,6 +10,16 @@ To run the game:
  * Download all files in the same directory
  * Install pygame `pip install pygame`
  * Run the `main.py` script
+ 
+Controls:
+ * WASD/LMB - Move
+ * WASD/LMB + SHIFT - Sprint
+ * LMB - Intaract With Objects, Pick Up Items
+ * Mouse Wheel Up/Down - Scroll Selected Slot (Top Left)
+ * E - Open Inventory
+ * Q - Drop Item In Selected Slot (1)
+ * Q + SHIFT - Drop Item In Selected Slot (All)
 
 *Disclaimer*  
+Game is still in early stages.  
 Pretty much everything you see is subject to change..

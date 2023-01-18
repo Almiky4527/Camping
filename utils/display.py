@@ -1,0 +1,20 @@
+
+'''
+Different resolutions for future use:
+    1920 x 1080
+    1280 x 720
+    1200 x 750
+'''
+
+SCREEN_RES = 1200, 750
+SCREEN_W, SCREEN_H = SCREEN_RES
+SCREEN_CENTER = SCREEN_W // 2, SCREEN_H // 2
+SCREEN_TOPLEFT = 0, 0
+
+SCREEN_CAPTION = "Camping"
+
+FPS = 60
+
+SCALE = 3
+
+PROMPT_DURATION = 5 * FPS

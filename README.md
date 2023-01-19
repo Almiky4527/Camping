@@ -10,7 +10,18 @@ To run the game:
  * Download all files in the same directory
  * Install pygame `pip install pygame`
  * Run the `main.py` script
- 
+
+NOTE:
+As of now, "normal" version of pygame can't be
+installed for python3.11. If you are using python3.11
+you'll need to install a "beta" vresion of pygame,
+compatible with python3.11.
+
+Use this command: `pip install pygame --pre`.
+
+Yoy can read more about it here:
+https://stackoverflow.com/questions/74188013/python-pygame-not-installing
+
 Controls:
  * WASD/LMB - Move
  * WASD/LMB + SHIFT - Sprint

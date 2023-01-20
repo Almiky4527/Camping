@@ -17,6 +17,8 @@ class GUI:
         self.prompt_text = ""
         self.prompt_time = 0
         self.prompt_input_buffer = 0
+
+        self.lang = EN
     
     @property
     def screen(self):
@@ -52,6 +54,11 @@ class GUI:
 
         self.prompt_text = text
         self.prompt_time = 0
+    
+    def switch_language(self):
+        i = LANGUAGES.index(self.lang)
+        n = len(LANGUAGES)
+        self.lang = LANGUAGES[ (i+1) % n ]
         
     def draw(self):
         # --- Prompt ---
@@ -126,7 +133,7 @@ class GUI:
     
     def print_item_name( self, item_data : dict, position=(45, 90), colors=(STORY_TEXT_WHITE, SLIGHTLY_LESS_BLACK) ):
         item_id = item_data["id"]
-        text = get_name(item_id)
+        text = get_name(item_id, self.lang)
         font = self.texture_container.story_font
         font.set_bold(True)
 
@@ -134,7 +141,7 @@ class GUI:
     
     def print_item_legend( self, item_data : dict, position=(SCREEN_CENTER[0], 632), colors=(STORY_TEXT_WHITE, SLIGHTLY_LESS_BLACK) ):
         item_id = item_data["id"]
-        text = get_legend(item_id)
+        text = get_legend(item_id, self.lang)
         font = self.texture_container.story_font
         font.set_bold(False)
 

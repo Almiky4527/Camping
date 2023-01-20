@@ -163,6 +163,7 @@ class MainGame:
             self.gui.set_prompt_text("Canceled.")
             self.player.stop_action()
         
+    # Program is increasing on RAM when reloading game from menu.
     def clean(self):
         del self.world
         del self.player

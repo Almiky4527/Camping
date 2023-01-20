@@ -9,8 +9,8 @@ PLACEHOLDER_TEXT = "???"
 
 
 # --- Languages ---
-EN = "english"
-SK = "sklovak"
+EN = "English"
+SK = "Slovenský"
 LANGUAGES = [EN, SK]
 # -----------------
 
@@ -67,6 +67,29 @@ TEXTS = {
             ITEM_PLANT1: "A great crafting ingredient.",
             ITEM_PLANT2: "A great crafting ingredient.",
             ITEM_PLANT3: "A great crafting ingredient.",
+        },
+        "menu": {
+            "main": {
+                "title": "CAMPING",
+                "buttons": [
+                    "C - Continue",
+                    "N - New Game",
+                    "S - Settings",
+                    "Q - Quit    "
+                ]
+            },
+            "settings": {
+                "lang_changed": "Changed language to {lang}.",
+                "buttons": [
+                    "L - Change Language  ",
+                    "F - Toggle Fullscreen",
+                    "S - Back to Main Menu"
+                ]
+            }
+            
+        },
+        "actions": {
+            "tired": "You are too tired to continue."
         }
     },
     SK: {
@@ -119,6 +142,29 @@ TEXTS = {
             ITEM_PLANT1: "Skvelá prísada na tvorenie.",
             ITEM_PLANT2: "Skvelá prísada na tvorenie.",
             ITEM_PLANT3: "Skvelá prísada na tvorenie.",
+        },
+        "menu": {
+            "main": {
+                "title": "KEMPOVAČKA",
+                "buttons": [
+                    "C - Pokračovať ",
+                    "N - Nová Hra   ",
+                    "S - Nastavenia ",
+                    "Q - Opustiť Hru"
+                ]
+            },
+            "settings": {
+                "lang_changed": "Jazyk zmenený na {lang}.",
+                "buttons": [
+                    "L - Zmeniť Jazyk                 ",
+                    "F - Prepnúť Režim Celej Obrazovky",
+                    "S - Späť na Hlavné Menu          "
+                ]
+            }
+            
+        },
+        "actions": {
+            "tired": "Si príliš vyčerpaný aby si pokračoval."
         }
     }
 }

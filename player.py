@@ -23,14 +23,8 @@ class Player (Entity):
 
         self.texture_set = texture_set
         self.frame_time = (FPS // 4) - 1
-        self.setup_texture_set()
 
         super().__init__(data, texture_set[SOUTH][0], *args, **kwargs)
-    
-    def setup_texture_set(self):
-        for texture_list in self.texture_set.values():
-            frame0 = texture_list[0]
-            texture_list.insert(2, frame0)
 
     @property
     def world(self):

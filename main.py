@@ -1,6 +1,7 @@
 import pygame as pg
 
 from saving import *
+from menu import *
 from textures import *
 from player import *
 from entities import *
@@ -35,8 +36,9 @@ class MainGame:
 
         self.texture_container = TextureContainer()
         self.saveloadstream = SaveLoadStream(self)
-        self.camera = Camera(self)
+        self.menu = Menu(self)
         self.gui = GUI(self)
+        self.camera = Camera(self)
 
     def setup_world(self):
         self.world = World(self)
@@ -76,20 +78,18 @@ class MainGame:
         self.camera.run_debug()
         self.gui.run_debug()
 
-    def get_input(self):
-        events = pg.event.get()
-        
+    def get_input(self, events):
         for ev in events:
             if ev.type == pg.QUIT:
                 self.running = False
 
             elif ev.type == pg.KEYDOWN:
                 if ev.key == pg.K_ESCAPE:
-                    self.quit()
+                    self.menu.switch_pause()
                     
                 elif ev.key == pg.K_r:
                     self.debug_mode = not self.debug_mode
-
+        
         self.gui.get_input(events)
 
         if not self.inventory.expanded:
@@ -106,75 +106,47 @@ class MainGame:
         pg.display.update()
         self.clock.tick(FPS)
     
-    def run_initial(self):
-        avaiting_input = True
-        load_save_file = False
-
-        # Initial prompt to load saved world, or generate new one.
-        while self.running and avaiting_input:
-            self.gui.set_prompt_text("Load saved world? y/n")
-
-            events = pg.event.get()
-
-            for ev in events:
-                if ev.type == pg.QUIT:
-                    self.running = False
-
-                elif ev.type == pg.KEYDOWN:
-                    if ev.key == pg.K_ESCAPE:
-                        self.quit()
-                        return
-
-                    elif ev.key == pg.K_y:
-                        self.gui.set_prompt_text("Loading saved world...")
-                        load_save_file = True
-
-                    else:
-                        self.gui.set_prompt_text("Generating new world...")
-                    
-                    avaiting_input = False
-
-            self.gui.print_prompt()
-
-            self.display_update()
-
-        err_while_loading = 0
-
-        if load_save_file:
-            err_while_loading = self.saveloadstream.load()
-        else:
-            self.setup_world()
-            self.setup_player()
-            self.setup_inventory()
-        
-        if err_while_loading:
-            # Infinite while loop... Temporary so the game wont break.
-            # IMPLEMENT HANDLING FOR ERRORS WHILE LOADING SAVE FILES.
-            while True: pass
-
     def run(self):
         print("Now running.")
         self.running = True
 
-        self.run_initial()
-        
         # Main loop.
         while self.running:
-            self.world.run()
-            # Keep this after world.run(), bcs there the player position gets updated.
-            self.camera.run(self.player.position)
+            events = pg.event.get()
+
+            if self.menu.running:
+                self.menu.run(events)
+                self.menu.draw(self.screen)
+
+            else:
+                self.world.run()
+                self.camera.run(self.player.position)
+
+                self.get_input(events)
+
+                self.draw()
+                
+                self.run_debug()
+            
             self.gui.run()
 
-            self.get_input()
-
-            self.draw()
-            
-            self.run_debug()
-            
             self.display_update()
 
         # Quit pygame.
         pg.quit()
+    
+    def load_new(self):
+        self.setup_world()
+        self.setup_player()
+        self.setup_inventory()
+    
+    def load_save(self):
+        err_while_loading = self.saveloadstream.load()
+
+        if err_while_loading:
+            # Infinite while loop... Temporary so the game wont break.
+            # IMPLEMENT HANDLING FOR ERRORS WHILE LOADING SAVE FILES.
+            while True: pass
     
     def save(self):
         self.gui.set_prompt_text("Do you want to save? y/n")
@@ -190,6 +162,11 @@ class MainGame:
         elif self.gui.prompt_input_buffer == pg.K_n:
             self.gui.set_prompt_text("Canceled.")
             self.player.stop_action()
+        
+    def clean(self):
+        del self.world
+        del self.player
+        del self.inventory
 
     def quit(self):
         print("Quitting.")

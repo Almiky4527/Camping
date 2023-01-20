@@ -161,6 +161,10 @@ class TextureContainer:
         
         for texture in self["shadows"].values():
             texture.set_alpha(SHADOWS_OPACITY)
+        
+        for texture_list in self["JohnDoe"].values():
+            frame0 = texture_list[0]
+            texture_list.insert(2, frame0)
 
         self.debug_font = SysFont(*DEBUG_FONT)
         self.inventory_font = SysFont(*INVENTORY_FONT)

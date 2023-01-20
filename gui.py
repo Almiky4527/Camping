@@ -58,6 +58,9 @@ class GUI:
         self.print_prompt()
         # --------------
 
+        if self.game.menu.running:
+            return
+
         # --- Print item info in inventory ---
         if self.inventory.expanded and self.inventory.hover_slot and not self.inventory.dragging_slot:
             x, y = SCREEN_CENTER[0], 620

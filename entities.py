@@ -239,10 +239,10 @@ class Entity (BaseEntity):
             if self.collision(entity):
                 self.clip_x(entity)
         
-        if self.parent.box.colliderect(self.box):
-            return
-        
-        self.clip_x(self.parent)
+        if self.box.left < self.parent.box.left:
+            self.set_box_left(self.parent.box.left)
+        if self.box.right > self.parent.box.right:
+            self.set_box_right(self.parent.box.right)
     
     def clip_y(self, entity):
         y = self.vector.y
@@ -262,10 +262,10 @@ class Entity (BaseEntity):
             if self.collision(entity):
                 self.clip_y(entity)
         
-        if self.parent.box.colliderect(self.box):
-            return
-        
-        self.clip_y(self.parent)
+        if self.box.top < self.parent.box.top:
+            self.set_box_top(self.parent.box.top)
+        if self.box.bottom > self.parent.box.bottom:
+            self.set_box_bottom(self.parent.box.bottom)
     
     def move(self, entities):
         if self.is_immobile or not (self.speed and self.vector):

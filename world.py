@@ -1,16 +1,9 @@
-from random import randrange, choice, choices
+from random import randrange, choices
 
 from utils.classes import CannotSpawnHere
+from world_spawns import GENERATION
 from entities import *
 from player import *
-
-
-SPAWNS_STURCTURE = [
-    [ (None, 2), (PINE_SMALL, 1), (PINE_LARGE, 1), (OAK_SMALL, 1), (OAK_LARGE, 1) ],
-    [ (None, 40), (ROCK0, 2), (ROCK1, 2), (ROCK2, 1), (ROCK3, 2), (ROCK4, 2) ],
-    [ (None, 20), (BUSH_LARGE, 1), (BUSH_SMALL, 1) ],
-    [ (None, 40), (PLANT0, 3), (PLANT1, 3), (PLANT2, 1), (PLANT3, 1) ]
-]
 
 
 class World:
@@ -18,10 +11,11 @@ class World:
     def __init__(self, game):
         self.game = game
 
-        self.box = Rect(0, 0, 7000, 5000)
+        self.box = Rect(0, 0, 8000, 6000)
         self.box.center = (0, 0)
 
         self.children = []
+        self.day = 1
         self.season = SPRING
 
     @property
@@ -57,73 +51,34 @@ class World:
             return 
 
         self.children.remove(child)
-
+    
     def generate(self):
-        tree_ids = [None, PINE_SMALL, PINE_LARGE, OAK_SMALL, OAK_LARGE]
-        tree_weights = [2, 1, 1, 1, 1]
-        rock_ids = [None, ROCK0, ROCK1, ROCK2, ROCK3, ROCK4]
-        rock_weights = (40, 2, 2, 1, 2, 2)
-        bush_ids = [None, BUSH_LARGE, BUSH_SMALL]
-        bush_weights = (20, 1, 3)
-        plant_ids = [None, PLANT0, PLANT1, PLANT2, PLANT3]
-        plant_weights = (40, 3, 3, 1, 1)
+        for gen_entry in GENERATION:
+            grid = gen_entry["grid"]
+            spawns = gen_entry["spawns"]
 
-        instances = 36, 20
-        spawn_grid = make_grid(self.box, instances)
+            spawn_grid = make_grid(self.box, grid)
+            weights = tuple( map( lambda entry: entry["weight"], spawns ) )
 
-        # Trees
-        for y in spawn_grid[1]:
-            for x in spawn_grid[0]:
-                tree_id = choices(tree_ids, tree_weights)[0]
+            for y in spawn_grid[1]:
+                for x in spawn_grid[0]:
+                    spawn = choices(spawns, weights)[0]
+                    spawn_id = spawn.get("id")
+                    scatter_x, scatter_y = spawn.get( "scatter", (25, 15) )
+                    scattered_positions = spawn.get( "scattered_positions", 1 )
 
-                if not tree_id:
-                    continue
-
-                data = entity(tree_id)
-
-                try:
-                    self.spawn( (x, y), data, scatter=( 25*SCALE, 15*SCALE ) )
-                except CannotSpawnHere:
-                    continue
-        
-        # Rocks
-        for y in spawn_grid[1]:
-            for x in spawn_grid[0]:
-                rock_id = choices(rock_ids, rock_weights)[0]
-
-                if not rock_id:
-                    continue
+                    if not spawn_id:
+                        continue
+                        
+                    n = randrange( scattered_positions[0], scattered_positions[1]+1 ) if type(scattered_positions) != int else scattered_positions
                     
-                data = item(rock_id)
-                self.spawn( (x, y), data, scatter=( 50*SCALE, 30*SCALE ) )
-        
-        # Bushes
-        for y in spawn_grid[1]:
-            for x in spawn_grid[0]:
-                bush_id = choices(bush_ids, bush_weights)[0]
+                    for _ in range( randrange(n) if type(n) != int else n ):
+                        data = item(spawn_id) if entity_subtype(spawn_id) == "item" else entity(spawn_id)
 
-                if not bush_id:
-                    continue
-                    
-                data = entity(bush_id)
-                self.spawn( (x, y), data, scatter=( 50*SCALE, 30*SCALE ) )
-        
-        # Plants
-        for y in spawn_grid[1]:
-            for x in spawn_grid[0]:
-                plant_id = choices(plant_ids, plant_weights)[0]
-
-                if not plant_id:
-                    continue
-                
-                for _ in range( randrange(1, 4) ):
-                    data = entity(plant_id)
-                    self.spawn( (x, y), data, scatter=( 50*SCALE, 30*SCALE ) )
-
-    def load(self, data):
-        for child in data["Children"]:
-            position, child_data = child["position"], child["data"]
-            self.spawn(position, child_data)
+                        try:
+                            self.spawn( (x, y), data, scatter=(scatter_x*SCALE, scatter_y*SCALE) )
+                        except CannotSpawnHere:
+                            continue
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter
@@ -151,17 +106,25 @@ class World:
             child.update()
             child.move(self.children)
     
+    def load(self, data):
+        self.day = data["day"]
+
+        for child in data["children"]:
+            position, child_data = child["position"], child["data"]
+            self.spawn(position, child_data)
+    
     @property
     def data(self):
         data = {
-            "Children": []
+            "day": self.day,
+            "children": []
         }
 
         for child in self.children:
             if child is self.player:
                 continue
             
-            data["Children"].append(
+            data["children"].append(
                 {
                     "position": child.position,
                     "data": child.data

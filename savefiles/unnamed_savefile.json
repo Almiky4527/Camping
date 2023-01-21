@@ -17,18 +17,18 @@
     "health": 100,
     "speed": 2,
     "stamina": 100,
-    "saturation": 90,
+    "saturation": 100,
     "attack_damage": 10,
     "attack_cooldown": 0.5,
     "id": "entity.player",
     "position": [
-      796,
+      846,
       486
     ],
     "direction": 1
   },
   "Inventory": {
-    "slot_index": 1,
+    "slot_index": 7,
     "slots": [
       {
         "family": [
@@ -84,7 +84,7 @@
         "food": 10,
         "max_count": 16,
         "id": "item.berries0",
-        "count": 4
+        "count": 3
       }
     ]
   },
@@ -31445,7 +31445,7 @@
             "campfire",
             "fire"
           ],
-          "saturation": 98.61333333334187,
+          "saturation": 98.09550000001173,
           "box_size": [
             18,
             6

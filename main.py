@@ -149,22 +149,27 @@ class MainGame:
             while True: pass
     
     def save(self):
-        self.gui.set_prompt_text("Do you want to save? y/n")
+        lang = self.gui.lang
+        self.gui.set_prompt_text(
+            get_text(lang,"actions","save","q") )
 
         if self.gui.prompt_input_buffer == pg.K_y:
             if self.inventory.expanded:
                 self.inventory.toggle_expand()
 
             self.saveloadstream.save()
-            self.gui.set_prompt_text("Game state saved.")
+            self.gui.set_prompt_text(
+                get_text(lang,"actions","save","y") )
             self.player.stop_action()
         
         elif self.gui.prompt_input_buffer == pg.K_n:
-            self.gui.set_prompt_text("Canceled.")
+            self.gui.set_prompt_text(
+                get_text(lang,"actions","save","n") )
             self.player.stop_action()
         
     # Program is increasing on RAM when reloading game from menu.
     def clean(self):
+        self.world.clean()
         del self.world
         del self.player
         del self.inventory

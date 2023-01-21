@@ -105,6 +105,9 @@ class World:
         for child in self.children:
             child.update()
             child.move(self.children)
+        
+    def clean(self):
+        self.children.clear()
     
     def load(self, data):
         self.day = data["day"]

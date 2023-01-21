@@ -4,6 +4,7 @@ from utils.display import *
 from utils.colors import *
 from utils.functions import *
 from utils.texts import *
+from utils.classes import LanguageError
 
 
 PROMPT_DURATION = 5 * FPS
@@ -55,10 +56,11 @@ class GUI:
         self.prompt_text = text
         self.prompt_time = 0
     
-    def switch_language(self):
-        i = LANGUAGES.index(self.lang)
-        n = len(LANGUAGES)
-        self.lang = LANGUAGES[ (i+1) % n ]
+    def set_language(self, value):
+        if value not in LANGUAGES:
+            raise LanguageError(f"language '{value}' not found")
+        
+        self.lang = value
         
     def draw(self):
         # --- Prompt ---

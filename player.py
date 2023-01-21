@@ -39,6 +39,10 @@ class Player (Entity):
         return self.game.inventory
     
     @property
+    def lang(self):
+        return self.game.gui.lang
+    
+    @property
     def attack_damage(self):
         item_attack_damage = self.selected_slot.get("attack_damage")
         return item_attack_damage if item_attack_damage else super().attack_damage
@@ -135,7 +139,9 @@ class Player (Entity):
         
         # Stop action when too tired
         if self.stamina < MIN_STAMINA_FOR_ACTION and self.action in (self.attack, self.loot):
-            self.game.gui.set_prompt_text("You are too tired to continue.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","tired")
+            )
             self.stop_action()
             return
         
@@ -233,7 +239,9 @@ class Player (Entity):
             self.inventory.add_item(item)
             self.parent.remove_child(item)
         except ContainerFull:
-            self.game.gui.set_prompt_text("Your inventory is full.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","inventory_full")
+            )
 
         self.stop_action()
     
@@ -252,15 +260,17 @@ class Player (Entity):
 
         campfire = self.target
         target_id = campfire.id
-        target_name = get_name(target_id)
+        target_name = get_name(target_id, self.lang)
 
         if campfire.in_family("fire"):
-            self.game.gui.set_prompt_text(f"The {target_name} is already lit.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","already_lit").format(target=target_name)
+            )
             self.stop_action()
             return
 
         item_id = self.selected_slot["id"]
-        item_name = get_name(item_id)
+        item_name = get_name(item_id, self.lang)
 
         success_chance = self.selected_slot.get("success_chance")
         success = 100*success_chance >= randint(0, 100)
@@ -268,9 +278,13 @@ class Player (Entity):
 
         if success:
             campfire.light_on_fire()
-            self.game.gui.set_prompt_text(f"You lit the {target_name} using your {item_name}.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","lit").format(target=target_name, item=item_name)
+            )
         else:
-            self.game.gui.set_prompt_text(f"You struck your {item_name} but nothing happened.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","fail").format(item=item_name)
+            )
 
         self.stop_action()
 
@@ -280,17 +294,23 @@ class Player (Entity):
         
         fire = self.target
         selected_item = self.selected_slot
+        item_id = self.selected_slot["id"]
+        item_name = get_name(item_id, self.lang)
+        
         saturation = fire.saturation + selected_item["fire_fuel"]
 
         if saturation > 100:
-            self.game.gui.set_prompt_text("There is no need to feed the fire right now.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","no_feed")
+            )
             self.stop_action()
             return
         
         fire.set_saturation(saturation)
         self.inventory.pop(self.selected_slot)
-
-        self.game.gui.set_prompt_text("You put a log on the fire.")
+        self.game.gui.set_prompt_text(
+            get_text(self.lang,"actions","fire","feed").format(item=item_name)
+        )
         self.stop_action()
     
     def isnpect_fire(self):
@@ -300,11 +320,17 @@ class Player (Entity):
         if not saturation:
             return
         elif saturation >= 80:
-            self.game.gui.set_prompt_text("The fire is in a great condition.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","inspect",0)
+            )
         elif saturation >= 20:
-            self.game.gui.set_prompt_text("The fire could use a couple of logs.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","inspect",1)
+            )
         else:
-            self.game.gui.set_prompt_text("The fire is almost burnt out.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","fire","inspect",2)
+            )
         
         self.stop_action()
     
@@ -323,8 +349,10 @@ class Player (Entity):
             self.stop_action()
     
     def loot(self):
-        target_name = get_name(self.target.id)
-        self.game.gui.set_prompt_text(f"You search the {target_name} for some berries...")
+        target_name = get_name(self.target.id, self.lang)
+        self.game.gui.set_prompt_text(
+            get_text(self.lang,"actions","loot","search").format(target=target_name)
+        )
 
         stamina = self.stamina - (LOOTING_STAMINA_PRICE / FPS)
         self.set_stamina(stamina)
@@ -338,6 +366,8 @@ class Player (Entity):
             self.action_time = 0
         else:
             self.action_time += 1
+            stamina = self.stamina - (10 / FPS)
+            self.set_stamina(stamina)
 
         if not self.target.in_family("loot"):
             self.stop_action()
@@ -363,22 +393,30 @@ class Player (Entity):
             self.world.spawn(position, spawn_data)
             self.inventory.pop(self.selected_slot)
 
-            entity_name = get_name(spawn_id)
-            self.game.gui.set_prompt_text(f"Placed a {entity_name}.")
+            entity_name = get_name(spawn_id, self.lang)
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","place","success").format(thing=entity_name)
+            )
         except CannotSpawnHere:
-            self.game.gui.set_prompt_text("You cannot place that here right now.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","place","fail")
+            )
     
     def eat_item(self):
-        food_value = self.selected_slot.get("food")
+        food_value = self.selected_slot.get("food", 0)
         item_id = self.selected_slot["id"]
 
         if self.saturation + food_value > 100:
-            self.game.gui.set_prompt_text("You are not hungry enough to eat this.")
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","eat","fail")
+            )
         else:
             self.set_saturation(self.saturation + food_value)
             self.inventory.pop(self.selected_slot)
-            item_name = get_name(item_id)
-            self.game.gui.set_prompt_text(f"You ate some delicous {item_name}.")
+            item_name = get_name(item_id, self.lang)
+            self.game.gui.set_prompt_text(
+                get_text(self.lang,"actions","eat","success").format(food=item_name)
+            )
 
     def update(self):
         super().update()

@@ -76,7 +76,9 @@ TEXTS = {
                     "N - New Game",
                     "S - Settings",
                     "Q - Quit    "
-                ]
+                ],
+                "loading_save": "Loading last played world...",
+                "loading_new": "Generating new world..."
             },
             "settings": {
                 "lang_changed": "Changed language to {lang}.",
@@ -85,11 +87,47 @@ TEXTS = {
                     "F - Toggle Fullscreen",
                     "S - Back to Main Menu"
                 ]
+            },
+            "paused": {
+                "title": "PAUSED",
+                "buttons": [
+                    "M - Return to Main Menu",
+                    "ESC - Resume",
+                    "Q - Quit"
+                ]
             }
-            
         },
         "actions": {
-            "tired": "You are too tired to continue."
+            "save": {
+                "q": "Do you watn to save your progress? y/n",
+                "y": "Game state saved.",
+                "n": "Saving canceled."
+            },
+            "tired": "You are too tired to continue.",
+            "inventory_full": "Your inventory is full.",
+            "fire": {
+                "lit": "You lit the {target} using your {item}.",
+                "already_lit": "The {target} is already lit.",
+                "fail": "You struck your {item} but nothing happended.",
+                "feed": "You put {item} on the fire.",
+                "no_feed": "There is no need to feed the fire right now.",
+                "inspect": [
+                    "The fire is in a great condition.",
+                    "The fire could use a couple of logs.",
+                    "The fire is almost burnt out."
+                ]
+            },
+            "loot": {
+                "search": "You search the {target}..."
+            },
+            "place": {
+                "success": "You placed down a {thing}.",
+                "fail": "You cannot place that here right now."
+            },
+            "eat": {
+                "success": "You ate some delicious {food}.",
+                "fail": "You aren't hungry enough to eat this right now."
+            }
         }
     },
     SK: {
@@ -151,7 +189,9 @@ TEXTS = {
                     "N - Nová Hra   ",
                     "S - Nastavenia ",
                     "Q - Opustiť Hru"
-                ]
+                ],
+                "loading_save": "Načítavam posledne hraný svet...",
+                "loading_new": "Vytváram nový svet..."
             },
             "settings": {
                 "lang_changed": "Jazyk zmenený na {lang}.",
@@ -160,11 +200,47 @@ TEXTS = {
                     "F - Prepnúť Režim Celej Obrazovky",
                     "S - Späť na Hlavné Menu          "
                 ]
+            },
+            "paused": {
+                "title": "POZASTAVENÉ",
+                "buttons": [
+                    "M - Naspäť na Hlavné Menu",
+                    "ESC - Pokračovať",
+                    "Q - Opustiť Hru"
+                ]
             }
-            
         },
         "actions": {
-            "tired": "Si príliš vyčerpaný aby si pokračoval."
+            "save": {
+                "q": "Chces si uložiť svoj pokrok? y/n",
+                "y": "Stav hry uložený.",
+                "n": "Ukladanie zrušené."
+            },
+            "tired": "Si príliš vyčerpaný aby si pokračoval.",
+            "inventory_full": "Tvoj inventár je plný.",
+            "fire": {
+                "lit": "Zapálil si {target} použitím {item}.",
+                "already_lit": "{target} je už zapálený.",
+                "fail": "Použil si svoje {item} ale nič sa nestalo.",
+                "feed": "Položil si {item} na oheň.",
+                "no_feed": "Nie je dôvod pridávať niečo na oheň v tejto chvíli.",
+                "inspect": [
+                    "Oheň je v perfeknej kondícii.",
+                    "Oheň by mohol použiť zopár polienok.",
+                    "Oheň je skoro vyhorený."
+                ]
+            },
+            "loot": {
+                "search": "Prehľadáš {target}..."
+            },
+            "place": {
+                "success": "Rozložíš si {thing}.",
+                "fail": "Toto tu nemôžeš rozložiť zrovna teraz."
+            },
+            "eat": {
+                "success": "Zejdol si chutné {food}.",
+                "fail": "Nie si dosť hladný aby si toto teraz zjedol."
+            }
         }
     }
 }
@@ -172,6 +248,19 @@ TEXTS = {
 
 
 # --- Functions ---
+
+def get_text(lang, *args):
+    value = TEXTS[lang]
+    
+    for key in args:
+        if type(value) == dict:
+            value = value.get(key)
+        elif type(value) == list:
+            value = value[key]
+        else:
+            return PLACEHOLDER_TEXT
+    
+    return value if type(value) == str else PLACEHOLDER_TEXT
 
 def get_name(key, lang=EN):
     if lang not in LANGUAGES:
@@ -184,6 +273,7 @@ def get_legend(key, lang=EN):
         return PLACEHOLDER_TEXT
     
     return TEXTS[lang]["legends"].get(key, PLACEHOLDER_TEXT)
+
 
 def textify_data(data: dict):
     return [ f"{key}: {value}" for key, value in data.items() ]

@@ -1,4 +1,5 @@
-from os.path import join as pathjoin
+from os.path import join as pathjoin, curdir
+from os import remove
 from json import dump, load
 from player import Player
 from world import World
@@ -94,3 +95,35 @@ class SaveLoadStream:
 
         game.world.add_child(game.player)
         print("Loaded Player.")
+    
+    def delete_file(self, filename):
+        file = pathjoin(curdir, "savefiles", filename + FILE_EXTENSION)
+        remove(file)
+    
+    def load_settings(self):
+        file = "settings.json"
+
+        print("Loading settings...")
+
+        try:
+            with open(file, "r") as settingsfile:
+                settings_data = load(settingsfile)
+                self.game.set_settings(settings_data)
+
+        except FileNotFoundError:
+            print(f"File \"{file}\" not found.")
+            return 1
+        
+        print("Settings loaded successfully.")
+
+        return 0
+    
+    def write_settings(self):
+        file = "settings.json"
+
+        print("Saving settings...")
+
+        with open(file, "w") as settingsfile:
+            dump(self.game.settings, settingsfile, indent=2)
+    
+        print("Settings saved successfully.")

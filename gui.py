@@ -19,7 +19,9 @@ class GUI:
         self.prompt_time = 0
         self.prompt_input_buffer = 0
 
-        self.lang = EN
+    @property
+    def lang(self):
+        return self.game.lang
     
     @property
     def screen(self):
@@ -55,12 +57,6 @@ class GUI:
 
         self.prompt_text = text
         self.prompt_time = 0
-    
-    def set_language(self, value):
-        if value not in LANGUAGES:
-            raise LanguageError(f"language '{value}' not found")
-        
-        self.lang = value
         
     def draw(self):
         # --- Prompt ---

@@ -13,6 +13,16 @@ from inventory import *
 from utils.texts import *
 
 
+SETTINGS_DEFAULT = {
+    "language": "English",
+    "fullscreen": False,
+    "debug": False,
+    
+    "world_index": 0,
+    "worlds": []
+}
+
+
 class MainGame:
 
     def __init__(self):
@@ -24,6 +34,52 @@ class MainGame:
     def debug_font(self):
         return self.texture_container.debug_font
     
+    @property
+    def lang(self):
+        return self.settings["language"]
+    
+    @property
+    def debug_mode(self):
+        return self.settings["debug"]
+    
+    @property
+    def world_index(self):
+        return self.settings["world_index"]
+    
+    @property
+    def world_name(self):
+        return self.worlds[self.world_index] if len(self.worlds) != 0 else get_text(self.lang,"menu","worlds","empty")
+    
+    @property
+    def worlds(self):
+        return self.settings["worlds"]
+    
+    def set_language(self, value : str):
+        if value not in LANGUAGES:
+            LanguageError(f"language '{value}' not found")
+        
+        self.settings["language"] = value
+        self.saveloadstream.write_settings()
+    
+    def set_debug_mode(self, value : bool):
+        self.settings["debug"] = value
+        self.saveloadstream.write_settings()
+    
+    def set_world_index(self, value : int):
+        self.settings["world_index"] = value
+        self.saveloadstream.write_settings()
+    
+    def add_world(self, name : str):
+        self.worlds.append(name)
+        self.saveloadstream.write_settings()
+    
+    def remove_world(self, name : str):
+        self.worlds.remove(name)
+        self.saveloadstream.write_settings()
+
+    def set_settings(self, data : dict):
+        self.settings = data
+        
     def setup_pygame(self):
         pg.init()
         self.screen = pg.display.set_mode(SCREEN_RES, flags = 0)
@@ -32,13 +88,15 @@ class MainGame:
 
     def setup_main_game(self):
         self.running = False
-        self.debug_mode = False
-
+        self.settings = SETTINGS_DEFAULT
+        
         self.texture_container = TextureContainer()
         self.saveloadstream = SaveLoadStream(self)
         self.menu = Menu(self)
         self.gui = GUI(self)
         self.camera = Camera(self)
+
+        self.saveloadstream.load_settings()
 
     def setup_world(self):
         self.world = World(self)
@@ -86,9 +144,6 @@ class MainGame:
             elif ev.type == pg.KEYDOWN:
                 if ev.key == pg.K_ESCAPE:
                     self.menu.switch_pause()
-                    
-                elif ev.key == pg.K_r:
-                    self.debug_mode = not self.debug_mode
         
         self.gui.get_input(events)
 
@@ -136,20 +191,35 @@ class MainGame:
         pg.quit()
     
     def load_new(self):
+        last_world_num = int( self.worlds[-1][6:] ) if len(self.worlds) > 0 else 0
+        world_name = f"World {last_world_num+1}"
+
+        self.add_world(world_name)
+        self.set_world_index(last_world_num)
+
         self.setup_world()
         self.setup_player()
         self.setup_inventory()
-    
-    def load_save(self):
-        err_while_loading = self.saveloadstream.load()
 
-        if err_while_loading:
-            # Infinite while loop... Temporary so the game wont break.
-            # IMPLEMENT HANDLING FOR ERRORS WHILE LOADING SAVE FILES.
-            while True: pass
+        self.saveloadstream.save(world_name)
+    
+    def load_save(self, world_index=None):
+        if world_index:
+            self.set_world_index(world_index)
+
+        if len(self.worlds) == 0:
+            self.load_new()
+
+        else:
+            err_while_loading = self.saveloadstream.load(self.world_name)
+
+            if err_while_loading:
+                # Infinite while loop... Temporary so the game wont break.
+                # IMPLEMENT HANDLING FOR ERRORS WHILE LOADING SAVE FILES.
+                while True: pass
     
     def save(self):
-        lang = self.gui.lang
+        lang = self.lang
         self.gui.set_prompt_text(
             get_text(lang,"actions","save","q") )
 
@@ -157,7 +227,7 @@ class MainGame:
             if self.inventory.expanded:
                 self.inventory.toggle_expand()
 
-            self.saveloadstream.save()
+            self.saveloadstream.save(self.world_name)
             self.gui.set_prompt_text(
                 get_text(lang,"actions","save","y") )
             self.player.stop_action()
@@ -166,6 +236,13 @@ class MainGame:
             self.gui.set_prompt_text(
                 get_text(lang,"actions","save","n") )
             self.player.stop_action()
+        
+    def delete_world(self):
+        self.saveloadstream.delete_file(self.world_name)
+        self.remove_world(self.world_name)
+        
+        if self.world_index > 0 and self.world_index != len(self.worlds)-1:
+            self.set_world_index(self.world_index-1)
         
     # Program is increasing on RAM when reloading game from menu.
     def clean(self):

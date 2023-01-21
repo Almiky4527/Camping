@@ -74,24 +74,37 @@ TEXTS = {
                 "buttons": [
                     "C - Continue",
                     "N - New Game",
+                    "W - Worlds  ",
                     "S - Settings",
                     "Q - Quit    "
                 ],
                 "loading_save": "Loading last played world...",
                 "loading_new": "Generating new world..."
             },
+            "worlds": {
+                "load": "Loading world...",
+                "delete": "{world} deleted.",
+                "empty": " Empty ",
+                "buttons": [
+                    "UP/DOWN - Scroll Worlds",
+                    "ENTER - Play World     ",
+                    "DEL - Delete World     ",
+                    "ESC - Back to Main Menu"
+                ]
+            },
             "settings": {
                 "lang_changed": "Changed language to {lang}.",
                 "buttons": [
-                    "L - Change Language  ",
-                    "F - Toggle Fullscreen",
-                    "S - Back to Main Menu"
+                    "L - Change Language    ",
+                    "F - Toggle Fullscreen  ",
+                    "ESC - Back to Main Menu"
                 ]
             },
             "paused": {
                 "title": "PAUSED",
                 "buttons": [
                     "M - Return to Main Menu",
+                    "D - Toggle Debug Mode  ",
                     "ESC - Resume",
                     "Q - Quit"
                 ]
@@ -187,24 +200,37 @@ TEXTS = {
                 "buttons": [
                     "C - Pokračovať ",
                     "N - Nová Hra   ",
+                    "W - Svety      ",
                     "S - Nastavenia ",
                     "Q - Opustiť Hru"
                 ],
                 "loading_save": "Načítavam posledne hraný svet...",
                 "loading_new": "Vytváram nový svet..."
             },
+            "worlds": {
+                "load": "Načítavam svet...",
+                "delete": "{world} vymazaný.",
+                "empty": "Prázdny",
+                "buttons": [
+                    "UP/DOWN - Rolovať Svetmi ",
+                    "ENTER - Hrať Svet        ",
+                    "DEL - Vymazať Svet       ",
+                    "ESC - Späť na Hlavné Menu"
+                ]
+            },
             "settings": {
                 "lang_changed": "Jazyk zmenený na {lang}.",
                 "buttons": [
                     "L - Zmeniť Jazyk                 ",
                     "F - Prepnúť Režim Celej Obrazovky",
-                    "S - Späť na Hlavné Menu          "
+                    "ESC - Späť na Hlavné Menu        "
                 ]
             },
             "paused": {
                 "title": "POZASTAVENÉ",
                 "buttons": [
                     "M - Naspäť na Hlavné Menu",
+                    "D - Prepnúť Režim Ladenia",
                     "ESC - Pokračovať",
                     "Q - Opustiť Hru"
                 ]

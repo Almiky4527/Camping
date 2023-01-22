@@ -1,7 +1,9 @@
 {
   "language": "English",
-  "fullscreen": false,
+  "fullscreen": true,
   "debug": false,
   "world_index": 0,
-  "worlds": []
+  "worlds": [
+    "World 1"
+  ]
 }

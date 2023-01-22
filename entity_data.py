@@ -38,12 +38,12 @@ ITEMS = {
     },
     ITEM_BERRIES0: {
         "family": ["item", "food", "berries"],
-        "food": 10,
+        "food": 5,
         "max_count": 16
     },
     ITEM_BLUEBERRIES: {
         "family": ["item", "food", "berries"],
-        "food": 12,
+        "food": 5,
         "max_count": 16
     },
     ITEM_PLANT0: {
@@ -65,6 +65,19 @@ ITEMS = {
     ITEM_THREAD: {
         "family": ["item", "thread"],
         "max_count": 32
+    },
+    ITEM_HARE_MEAT: {
+        "family": ["item", "meat"],
+        "max_count": 16
+    },
+    ITEM_HARE_MEAT_COOKED: {
+        "family": ["item", "food", "meat"],
+        "food": 15,
+        "max_count": 16
+    },
+    ITEM_HARE_HIDE: {
+        "family": ["item", "hide", "hare_hide"],
+        "max_count": 16
     }
 }
 
@@ -230,6 +243,32 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_PLANT3: 1
+        }
+    },
+    ANIMAL_HARE: {
+        "family": ["animal", "hare"],
+        "max_health": 50,
+        "max_speed": 2,
+
+        "reach_size": [10, 5],
+
+        "health": 50,
+        "speed": 2,
+
+        "max_travel_dist": 200,
+        "travel_chance": 0.005,
+        "action_downtime": 5,
+
+        "targets": [
+            {
+                "family": "player",
+                "see_dist": 300
+            }
+        ],
+
+        "loot": {
+            ITEM_HARE_MEAT: 1,
+            ITEM_HARE_HIDE: 1
         }
     }
 }

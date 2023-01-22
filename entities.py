@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame.math import Vector2
-from random import randrange, random
+from random import randrange, randint
 
 from utils.identifiers import *
 from utils.classes import *
@@ -98,6 +98,10 @@ class Entity (BaseEntity):
         return self.in_family("item")
     
     @property
+    def is_animal(self):
+        return self.in_family("animal")
+    
+    @property
     def is_burning(self):
         return self.in_family("fire")
     
@@ -113,7 +117,7 @@ class Entity (BaseEntity):
     def in_reach_of_action(self):
         if self.target:
             if self.target.box:
-                return  self.reach.colliderect(self.target.box)
+                return self.reach.colliderect(self.target.box)
         return self.in_reach(self.target_position)
     
     @property
@@ -275,13 +279,28 @@ class Entity (BaseEntity):
         self.move_y(entities)
     
     def move_to_action(self):
+        if self.target:
+            self.target_position = self.target.position
+
         if self.target_position and not self.in_reach_of_action:
             self.vector = self.direction_to_action
+        elif self.target_position:
+            self.stop_moving()
+        
+    def set_random_target_position(self):
+        max_dist = self.data.get("max_travel_dist", 100)
+        x, y = randrange(-max_dist, max_dist), randrange(-max_dist, max_dist)
+        self.target_position = x, y
 
     def run_action(self):
+        if not self.action:
+            return
+
         if self.is_immobile and self.action:
             self.action()
         elif self.target and self.in_reach_of_action:
+            self.action()
+        elif self.is_animal and self.in_reach_of_action:
             self.action()
     
     def stop_action(self):
@@ -292,6 +311,27 @@ class Entity (BaseEntity):
     
     def stop_moving(self):
         self.vector.update(0)
+    
+    def search_for_target(self):
+        entities = self.parent.children
+
+        for entity in entities:
+            if entity is self:
+                continue
+
+            for targetting_data in self.data.get("targets", []):
+                family = targetting_data["family"]
+                see_dist = targetting_data["see_dist"]
+                
+                if not entity.in_family(family):
+                    continue
+                
+                vector_to_entity = Vector2(entity.position) - self.position
+
+                if vector_to_entity.length() <= see_dist:
+                    self.target = entity
+                    self.target_position = entity.position
+                    return
     
     def update_direction(self):
         x, y = self.vector
@@ -306,11 +346,37 @@ class Entity (BaseEntity):
         
         self.run_action()
 
+        if self.is_animal:
+            self.update_random_travel()
+
+            if self.data.get("targets"):
+                self.search_for_target()
+
         if self.is_burning:
             self.burn()
         
         if self.is_dead:
             self.die()
+    
+    def update_random_travel(self):
+        if self.is_moving or self.action:
+            return
+
+        success_chance = self.data.get("travel_chance", 0)
+        success = 100*success_chance >= randint(0, 100)
+
+        if success:
+            self.stop_action()
+            self.action = self.wait
+            self.set_random_target_position()
+    
+    def wait(self):
+        action_downtime = self.data.get("action_downtime", 0)
+
+        if self.action_time < action_downtime*FPS:
+            self.action_time += 1
+        else:
+            self.stop_action()
     
     def update_image(self):
         if self.is_burning:

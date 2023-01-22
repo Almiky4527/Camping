@@ -55,10 +55,6 @@ class Camera:
         if not self.debug_mode:
             return
 
-        reach_rect = self.player.reach.copy()
-        reach_rect.center = position_to_screen(reach_rect.center, self.topleft)
-        pg.draw.rect(self.screen, RED, reach_rect, 1)
-
         pg.draw.circle(self.screen, BLACK, position_to_screen(self.player.position, self.topleft), 2)
     
     def render_entity(self, entity):
@@ -80,6 +76,11 @@ class Camera:
         box_rect = entity.box.copy()
         box_rect.center = position_to_screen(box_rect.center, self.topleft)
         pg.draw.rect(self.screen, BLACK, box_rect, 1)
+
+        # Draw reach of entity
+        reach_rect = entity.reach.copy()
+        reach_rect.center = position_to_screen(reach_rect.center, self.topleft)
+        pg.draw.rect(self.screen, RED, reach_rect, 1)
     
     def get_entity_shadow(self, entity):
         entity_id = entity.id

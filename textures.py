@@ -27,6 +27,8 @@ PLAYER_ROW_2_Y = 286
 ITEM_ROW_1_Y = 214
 ITEM_ROW_2_Y = 231
 
+ANIMAL_ROW_Y = 464
+
 INVENTORY_ROW_1_Y = 384
 
 OBJECTS_ROW_1_Y = 128
@@ -57,7 +59,9 @@ TEXTURES_RECTS = {
             Rect(144, PLAYER_ROW_1_Y, 12, 28),
         ]
     },
-    "animals": {},
+    "animal": {
+        DEFAULT: Rect(1, ANIMAL_ROW_Y, 16, 16)
+    },
     "item": {
         DEFAULT: Rect(1, ITEM_ROW_1_Y, 16, 16),
         ITEM_LOG: Rect(18, ITEM_ROW_1_Y, 16, 16),

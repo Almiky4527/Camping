@@ -33,6 +33,18 @@ ITEM_PLANT2 = "item.plant2"
 ITEM_PLANT3 = "item.plant3"
 
 ITEM_THREAD = "item.thread"
+
+ITEM_HARE_MEAT = "item.hare_meat"
+ITEM_HARE_HIDE = "item.here_hide"
+ITEM_HARE_MEAT_COOKED = "item.hare_meat_cooked"
+
+ITEM_DEER_MEAT = "item.deer_meat"
+ITEM_DEER_HIDE = "item.deer_hide"
+ITEM_DEER_MEAT_COOKED = "item.deer_meat_cooked"
+
+ITEM_WOLF_MEAT = "item.wolf_meat"
+ITEM_WOLF_HIDE = "item.wolf_hide"
+ITEM_WOLF_MEAT_COOKED = "item.wolf_meat_cooked"
 # -------------
 
 
@@ -50,6 +62,14 @@ PLANT1 = "plant.1"
 PLANT2 = "plant.2"
 PLANT3 = "plant.3"
 # -------------
+
+
+# --- Animals ---
+ANIMAL_HARE = "animal.hare"
+ANIMAL_DEER = "animal.deer"
+ANIMAL_BEAR = "animal.bear"
+ANIMAL_WOLF = "animal.wolf"
+# ---------------
 
 
 # --- Entities in general ---

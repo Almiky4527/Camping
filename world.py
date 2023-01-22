@@ -79,6 +79,9 @@ class World:
                             self.spawn( (x, y), data, scatter=(scatter_x*SCALE, scatter_y*SCALE) )
                         except CannotSpawnHere:
                             continue
+        
+        # data = entity(ANIMAL_HARE)
+        # self.spawn( (0, 0), data )
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter

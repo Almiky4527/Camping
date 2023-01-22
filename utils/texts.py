@@ -94,9 +94,18 @@ TEXTS = {
             },
             "settings": {
                 "lang_changed": "Changed language to {lang}.",
+                "fullscreen": [
+                    "Fullscreen OFF.",
+                    "Fullscreen ON."
+                ],
+                "debug": [
+                    "Debug mode OFF.",
+                    "Debug mode ON."
+                ],
                 "buttons": [
                     "L - Change Language    ",
                     "F - Toggle Fullscreen  ",
+                    "D - Toggle Debug Mode  ",
                     "ESC - Back to Main Menu"
                 ]
             },
@@ -220,9 +229,18 @@ TEXTS = {
             },
             "settings": {
                 "lang_changed": "Jazyk zmenený na {lang}.",
+                "fullscreen": [
+                    "Režim celej obrazovky VYPNUTÝ.",
+                    "Režim celej obrazovky ZAPNUTÝ."
+                ],
+                "debug": [
+                    "Režim ladenia VYPNUTÝ.",
+                    "Režim ladenia ZAPNUTÝ."
+                ],
                 "buttons": [
                     "L - Zmeniť Jazyk                 ",
                     "F - Prepnúť Režim Celej Obrazovky",
+                    "D - Prepnúť Režim Ladenia        ",
                     "ESC - Späť na Hlavné Menu        "
                 ]
             },

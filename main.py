@@ -43,6 +43,10 @@ class MainGame:
         return self.settings["debug"]
     
     @property
+    def fullscreen_mode(self):
+        return self.settings["fullscreen"]
+    
+    @property
     def world_index(self):
         return self.settings["world_index"]
     
@@ -65,6 +69,11 @@ class MainGame:
         self.settings["debug"] = value
         self.saveloadstream.write_settings()
     
+    def set_fullscreen_mode(self, value : bool):
+        self.settings["fullscreen"] = value
+        pg.display.toggle_fullscreen()
+        self.saveloadstream.write_settings()
+    
     def set_world_index(self, value : int):
         self.settings["world_index"] = value
         self.saveloadstream.write_settings()
@@ -82,7 +91,8 @@ class MainGame:
         
     def setup_pygame(self):
         pg.init()
-        self.screen = pg.display.set_mode(SCREEN_RES, flags = 0)
+        flags = pg.SCALED
+        self.screen = pg.display.set_mode(SCREEN_RES, flags=flags, vsync=1)
         pg.display.set_caption(SCREEN_CAPTION)
         self.clock = pg.time.Clock()
 
@@ -97,6 +107,9 @@ class MainGame:
         self.camera = Camera(self)
 
         self.saveloadstream.load_settings()
+
+        if self.fullscreen_mode:
+            pg.display.toggle_fullscreen()
 
     def setup_world(self):
         self.world = World(self)

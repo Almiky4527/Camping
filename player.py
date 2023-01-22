@@ -12,6 +12,7 @@ SPRINT_SPEED = 3
 WALK_SPEED = 2
 
 FOLIAGE_CUTTING_STAMINA_PRICE = 10
+ATTACK_STAMINA_PRICE = 5
 LOOTING_STAMINA_PRICE = 5
 MIN_STAMINA_FOR_ACTION = 10
 
@@ -54,6 +55,10 @@ class Player (Entity):
     @property
     def can_cut_foliage(self):
         return self.selected_slot.in_family("axe") and self.stamina > FOLIAGE_CUTTING_STAMINA_PRICE
+    
+    @property
+    def can_attack(self):
+        return self.selected_slot.in_family("weapon") and self.stamina > ATTACK_STAMINA_PRICE
     
     @property
     def can_loot(self):
@@ -197,6 +202,12 @@ class Player (Entity):
                     continue
 
                 self.action = self.loot
+            
+            elif child.in_family("hare"):
+                if not self.can_attack:
+                    continue
+
+                self.action = self.attack
             
             elif child.in_family("foliage"):
                 if not self.can_cut_foliage:

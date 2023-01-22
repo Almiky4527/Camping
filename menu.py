@@ -117,6 +117,8 @@ class Menu:
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",1), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] + 10*SCALE
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",2), *self.text_specs_1, center=(x, y) )
+        y = SCREEN_CENTER[1] + 25*SCALE
+        screen_print( screen, get_text(self.lang,"menu","settings","buttons",3), *self.text_specs_1, center=(x, y) )
 
     def draw_pause_menu(self, screen):
         font = self.story_font
@@ -127,13 +129,13 @@ class Menu:
         screen_print( screen, get_text(self.lang,"menu","paused","title"), *self.text_specs_3, center=(x, y) )
         
         x = 5*SCALE
-        y = SCREEN_H - 45*SCALE
+        y = SCREEN_CENTER[1] - 15*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",0), *self.text_specs_3, topleft=(x, y) )
-        y = SCREEN_H - 35*SCALE
+        y = SCREEN_CENTER[1] - 5*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",1), *self.text_specs_3, topleft=(x, y) )
-        y = SCREEN_H - 25*SCALE
+        y = SCREEN_CENTER[1] + 5*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",2), *self.text_specs_3, topleft=(x, y) )
-        y = SCREEN_H - 15*SCALE
+        y = SCREEN_CENTER[1] + 15*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",3), *self.text_specs_3, topleft=(x, y) )
 
     def draw(self, screen):
@@ -206,6 +208,18 @@ class Menu:
                     self.set_run(MAIN_MENU)
                 elif ev.key == pg.K_l:
                     self.switch_language()
+                elif ev.key == pg.K_f:
+                    self.game.set_fullscreen_mode(not self.game.fullscreen_mode)
+                    i = int(self.game.fullscreen_mode)
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang,"menu","settings","fullscreen",i)
+                    )
+                elif ev.key == pg.K_d:
+                    self.game.set_debug_mode(not self.game.debug_mode)
+                    i = int(self.game.debug_mode)
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang,"menu","settings","debug",i)
+                    )
 
     def run_pause_menu(self, events):
         for ev in events:
@@ -219,6 +233,10 @@ class Menu:
                     self.game.clean()
                 elif ev.key == pg.K_d:
                     self.game.set_debug_mode(not self.game.debug_mode)
+                    i = int(self.game.debug_mode)
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang,"menu","settings","debug",i)
+                    )
 
     def run(self, events):
         for ev in events:

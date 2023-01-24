@@ -32,7 +32,10 @@ ITEM_PLANT1 = "item.plant1"
 ITEM_PLANT2 = "item.plant2"
 ITEM_PLANT3 = "item.plant3"
 
+STONE = "item.stone"
+
 ITEM_THREAD = "item.thread"
+ITEM_ROPE = "item.rope"
 
 ITEM_HARE_MEAT = "item.hare_meat"
 ITEM_HARE_HIDE = "item.here_hide"

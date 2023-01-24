@@ -58,6 +58,10 @@ class Entity (BaseEntity):
         return self.data.get("count")
     
     @property
+    def default_speed(self):
+        return self.data.get("default_speed", 0)
+    
+    @property
     def direction(self):
         return self.data.get("direction", SOUTH)
     
@@ -127,6 +131,14 @@ class Entity (BaseEntity):
     @property
     def looting_time(self):
         return self.data.get("looting_time", 0)
+    
+    @property
+    def possible_targets(self):
+        return self.data.get("possible_targets", [])
+    
+    @property
+    def run_away_from(self):
+        return self.data.get("run_away_from", [])
     
     @property
     def spawn(self):
@@ -290,7 +302,7 @@ class Entity (BaseEntity):
     def set_random_target_position(self):
         max_dist = self.data.get("max_travel_dist", 100)
         x, y = randrange(-max_dist, max_dist), randrange(-max_dist, max_dist)
-        self.target_position = x, y
+        self.target_position = self.position[0] + x, self.position[1] + y
 
     def run_action(self):
         if not self.action:
@@ -312,6 +324,13 @@ class Entity (BaseEntity):
     def stop_moving(self):
         self.vector.update(0)
     
+    def start_running(self):
+        self.set_speed(self.max_speed)
+
+    def stop_running(self):
+        self.set_speed(self.default_speed)
+        self.action = lambda: self.wait(7)
+    
     def search_for_target(self):
         entities = self.parent.children
 
@@ -319,7 +338,7 @@ class Entity (BaseEntity):
             if entity is self:
                 continue
 
-            for targetting_data in self.data.get("targets", []):
+            for targetting_data in self.possible_targets:
                 family = targetting_data["family"]
                 see_dist = targetting_data["see_dist"]
                 
@@ -328,10 +347,37 @@ class Entity (BaseEntity):
                 
                 vector_to_entity = Vector2(entity.position) - self.position
 
-                if vector_to_entity.length() <= see_dist:
-                    self.target = entity
-                    self.target_position = entity.position
-                    return
+                if vector_to_entity.length() > see_dist:
+                    continue
+
+                self.target = entity
+                self.target_position = entity.position
+                return
+    
+    def search_for_run_way_from(self):
+        entities = self.parent.children
+
+        for entity in entities:
+            if entity is self:
+                continue
+
+            for run_data in self.run_away_from:
+                family = run_data["family"]
+                see_dist = run_data["see_dist"]
+
+                if not entity.in_family(family):
+                    continue
+
+                vector_to_entity = Vector2(entity.position) - self.position
+
+                if vector_to_entity.length() > see_dist:
+                    continue
+
+                run_to_pos = self.position + vector_to_entity * -1
+                self.target_position = run_to_pos
+                self.start_running()
+                self.action = self.stop_running
+                return
     
     def update_direction(self):
         x, y = self.vector
@@ -349,7 +395,9 @@ class Entity (BaseEntity):
         if self.is_animal:
             self.update_random_travel()
 
-            if self.data.get("targets"):
+            if self.run_away_from:
+                self.search_for_run_way_from()
+            elif self.possible_targets:
                 self.search_for_target()
 
         if self.is_burning:
@@ -370,10 +418,8 @@ class Entity (BaseEntity):
             self.action = self.wait
             self.set_random_target_position()
     
-    def wait(self):
-        action_downtime = self.data.get("action_downtime", 0)
-
-        if self.action_time < action_downtime*FPS:
+    def wait(self, sec=5):
+        if self.action_time < sec*FPS:
             self.action_time += 1
         else:
             self.stop_action()

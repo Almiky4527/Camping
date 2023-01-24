@@ -119,6 +119,8 @@ class Menu:
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",2), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] + 25*SCALE
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",3), *self.text_specs_1, center=(x, y) )
+        y = SCREEN_CENTER[1] + 40*SCALE
+        screen_print( screen, get_text(self.lang,"menu","settings","buttons",4), *self.text_specs_1, center=(x, y) )
 
     def draw_pause_menu(self, screen):
         font = self.story_font
@@ -219,6 +221,12 @@ class Menu:
                     i = int(self.game.debug_mode)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang,"menu","settings","debug",i)
+                    )
+                elif ev.key == pg.K_s:
+                    self.game.set_render_shadows(not self.game.render_shadows)
+                    i = int(self.game.render_shadows)
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang,"menu","settings","shadows",i)
                     )
 
     def run_pause_menu(self, events):

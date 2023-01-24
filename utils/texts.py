@@ -102,11 +102,16 @@ TEXTS = {
                     "Debug mode OFF.",
                     "Debug mode ON."
                 ],
+                "shadows": [
+                    "Shadow rendering OFF.",
+                    "Shadow rendering ON."
+                ],
                 "buttons": [
-                    "L - Change Language    ",
-                    "F - Toggle Fullscreen  ",
-                    "D - Toggle Debug Mode  ",
-                    "ESC - Back to Main Menu"
+                    "L - Change Language      ",
+                    "F - Toggle Fullscreen    ",
+                    "D - Toggle Debug Mode    ",
+                    "S - Toggle Render Shadows",
+                    "ESC - Back to Main Menu  "
                 ]
             },
             "paused": {
@@ -237,10 +242,15 @@ TEXTS = {
                     "Režim ladenia VYPNUTÝ.",
                     "Režim ladenia ZAPNUTÝ."
                 ],
+                "shadows": [
+                    "Vykreslovanie tieňov ZAPNUTÉ.",
+                    "Vykreslovanie tieňov VYPNUTÉ."
+                ],
                 "buttons": [
                     "L - Zmeniť Jazyk                 ",
                     "F - Prepnúť Režim Celej Obrazovky",
                     "D - Prepnúť Režim Ladenia        ",
+                    "S - Prepnúť vykreslovanie tieňov ",
                     "ESC - Späť na Hlavné Menu        "
                 ]
             },

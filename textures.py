@@ -79,6 +79,11 @@ TEXTURES_RECTS = {
         ITEM_PLANT1: Rect(103, ITEM_ROW_2_Y, 16, 16),
         ITEM_PLANT2: Rect(120, ITEM_ROW_2_Y, 16, 16),
         ITEM_PLANT3: Rect(137, ITEM_ROW_2_Y, 16, 16),
+        STONE: Rect(120, ITEM_ROW_1_Y, 16, 16),
+        ITEM_THREAD: Rect(137, ITEM_ROW_1_Y, 16, 16),
+        ITEM_ROPE: Rect(154, ITEM_ROW_1_Y, 16, 16),
+        ITEM_BERRIES0: Rect(154, ITEM_ROW_2_Y, 16, 16),
+        ITEM_BLUEBERRIES: Rect(171, ITEM_ROW_2_Y, 16, 16),
     },
     "foliage": {
         DEFAULT: Rect(1, FOLIAGE_ROW_Y, 28, 70),

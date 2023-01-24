@@ -62,9 +62,17 @@ ITEMS = {
         "family": ["item", "thread_maker"],
         "max_count": 16
     },
+    STONE: {
+        "family": ["item", "stone"],
+        "max_count": 8
+    },
     ITEM_THREAD: {
         "family": ["item", "thread"],
-        "max_count": 32
+        "max_count": 16
+    },
+    ITEM_ROPE: {
+        "family": ["item", "rope"],
+        "max_count": 10
     },
     ITEM_HARE_MEAT: {
         "family": ["item", "meat"],
@@ -248,7 +256,8 @@ ENTITIES = {
     ANIMAL_HARE: {
         "family": ["animal", "hare"],
         "max_health": 50,
-        "max_speed": 2,
+        "max_speed": 3,
+        "default_speed": 2,
 
         "reach_size": [10, 5],
 
@@ -257,12 +266,37 @@ ENTITIES = {
 
         "max_travel_dist": 200,
         "travel_chance": 0.005,
-        "action_downtime": 5,
-
-        "targets": [
+        
+        "run_away_from": [
             {
                 "family": "player",
-                "see_dist": 300
+                "see_dist": 200
+            }
+        ],
+
+        "loot": {
+            ITEM_HARE_MEAT: 1,
+            ITEM_HARE_HIDE: 1
+        }
+    },
+    ANIMAL_BEAR: {
+        "family": ["animal", "bear"],
+        "max_health": 300,
+        "max_speed": 2,
+        "default_speed": 1,
+
+        "reach_size": [30, 20],
+
+        "health": 300,
+        "speed": 1,
+
+        "max_travel_dist": 500,
+        "travel_chance": 0.001,
+        
+        "possible_targets": [
+            {
+                "family": "player",
+                "see_dist": 500
             }
         ],
 

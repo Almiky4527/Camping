@@ -17,6 +17,7 @@ SETTINGS_DEFAULT = {
     "language": "English",
     "fullscreen": False,
     "debug": False,
+    "render_shadows": True,
     
     "world_index": 0,
     "worlds": []
@@ -41,6 +42,10 @@ class MainGame:
     @property
     def debug_mode(self):
         return self.settings["debug"]
+
+    @property
+    def render_shadows(self):
+        return self.settings["render_shadows"]
     
     @property
     def fullscreen_mode(self):
@@ -67,6 +72,10 @@ class MainGame:
     
     def set_debug_mode(self, value : bool):
         self.settings["debug"] = value
+        self.saveloadstream.write_settings()
+    
+    def set_render_shadows(self, value : bool):
+        self.settings["render_shadows"] = value
         self.saveloadstream.write_settings()
     
     def set_fullscreen_mode(self, value : bool):

@@ -11,7 +11,6 @@ class Camera:
     def __init__(self, game):
         self.game = game
         self.box = self.screen.get_rect()
-        self.render_shadows = True
         
     @property
     def screen(self):
@@ -47,6 +46,10 @@ class Camera:
     @property
     def debug_mode(self):
         return self.game.debug_mode
+    
+    @property
+    def render_shadows(self):
+        return self.game.render_shadows
 
     def is_on_camera(self, obj):
         return obj.rect.colliderect(self.box)

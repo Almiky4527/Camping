@@ -137,12 +137,15 @@ class MainGame:
             self.inventory.add( item( *item_data_and_count ) )
 
     def setup_player(self):
-        player_texture_set = self.texture_container["JohnDoe"]
+        name = "JohnDoe"
+        player_texture_set = self.texture_container[name]
         
         self.player = Player(
-            self,
-            player_texture_set,
+            game=self,
+            name=name,
             data=entity(ENTITY_PLAYER),
+            texture_set=player_texture_set,
+            image=player_texture_set[SOUTH][0],
             position=(0, 0),
             parent=self.world
         )

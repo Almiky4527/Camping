@@ -62,7 +62,8 @@ class Camera:
     
     def render_entity(self, entity):
         entity_position_to_screen = position_to_screen(entity.position, self.topleft)
-        rect = entity.image.get_rect(midbottom=entity_position_to_screen)
+        rect = entity.rect.copy()
+        rect.midbottom = entity_position_to_screen
 
         if entity.in_family("player"):
             rect.bottom += 1*SCALE

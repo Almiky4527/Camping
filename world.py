@@ -86,14 +86,15 @@ class World:
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter
         id_ = data["id"]
+        subtype = entity_subtype(id_)
 
-        texture = self.texture_container.get(id_)
+        texture = self.texture_container[id_][SOUTH][0] if subtype == "animal" else self.texture_container.get(id_)
         
         spawn_position = list(position)
         spawn_position[0] += randrange(-sx, sx) if sx else 0
         spawn_position[1] += randrange(-sy, sy) if sy else 0
 
-        new_child = Entity(data, texture, spawn_position, self)
+        new_child = Entity(data=data, image=texture, position=spawn_position, parent=self)
 
         for child in self.children:
             if child.box.colliderect(new_child.box):

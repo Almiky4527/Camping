@@ -254,7 +254,7 @@ ENTITIES = {
         }
     },
     ANIMAL_HARE: {
-        "family": ["animal", "hare"],
+        "family": ["animal", "hare", "small"],
         "max_health": 50,
         "max_speed": 3,
         "default_speed": 2,

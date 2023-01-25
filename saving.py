@@ -86,9 +86,10 @@ class SaveLoadStream:
         player_position = player_data["position"]
 
         game.player = Player(
-            game,
-            player_texture_set,
+            game=game,
             data=player_data,
+            texture_set=player_texture_set,
+            image=player_texture_set[0][0],
             position=player_position,
             parent=parent
         )

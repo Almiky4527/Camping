@@ -108,11 +108,7 @@ TEXTURES_RECTS = {
     "objects": {
         DEFAULT: Rect(1, OBJECTS_ROW_1_Y, 26, 26),
         ENTITY_TENT: Rect(28, OBJECTS_ROW_1_Y, 54, 39),
-        ENTITY_CAMPFIRE: Rect(83, OBJECTS_ROW_1_Y, 18, 19),
-        ENTITY_CAMPFIRE + BURNING_SUBTYPE: [
-            Rect(102, OBJECTS_ROW_1_Y, 18, 19),
-            Rect(121, OBJECTS_ROW_1_Y, 18, 19)
-        ]
+        ENTITY_CAMPFIRE: Rect(83, OBJECTS_ROW_1_Y, 18, 19)
     },
     "shadows": {
         SHADOW_SMALL: Rect(1, SHADOWS_ROW_Y, 12, 3),
@@ -125,6 +121,34 @@ TEXTURES_RECTS = {
 
         SHADOW_SUBTYPE + BUSH_LARGE: Rect(90, SHADOWS_ROW_Y, 30, 6),
         SHADOW_SUBTYPE + BUSH_SMALL: Rect(90, SHADOWS_ROW_Y + 7, 20, 6),
+    },
+    ENTITY_CAMPFIRE + BURNING_SUBTYPE: {
+        SOUTH: [
+            Rect(102, OBJECTS_ROW_1_Y, 18, 19),
+            Rect(121, OBJECTS_ROW_1_Y, 18, 19)
+        ]
+    },
+    ANIMAL_HARE: {
+        SOUTH: [
+            Rect(1, PLAYER_ROW_1_Y, 12, 28),
+            Rect(14, PLAYER_ROW_1_Y, 12, 28),
+            Rect(27, PLAYER_ROW_1_Y, 12, 28),
+        ],
+        NORTH: [
+            Rect(40, PLAYER_ROW_1_Y, 12, 28),
+            Rect(53, PLAYER_ROW_1_Y, 12, 28),
+            Rect(66, PLAYER_ROW_1_Y, 12, 28),
+        ],
+        EAST: [
+            Rect(79, PLAYER_ROW_1_Y, 12, 28),
+            Rect(92, PLAYER_ROW_1_Y, 12, 28),
+            Rect(105, PLAYER_ROW_1_Y, 12, 28),
+        ],
+        WEST: [
+            Rect(118, PLAYER_ROW_1_Y, 12, 28),
+            Rect(131, PLAYER_ROW_1_Y, 12, 28),
+            Rect(144, PLAYER_ROW_1_Y, 12, 28),
+        ]
     }
 }
 

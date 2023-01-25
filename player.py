@@ -19,13 +19,10 @@ MIN_STAMINA_FOR_ACTION = 10
 
 class Player (Entity):
 
-    def __init__(self, game, texture_set, data : dict, *args, **kwargs):
+    def __init__(self, game, name="JohnDoe", *args, **kwargs):
         self.game = game
-
-        self.texture_set = texture_set
-        self.frame_time = (FPS // 4) - 1
-
-        super().__init__(data, texture_set[SOUTH][0], *args, **kwargs)
+        self.name = name
+        super().__init__(*args, **kwargs)
 
     @property
     def world(self):
@@ -126,12 +123,6 @@ class Player (Entity):
     def move(self, *args, **kwargs):
         super().move(*args, **kwargs)
 
-        if self.vector:
-            self.frame_time += self.speed - 1
-            self.frame_time %= FPS
-        else:
-            self.frame_time = (FPS // 4) - 1
-
     def update_stamina(self):
         if self.is_sprinting:
             stamina = self.stamina - (10 / FPS)
@@ -181,11 +172,6 @@ class Player (Entity):
             self.set_speed(SPRINT_SPEED)
         else:
             self.set_speed(WALK_SPEED)
-        
-    def update_image(self):
-        texture_list = self.texture_set[self.direction]
-        frame = self.frame_time // (FPS // 4)
-        self.image = texture_list[frame]
 
     def query_action(self):
         target_position = position_from_screen( mouse.get_pos(), self.camera.topleft )
@@ -431,8 +417,6 @@ class Player (Entity):
 
     def update(self):
         super().update()
-
-        self.update_image()
         self.update_stamina()
     
     def die(self):

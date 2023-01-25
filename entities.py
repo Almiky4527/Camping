@@ -14,7 +14,7 @@ class Entity (BaseEntity):
 
     NO_FAMILY = ()
 
-    def __init__(self, data : dict, *args, **kwargs):
+    def __init__(self, data : dict, texture_set=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.data = data
@@ -42,7 +42,7 @@ class Entity (BaseEntity):
         self.action = None
         self.action_time = 0
 
-        self.texture_list = None
+        self.texture_set = texture_set    # A dict of texture lists, for animating.
         self.frame_time = 0
     
     @property
@@ -86,6 +86,14 @@ class Entity (BaseEntity):
         return bool(self.health)
     
     @property
+    def is_animal(self):
+        return self.in_family("animal")
+    
+    @property
+    def is_burning(self):
+        return self.in_family("fire")
+    
+    @property
     def is_dead(self):
         return not self.is_alive and not self.is_immortal
     
@@ -102,20 +110,16 @@ class Entity (BaseEntity):
         return self.in_family("item")
     
     @property
-    def is_animal(self):
-        return self.in_family("animal")
-    
-    @property
-    def is_burning(self):
-        return self.in_family("fire")
-    
-    @property
     def is_interactable(self):
         return self.in_family("interact")
     
     @property
     def is_moving(self):
         return bool(self.vector)
+    
+    @property
+    def is_player(self):
+        return self.id == ENTITY_PLAYER
     
     @property
     def in_reach_of_action(self):
@@ -155,6 +159,10 @@ class Entity (BaseEntity):
     @property
     def saturation(self):
         return self.data.get("saturation")
+    
+    @property
+    def texture_list(self):
+        return self.texture_set[self.direction] if self.texture_set else []
     
     @property
     def vector_to_action(self):
@@ -284,11 +292,20 @@ class Entity (BaseEntity):
             self.set_box_bottom(self.parent.box.bottom)
     
     def move(self, entities):
+        if not self.vector and (self.texture_list or self.texture_set):
+            self.frame_time = (FPS // 4) - 1
+
         if self.is_immobile or not (self.speed and self.vector):
             return
         
         self.move_x(entities)
         self.move_y(entities)
+
+        if self.vector:
+            self.frame_time += self.speed - 1
+            self.frame_time %= FPS
+        else:
+            pass
     
     def move_to_action(self):
         if self.target:
@@ -329,7 +346,7 @@ class Entity (BaseEntity):
 
     def stop_running(self):
         self.set_speed(self.default_speed)
-        self.action = lambda: self.wait(7)
+        self.action = lambda: self.wait(3)
     
     def search_for_target(self):
         entities = self.parent.children
@@ -425,8 +442,12 @@ class Entity (BaseEntity):
             self.stop_action()
     
     def update_image(self):
-        if self.is_burning:
-            self.texture_list = self.parent.texture_container.get(self.id + BURNING_SUBTYPE)
+        if self.is_player:
+            self.texture_set = self.parent.texture_container[self.name]
+        elif self.is_animal:
+            self.texture_set = self.parent.texture_container[self.id]
+        elif self.is_burning:
+            self.texture_set = self.parent.texture_container[self.id + BURNING_SUBTYPE]
         elif self.in_family("loot"):
             self.image = self.parent.texture_container.get(self.id + LOOT_SUBTYPE)
         else:
@@ -435,8 +456,8 @@ class Entity (BaseEntity):
         if not self.texture_list:
             return
 
-        frame = self.frame_time // ( FPS // len(self.texture_list) )
-        self.image = self.texture_list[frame]
+        frame_index = self.frame_time // ( FPS // len(self.texture_list) )
+        self.image = self.texture_list[frame_index]
         
     def draw(self, screen, *args, **kwargs):
         self.update_image()

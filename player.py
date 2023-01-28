@@ -124,26 +124,24 @@ class Player (Entity):
         super().move(*args, **kwargs)
 
     def update_stamina(self):
+        # Replenish stamina over time when inactive
+        if self.is_attacking or self.is_looting:
+             # Stop action when too tired
+            if self.stamina < MIN_STAMINA_FOR_ACTION:
+                self.game.gui.set_prompt_text(
+                    get_text(self.lang,"actions","tired")
+                )
+                self.stop_action()
+            return
+
+        stamina = self.stamina
+
         if self.is_sprinting:
             stamina = self.stamina - (10 / FPS)
-        elif self.is_moving:
+        elif not self.is_moving:
             stamina = self.stamina + (5 / FPS)
-        else:
-            stamina = self.stamina + (10 / FPS)
         
         self.set_stamina(stamina)
-        
-        # Stop action when too tired
-        if self.stamina < MIN_STAMINA_FOR_ACTION and self.action in (self.attack, self.loot):
-            self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","tired")
-            )
-            self.stop_action()
-            return
-        
-        # Replenish stamina over time when inactive
-        if self.is_moving or self.is_attacking or self.is_looting or self.stamina >= 100:
-            return
 
     def update_vector(self, keys):
         if keys[pg.K_w] or keys[pg.K_a] or keys[pg.K_s] or keys[pg.K_d]:
@@ -330,20 +328,6 @@ class Player (Entity):
             )
         
         self.stop_action()
-    
-    def attack(self):
-        if self.action_time >= self.attack_cooldown * FPS:
-            self.target.damage(self.attack_damage)
-            
-            stamina = self.stamina - FOLIAGE_CUTTING_STAMINA_PRICE
-            self.set_stamina(stamina)
-            
-            self.action_time = 0
-        else:
-            self.action_time += 1
-        
-        if not self.target.is_alive:
-            self.stop_action()
     
     def loot(self):
         target_name = get_name(self.target.id, self.lang)

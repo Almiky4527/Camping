@@ -59,9 +59,6 @@ TEXTURES_RECTS = {
             Rect(144, PLAYER_ROW_1_Y, 12, 28),
         ]
     },
-    "animal": {
-        DEFAULT: Rect(1, ANIMAL_ROW_Y, 16, 16)
-    },
     "item": {
         DEFAULT: Rect(1, ITEM_ROW_1_Y, 16, 16),
         ITEM_LOG: Rect(18, ITEM_ROW_1_Y, 16, 16),
@@ -128,26 +125,26 @@ TEXTURES_RECTS = {
             Rect(121, OBJECTS_ROW_1_Y, 18, 19)
         ]
     },
-    ANIMAL_HARE: {
+    "animal": {
         SOUTH: [
-            Rect(1, PLAYER_ROW_1_Y, 12, 28),
-            Rect(14, PLAYER_ROW_1_Y, 12, 28),
-            Rect(27, PLAYER_ROW_1_Y, 12, 28),
+            Rect(1, ANIMAL_ROW_Y, 12, 12),
+            Rect(14, ANIMAL_ROW_Y, 12, 12),
+            Rect(27, ANIMAL_ROW_Y, 12, 12),
         ],
         NORTH: [
-            Rect(40, PLAYER_ROW_1_Y, 12, 28),
-            Rect(53, PLAYER_ROW_1_Y, 12, 28),
-            Rect(66, PLAYER_ROW_1_Y, 12, 28),
+            Rect(40, ANIMAL_ROW_Y, 12, 12),
+            Rect(53, ANIMAL_ROW_Y, 12, 12),
+            Rect(66, ANIMAL_ROW_Y, 12, 12),
         ],
         EAST: [
-            Rect(79, PLAYER_ROW_1_Y, 12, 28),
-            Rect(92, PLAYER_ROW_1_Y, 12, 28),
-            Rect(105, PLAYER_ROW_1_Y, 12, 28),
+            Rect(79, ANIMAL_ROW_Y, 12, 12),
+            Rect(92, ANIMAL_ROW_Y, 12, 12),
+            Rect(105, ANIMAL_ROW_Y, 12, 12),
         ],
         WEST: [
-            Rect(118, PLAYER_ROW_1_Y, 12, 28),
-            Rect(131, PLAYER_ROW_1_Y, 12, 28),
-            Rect(144, PLAYER_ROW_1_Y, 12, 28),
+            Rect(118, ANIMAL_ROW_Y, 12, 12),
+            Rect(131, ANIMAL_ROW_Y, 12, 12),
+            Rect(144, ANIMAL_ROW_Y, 12, 12),
         ]
     }
 }
@@ -199,6 +196,10 @@ class TextureContainer:
         for texture_list in self["JohnDoe"].values():
             frame0 = texture_list[0]
             texture_list.insert(2, frame0)
+        
+        for texture_list in self["animal"].values():
+            frame0 = texture_list[0]
+            texture_list.insert(2, frame0)
 
         self.debug_font = SysFont(*DEBUG_FONT)
         self.inventory_font = SysFont(*INVENTORY_FONT)
@@ -222,6 +223,9 @@ class TextureContainer:
         else:
             subtype = entity_subtype(key)
             return self.texture(subtype)
+    
+    def get_animal_set(self, key):
+        return self[key] if key in self.sets else self["animal"]
 
     def texture(self, set_name, key=None):
         '''Return the texture for key if key is in sets, else default.'''

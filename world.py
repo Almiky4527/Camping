@@ -79,16 +79,18 @@ class World:
                             self.spawn( (x, y), data, scatter=(scatter_x*SCALE, scatter_y*SCALE) )
                         except CannotSpawnHere:
                             continue
-        
-        # data = entity(ANIMAL_HARE)
-        # self.spawn( (0, 0), data )
+
+    def random_spawn(self):
+        data = entity(ANIMAL_BEAR)
+        x, y = 400, 0 # randrange(-1000, 1000), randrange(-100, 100)
+        self.spawn( (x, y), data )
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter
         id_ = data["id"]
         subtype = entity_subtype(id_)
 
-        texture = self.texture_container[id_][SOUTH][0] if subtype == "animal" else self.texture_container.get(id_)
+        texture = self.texture_container.get_animal_set(id_)[SOUTH][0] if subtype == "animal" else self.texture_container.get(id_)
         
         spawn_position = list(position)
         spawn_position[0] += randrange(-sx, sx) if sx else 0

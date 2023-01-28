@@ -51,7 +51,7 @@ class Entity (BaseEntity):
 
     @property
     def attack_damage(self):
-        return self.data.get("attack_damage")
+        return self.data.get("attack_damage", 0)
 
     @property
     def count(self):
@@ -135,6 +135,10 @@ class Entity (BaseEntity):
     @property
     def looting_time(self):
         return self.data.get("looting_time", 0)
+    
+    @property
+    def num_of_frames(self):
+        return len(self.texture_list) if self.texture_list else 1
     
     @property
     def possible_targets(self):
@@ -292,8 +296,8 @@ class Entity (BaseEntity):
             self.set_box_bottom(self.parent.box.bottom)
     
     def move(self, entities):
-        if not self.vector and (self.texture_list or self.texture_set):
-            self.frame_time = (FPS // 4) - 1
+        if not self.vector and (self.texture_list or self.texture_set) and not self.is_burning:
+            self.frame_time = (FPS // self.num_of_frames) - 1
 
         if self.is_immobile or not (self.speed and self.vector):
             return
@@ -302,7 +306,7 @@ class Entity (BaseEntity):
         self.move_y(entities)
 
         if self.vector:
-            self.frame_time += self.speed - 1
+            self.frame_time += self.speed - 0.5
             self.frame_time %= FPS
         else:
             pass
@@ -331,6 +335,29 @@ class Entity (BaseEntity):
             self.action()
         elif self.is_animal and self.in_reach_of_action:
             self.action()
+
+    def attack(self):
+        if self.action_time >= self.attack_cooldown * FPS:
+            self.target.damage(self.attack_damage)
+            
+            if self.stamina:
+                stamina = self.stamina - 5
+                self.set_stamina(stamina)
+            
+            self.action_time = 0
+        else:
+            self.action_time += 1
+        
+        if not self.target.is_alive:
+            self.stop_action()
+
+            if self.is_animal:
+                self.stop_running()
+    
+    def forget_target(self):
+        self.stop_action()
+        self.stop_running()
+        self.stop_moving()
     
     def stop_action(self):
         self.target = None
@@ -346,9 +373,10 @@ class Entity (BaseEntity):
 
     def stop_running(self):
         self.set_speed(self.default_speed)
+        self.target_position = tuple(self.position)
         self.action = lambda: self.wait(3)
     
-    def search_for_target(self):
+    def search_for_possible_target(self):
         entities = self.parent.children
 
         for entity in entities:
@@ -358,17 +386,23 @@ class Entity (BaseEntity):
             for targetting_data in self.possible_targets:
                 family = targetting_data["family"]
                 see_dist = targetting_data["see_dist"]
+                forget_dist = targetting_data["forget_dist"]
                 
                 if not entity.in_family(family):
                     continue
                 
                 vector_to_entity = Vector2(entity.position) - self.position
 
+                if vector_to_entity.length() >= forget_dist and entity is self.target:
+                    self.forget_target()
+
                 if vector_to_entity.length() > see_dist:
                     continue
 
                 self.target = entity
                 self.target_position = entity.position
+                self.start_running()
+                self.action = self.attack
                 return
     
     def search_for_run_way_from(self):
@@ -381,6 +415,7 @@ class Entity (BaseEntity):
             for run_data in self.run_away_from:
                 family = run_data["family"]
                 see_dist = run_data["see_dist"]
+                run_dist = run_data["run_dist"]
 
                 if not entity.in_family(family):
                     continue
@@ -390,7 +425,7 @@ class Entity (BaseEntity):
                 if vector_to_entity.length() > see_dist:
                     continue
 
-                run_to_pos = self.position + vector_to_entity * -1
+                run_to_pos = self.position + vector_to_entity * (-run_dist)
                 self.target_position = run_to_pos
                 self.start_running()
                 self.action = self.stop_running
@@ -415,7 +450,7 @@ class Entity (BaseEntity):
             if self.run_away_from:
                 self.search_for_run_way_from()
             elif self.possible_targets:
-                self.search_for_target()
+                self.search_for_possible_target()
 
         if self.is_burning:
             self.burn()
@@ -445,7 +480,7 @@ class Entity (BaseEntity):
         if self.is_player:
             self.texture_set = self.parent.texture_container[self.name]
         elif self.is_animal:
-            self.texture_set = self.parent.texture_container[self.id]
+            self.texture_set = self.parent.texture_container.get_animal_set(self.id)
         elif self.is_burning:
             self.texture_set = self.parent.texture_container[self.id + BURNING_SUBTYPE]
         elif self.in_family("loot"):
@@ -456,7 +491,7 @@ class Entity (BaseEntity):
         if not self.texture_list:
             return
 
-        frame_index = self.frame_time // ( FPS // len(self.texture_list) )
+        frame_index = round( self.frame_time // ( FPS // self.num_of_frames ) )
         self.image = self.texture_list[frame_index]
         
     def draw(self, screen, *args, **kwargs):

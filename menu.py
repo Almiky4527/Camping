@@ -18,7 +18,6 @@ class Menu:
 
     def __init__(self, game):
         self.game = game
-        self.worlds = []
         self.running = MAIN_MENU
     
     @property
@@ -44,6 +43,10 @@ class Menu:
     @property
     def text_specs_3(self):
         return self.story_font, (WHITE, SLIGHTLY_LESS_BLACK), (5*SCALE, 2*SCALE), 4
+    
+    @property
+    def worlds(self):
+        return self.game.worlds
     
     def switch_pause(self):
         self.running = PAUSE_MENU if not self.running else OFF
@@ -198,6 +201,9 @@ class Menu:
                     if i == self.game.world_index: continue
                     self.game.set_world_index(i)
                 elif ev.key == pg.K_DELETE:
+                    if len(self.worlds) == 0:
+                        continue
+
                     self.game.gui.set_prompt_text(
                         get_text(self.lang,"menu","worlds","delete").format(world=self.game.world_name)
                     )

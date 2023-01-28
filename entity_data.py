@@ -258,25 +258,43 @@ ENTITIES = {
         "max_health": 50,
         "max_speed": 3,
         "default_speed": 2,
-
         "reach_size": [10, 5],
-
         "health": 50,
         "speed": 2,
-
         "max_travel_dist": 200,
         "travel_chance": 0.005,
-        
         "run_away_from": [
             {
                 "family": "player",
-                "see_dist": 200
+                "see_dist": 200,
+                "run_dist": 1
             }
         ],
-
         "loot": {
             ITEM_HARE_MEAT: 1,
             ITEM_HARE_HIDE: 1
+        }
+    },
+    ANIMAL_DEER: {
+        "family": ["animal", "deer", "large"],
+        "max_health": 100,
+        "max_speed": 4,
+        "default_speed": 2,
+        "health": 100,
+        "speed": 2,
+        "reach_size": [20, 10],
+        "max_travel_dist": 300,
+        "travel_chance": 0.001,
+        "run_away_from": [
+            {
+                "family": "player",
+                "see_dist": 350,
+                "run_dist": 2
+            }
+        ],
+        "loot": {
+            ITEM_DEER_MEAT: 1,
+            ITEM_DEER_HIDE: 1
         }
     },
     ANIMAL_BEAR: {
@@ -284,26 +302,20 @@ ENTITIES = {
         "max_health": 300,
         "max_speed": 2,
         "default_speed": 1,
-
         "reach_size": [30, 20],
-
         "health": 300,
         "speed": 1,
-
-        "max_travel_dist": 500,
-        "travel_chance": 0.001,
-        
+        "attack_damage": 40,
+        "attack_cooldown": 1.0,
+        "max_travel_dist": 600,
+        "travel_chance": 0.0008,
         "possible_targets": [
             {
                 "family": "player",
-                "see_dist": 500
+                "see_dist": 200,
+                "forget_dist": 200
             }
-        ],
-
-        "loot": {
-            ITEM_HARE_MEAT: 1,
-            ITEM_HARE_HIDE: 1
-        }
+        ]
     }
 }
 

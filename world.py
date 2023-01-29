@@ -1,9 +1,12 @@
 from random import randrange, choices
 
 from utils.classes import CannotSpawnHere
-from world_spawns import GENERATION
+from world_spawns import *
 from entities import *
 from player import *
+
+
+DAYS_IN_SEASON = 10
 
 
 class World:
@@ -15,30 +18,37 @@ class World:
         self.box.center = (0, 0)
 
         self.children = []
-        self.day = 1
-        self.season = SPRING
+        self.day = 0
 
     @property
-    def player(self):
-        return self.game.player
+    def animals(self):
+        is_animal = lambda child : child.is_animal
+        return tuple( filter(is_animal, self.children) )
 
     @property
     def camera(self):
         return self.game.camera
-
-    @property
-    def texture_container(self):
-        return self.game.texture_container
     
     @property
-    def entities(self):
-        is_entity = lambda child : type(child) == Entity
-        return tuple( filter(is_entity, self.children) )
+    def color(self):
+        return SEASONS_COLORS[self.season]
     
     @property
     def items(self):
         is_item = lambda child : child.is_item
         return tuple( filter(is_item, self.children) )
+    
+    @property
+    def player(self):
+        return self.game.player
+    
+    @property
+    def season(self):
+        return (self.day // DAYS_IN_SEASON) % 4
+
+    @property
+    def texture_container(self):
+        return self.game.texture_container
 
     def add_child(self, child : Entity):
         if child in self.children:
@@ -52,8 +62,8 @@ class World:
 
         self.children.remove(child)
     
-    def generate(self):
-        for gen_entry in GENERATION:
+    def generate(self, generation_data):
+        for gen_entry in generation_data:
             grid = gen_entry["grid"]
             spawns = gen_entry["spawns"]
 
@@ -70,7 +80,7 @@ class World:
                     if not spawn_id:
                         continue
                         
-                    n = randrange( scattered_positions[0], scattered_positions[1]+1 ) if type(scattered_positions) != int else scattered_positions
+                    n = randint( scattered_positions[0], scattered_positions[1] ) if type(scattered_positions) != int else scattered_positions
                     
                     for _ in range( randrange(n) if type(n) != int else n ):
                         data = item(spawn_id) if entity_subtype(spawn_id) == "item" else entity(spawn_id)
@@ -79,11 +89,44 @@ class World:
                             self.spawn( (x, y), data, scatter=(scatter_x*SCALE, scatter_y*SCALE) )
                         except CannotSpawnHere:
                             continue
+    
+    def next_day(self):
+        self.day += 1
 
-    def random_spawn(self):
-        data = entity(ANIMAL_BEAR)
-        x, y = 400, 0 # randrange(-1000, 1000), randrange(-100, 100)
-        self.spawn( (x, y), data )
+        self.random_despawns()
+        self.generate(RANDOM_SPAWNS)
+        self.refresh_lootable_entites()
+
+        self.player_sleeps()
+    
+    def random_despawns(self):
+        for child in self.children:
+            for family in RANDOM_DESPAWNS:
+                if not child.in_family(family):
+                    continue
+                
+                success_chance = RANDOM_DESPAWNS[family]
+                success = 100*success_chance >= randint(0, 100)
+
+                if not success:
+                    continue
+                
+                self.remove_child(child)
+    
+    def refresh_lootable_entites(self):
+        for child in self.children:
+            if child.in_family("interact_loot") and not child.in_family("loot"):
+                success = 100*0.5 >= randint(0, 100)
+
+                if not success:
+                    continue
+
+                child.add_family("loot")
+    
+    def player_sleeps(self):
+        self.player.set_stamina(100)
+        saturation = self.player.saturation - 20
+        self.player.set_saturation(saturation)
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter
@@ -105,7 +148,7 @@ class World:
         self.add_child(new_child)
 
     def draw(self, screen):
-        screen.fill(self.season)
+        screen.fill(self.color)
 
     def run(self):
         for child in self.children:
@@ -113,6 +156,9 @@ class World:
             child.move(self.children)
         
     def clean(self):
+        for child in self.children:
+            del child
+
         self.children.clear()
     
     def load(self, data):

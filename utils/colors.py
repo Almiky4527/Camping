@@ -1,3 +1,8 @@
+try:
+    from .identifiers import *
+except ImportError:
+    from identifiers import *
+
 
 RED = 255, 0, 0
 GREEN = 0, 255, 0
@@ -16,4 +21,15 @@ BROWNISH = 145, 92, 34
 
 YELLOW = 255, 255, 0
 BROWN = 200, 100, 0
-SPRING = 93, 150, 60
+
+COLOR_SPRING = 93, 150, 60
+COLOR_SUMMER = 72, 159, 51
+COLOR_AUTUMN = 128, 149, 62
+COLOR_WINTER = 210, 219, 221
+
+SEASONS_COLORS = {
+    SEASON_SPRING: COLOR_SPRING,
+    SEASON_SUMMER: COLOR_SUMMER,
+    SEASON_AUTUMN: COLOR_AUTUMN,
+    SEASON_WINTER: COLOR_WINTER
+}

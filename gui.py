@@ -51,6 +51,10 @@ class GUI:
     def debug_mode(self):
         return self.game.debug_mode
     
+    @property
+    def world(self):
+        return self.game.world
+    
     def set_prompt_text(self, text : str = None):
         if not text:
             text = ""
@@ -117,6 +121,10 @@ class GUI:
         stamina = round(self.player.stamina)
         self.draw_progress_bar( rect, stamina, colors=(LESS_RED, YELLOW) )
         # --------------------------
+
+        # --- World: Days, Season ---
+        self.print_world_state()
+        # ---------------------------
     
     def draw_progress_bar( self, rect, value, max_value=100, colors=(LESS_RED, GREEN) ):
         pg.draw.rect(self.screen, colors[0], rect)
@@ -163,6 +171,16 @@ class GUI:
         font.set_bold(False)
         opacity = 255 - ( max( 0, self.prompt_time - (PROMPT_DURATION - 120) ) )*2
         screen_print(self.screen, self.prompt_text, font, colors=colors, inflation=(10, 6), br=2, opacity=opacity, topleft=position)
+    
+    def print_world_state( self, position=(230, 16) ):
+        day = self.world.day + 1
+        season_name = get_text(self.lang, "world", self.world.season)
+        world_info_text = get_text(self.lang, "world", "info_text").format(season=season_name, day=day)
+
+        font = self.texture_container.story_font
+        font.set_bold(False)
+        colors = ( WHITE, SLIGHTLY_LESS_BLACK )
+        screen_print(self.screen, world_info_text, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
     
     def get_input(self, events):
         for ev in events:

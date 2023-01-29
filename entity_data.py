@@ -47,19 +47,19 @@ ITEMS = {
         "max_count": 16
     },
     ITEM_PLANT0: {
-        "family": ["item", "thread_maker"],
+        "family": ["item", "item_plant", "thread_maker"],
         "max_count": 16
     },
     ITEM_PLANT1: {
-        "family": ["item", "thread_maker"],
+        "family": ["item", "item_plant", "thread_maker"],
         "max_count": 16
     },
     ITEM_PLANT2: {
-        "family": ["item", "thread_maker"],
+        "family": ["item", "item_plant", "thread_maker"],
         "max_count": 16
     },
     ITEM_PLANT3: {
-        "family": ["item", "thread_maker"],
+        "family": ["item", "item_plant", "thread_maker"],
         "max_count": 16
     },
     STONE: {
@@ -183,14 +183,14 @@ ENTITIES = {
         }
     },
     BUSH_LARGE: {
-        "family": ["foliage", "bush", "large", "interact", "loot"],
+        "family": ["foliage", "bush", "large", "interact_loot", "loot"],
         "max_health": 50,
         "health": 50,
 
         "interact_loot": {
             ITEM_BERRIES0: [2, 5]
         },
-        "looting_time": 5,
+        "looting_time": 4,
 
         "immobile": True,
         "loot": {
@@ -198,7 +198,7 @@ ENTITIES = {
         }
     },
     BUSH_SMALL: {
-        "family": ["foliage", "bush", "small", "interact", "loot"],
+        "family": ["foliage", "bush", "small", "interact_loot", "loot"],
         "max_health": 30,
         "health": 30,
 
@@ -206,17 +206,17 @@ ENTITIES = {
             ITEM_BLUEBERRIES: [1, 3]
         },
         
-        "looting_time": 3,
+        "looting_time": 2,
 
         "immobile": True,
         "loot": {
-            ITEM_STICK: [0, 3],
+            ITEM_STICK: [1, 3],
         }
     },
     PLANT0: {
         "family": ["plant"],
-        "max_health": 20,
-        "health": 20,
+        "max_health": 10,
+        "health": 10,
 
         "immobile": True,
         "loot": {
@@ -225,8 +225,8 @@ ENTITIES = {
     },
     PLANT1: {
         "family": ["plant"],
-        "max_health": 20,
-        "health": 20,
+        "max_health": 10,
+        "health": 10,
 
         "immobile": True,
         "loot": {
@@ -235,8 +235,8 @@ ENTITIES = {
     },
     PLANT2: {
         "family": ["plant"],
-        "max_health": 20,
-        "health": 20,
+        "max_health": 10,
+        "health": 10,
 
         "immobile": True,
         "loot": {
@@ -245,8 +245,8 @@ ENTITIES = {
     },
     PLANT3: {
         "family": ["plant", "parched"],
-        "max_health": 20,
-        "health": 20,
+        "max_health": 10,
+        "health": 10,
 
         "immobile": True,
         "loot": {

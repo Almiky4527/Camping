@@ -122,7 +122,7 @@ class MainGame:
 
     def setup_world(self):
         self.world = World(self)
-        self.world.generate()
+        self.world.generate(INITIAL_GENERATION)
 
     def setup_inventory(self):
         self.inventory = Inventory( [ {} for _ in range(9) ], self )
@@ -244,23 +244,31 @@ class MainGame:
                 while True: pass
     
     def save(self):
-        lang = self.lang
         self.gui.set_prompt_text(
-            get_text(lang,"actions","save","q") )
+            get_text(self.lang, "actions", "save", "q") )
 
         if self.gui.prompt_input_buffer == pg.K_y:
             if self.inventory.expanded:
                 self.inventory.toggle_expand()
 
+            self.player.stop_action()
+            
+            # Skip to the next day
+            self.world.next_day()
+
             self.saveloadstream.save(self.world_name)
             self.gui.set_prompt_text(
-                get_text(lang,"actions","save","y") )
-            self.player.stop_action()
+                get_text(self.lang, "actions", "save", "y")
+            )
         
         elif self.gui.prompt_input_buffer == pg.K_n:
-            self.gui.set_prompt_text(
-                get_text(lang,"actions","save","n") )
             self.player.stop_action()
+
+            self.gui.set_prompt_text(
+                get_text(self.lang, "actions", "save", "n")
+            )
+        
+        self.gui.prompt_input_buffer = None
         
     def delete_world(self):
         self.saveloadstream.delete_file(self.world_name)

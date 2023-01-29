@@ -68,6 +68,14 @@ TEXTS = {
             ITEM_PLANT2: "A great crafting ingredient.",
             ITEM_PLANT3: "A great crafting ingredient.",
         },
+        "world": {
+            SEASON_SPRING: "Spring",
+            SEASON_SUMMER: "Summer",
+            SEASON_AUTUMN: "Autumn",
+            SEASON_WINTER: "Winter",
+
+            "info_text": "{season}, day {day}"
+        },
         "menu": {
             "main": {
                 "title": "CAMPING",
@@ -207,6 +215,14 @@ TEXTS = {
             ITEM_PLANT1: "Skvelá prísada na tvorenie.",
             ITEM_PLANT2: "Skvelá prísada na tvorenie.",
             ITEM_PLANT3: "Skvelá prísada na tvorenie.",
+        },
+        "world": {
+            SEASON_SPRING: "Jar",
+            SEASON_SUMMER: "Leto",
+            SEASON_AUTUMN: "Jeseň",
+            SEASON_WINTER: "Zima",
+
+            "info_text": "{season}, deň {day}"
         },
         "menu": {
             "main": {

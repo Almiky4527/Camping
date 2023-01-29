@@ -1,10 +1,18 @@
-
 DEFAULT = 0
 
+
+# --- Cardinal Directions and Seasons ---
 SOUTH = 0
 NORTH = 1
 EAST = 2
 WEST = 3
+
+SEASON_SPRING = 0
+SEASON_SUMMER = 1
+SEASON_AUTUMN = 2
+SEASON_WINTER = 3
+# ---------------------------------------
+
 
 # --- Items ---
 ITEM_DEFAULT = "item.default"

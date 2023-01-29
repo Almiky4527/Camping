@@ -1,7 +1,7 @@
 from utils.identifiers import *
 
 
-GENERATION = [
+INITIAL_GENERATION = [
     {
         "grid": (38, 22),
         "spawns": [
@@ -85,7 +85,7 @@ GENERATION = [
         "grid": (35, 20),
         "spawns": [
             {
-                "weight": 40
+                "weight": 50
             },
             {
                 "id": PLANT0,
@@ -114,3 +114,47 @@ GENERATION = [
         ]
     }
 ]
+
+
+RANDOM_SPAWNS = [
+    {
+        "grid": (35, 20),
+        "spawns": [
+            {
+                "weight": 100
+            },
+            {
+                "id": PLANT0,
+                "weight": 3,
+                "scatter": (50, 30),
+                "scattered_positions": (1, 3)
+            },
+            {
+                "id": PLANT1,
+                "weight": 3,
+                "scatter": (50, 30),
+                "scattered_positions": (1, 3)
+            },
+            {
+                "id": PLANT2,
+                "weight": 1,
+                "scatter": (50, 30),
+                "scattered_positions": (1, 2)
+            },
+            {
+                "id": PLANT3,
+                "weight": 1,
+                "scatter": (50, 30),
+                "scattered_positions": (1, 2)
+            }
+        ]
+    }
+]
+
+
+RANDOM_DESPAWNS = {
+    "plant": 0.2,
+    "item_plant": 0.5,
+    "food": 0.4,
+    "meat": 0.4
+}

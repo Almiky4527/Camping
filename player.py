@@ -13,8 +13,8 @@ WALK_SPEED = 2
 
 FOLIAGE_CUTTING_STAMINA_PRICE = 10
 ATTACK_STAMINA_PRICE = 5
-LOOTING_STAMINA_PRICE = 5
-MIN_STAMINA_FOR_ACTION = 10
+LOOTING_STAMINA_PRICE = 0.05
+MIN_STAMINA_FOR_ACTION = 0
 
 
 class Player (Entity):
@@ -109,11 +109,11 @@ class Player (Entity):
                     self.use_item()
                 
                 # For testing purposes.
-                elif ev.key == pg.K_y:
+                elif ev.key == pg.K_p:
                     self.checkout()
-                elif ev.key == pg.K_h:
+                elif ev.key == pg.K_i:
                     self.checkout_item()
-                elif ev.key == pg.K_g:
+                elif ev.key == pg.K_k:
                     self.die()
 
             elif ev.type == pg.MOUSEBUTTONDOWN:
@@ -127,7 +127,7 @@ class Player (Entity):
         # Replenish stamina over time when inactive
         if self.is_attacking or self.is_looting:
              # Stop action when too tired
-            if self.stamina < MIN_STAMINA_FOR_ACTION:
+            if self.stamina == MIN_STAMINA_FOR_ACTION:
                 self.game.gui.set_prompt_text(
                     get_text(self.lang,"actions","tired")
                 )
@@ -142,6 +142,12 @@ class Player (Entity):
             stamina = self.stamina + (5 / FPS)
         
         self.set_stamina(stamina)
+    
+    def update_saturation(self):
+        stamina_percentage = self.stamina / 100
+        saturation_dif = (1 - stamina_percentage) / FPS
+        saturation = self.saturation - saturation_dif
+        self.set_saturation(saturation)
 
     def update_vector(self, keys):
         if keys[pg.K_w] or keys[pg.K_a] or keys[pg.K_s] or keys[pg.K_d]:
@@ -402,6 +408,7 @@ class Player (Entity):
     def update(self):
         super().update()
         self.update_stamina()
+        self.update_saturation()
     
     def die(self):
         self.set_health(0)

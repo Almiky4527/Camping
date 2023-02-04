@@ -1,4 +1,5 @@
 import pygame as pg
+from random import choice
 
 from utils.texts import *
 from utils.functions import screen_print
@@ -11,6 +12,7 @@ MAIN_MENU = 1
 WORLDS = 2
 SETTINGS = 3
 PAUSE_MENU = 4
+NEW_DAY_LOADING = 5
 OFF = 0
 
 
@@ -19,6 +21,9 @@ class Menu:
     def __init__(self, game):
         self.game = game
         self.running = MAIN_MENU
+
+        self.new_day_timer = 0
+        self.new_day_random_tip = ""
     
     @property
     def lang(self):
@@ -143,6 +148,23 @@ class Menu:
         y = SCREEN_CENTER[1] + 15*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",3), *self.text_specs_3, topleft=(x, y) )
 
+    def draw_new_day_loading(self, screen):
+        font = self.story_font
+        font.set_bold(False)
+
+        screen.fill(BLACK)
+
+        x, y = SCREEN_CENTER[0], SCREEN_H - 40*SCALE
+        w, h = SCREEN_W - (5*2)*SCALE, 10*SCALE
+        progress_bar_rect = pg.Rect(0, 0, w, h)
+        progress_bar_rect.center = (x, y)
+        self.game.gui.draw_progress_bar( progress_bar_rect, self.new_day_timer, colors=(SLIGHTLY_LESS_BLACK, WHITE) )
+
+        screen_print( screen, self.new_day_random_tip, *self.text_specs_3, center=(x, y + 20*SCALE) )
+
+        if self.new_day_timer >= 100:
+            screen_print( screen, get_text(self.lang,"menu","new_day_loading","continue"), *self.text_specs_1, center=(x, y - 25*SCALE) )
+
     def draw(self, screen):
         if self.running == MAIN_MENU:
             self.draw_main_menu(screen)
@@ -152,6 +174,8 @@ class Menu:
             self.draw_settings(screen)
         elif self.running == PAUSE_MENU:
             self.draw_pause_menu(screen)
+        elif self.running == NEW_DAY_LOADING:
+            self.draw_new_day_loading(screen)
         else:
             pass
 
@@ -252,12 +276,25 @@ class Menu:
                         get_text(self.lang,"menu","settings","debug",i)
                     )
 
+    def run_new_day_loading(self, events):
+        if self.new_day_timer == 0:
+            self.new_day_random_tip = choice( TEXTS[self.lang]["menu"]["new_day_loading"]["tips"] )
+
+        if self.new_day_timer < 100:
+            self.new_day_timer += 10/FPS
+
+        for ev in events:
+            if ev.type == pg.KEYDOWN:
+                if not self.new_day_timer >= 100:
+                    continue
+                
+                self.new_day_timer = 0
+                self.set_run(OFF)
+
     def run(self, events):
         for ev in events:
             if ev.type == pg.QUIT:
                 self.game.quit()
-            elif ev.type == pg.MOUSEBUTTONDOWN:
-                print(ev.pos)
 
         if self.running == MAIN_MENU:
             self.run_main_menu(events)
@@ -267,6 +304,8 @@ class Menu:
             self.run_settings(events)
         elif self.running == PAUSE_MENU:
             self.run_pause_menu(events)
+        elif self.running == NEW_DAY_LOADING:
+            self.run_new_day_loading(events)
         else:
             pass
         

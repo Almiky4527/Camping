@@ -279,7 +279,7 @@ ENTITIES = {
         "family": ["animal", "deer", "large"],
         "max_health": 100,
         "max_speed": 4,
-        "default_speed": 2,
+        "default_speed": 1,
         "health": 100,
         "speed": 2,
         "reach_size": [20, 10],
@@ -297,6 +297,26 @@ ENTITIES = {
             ITEM_DEER_HIDE: 1
         }
     },
+    ANIMAL_WOLF: {
+        "family": ["animal", "wolf"],
+        "max_health": 100,
+        "max_speed": 4,
+        "default_speed": 1,
+        "reach_size": [30, 20],
+        "health": 100,
+        "speed": 1,
+        "attack_damage": 25,
+        "attack_cooldown": 0.5,
+        "max_travel_dist": 600,
+        "travel_chance": 0.001,
+        "possible_targets": [
+            {
+                "family": "hare",
+                "see_dist": 400,
+                "forget_dist": 500
+            }
+        ]
+    },
     ANIMAL_BEAR: {
         "family": ["animal", "bear"],
         "max_health": 300,
@@ -313,7 +333,7 @@ ENTITIES = {
             {
                 "family": "player",
                 "see_dist": 200,
-                "forget_dist": 200
+                "forget_dist": 400
             }
         ]
     }

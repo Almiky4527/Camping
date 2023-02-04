@@ -130,11 +130,19 @@ TEXTS = {
                     "ESC - Resume",
                     "Q - Quit"
                 ]
+            },
+            "new_day_loading": {
+                "continue": "Press any key to continue.",
+                "tips": [
+                    "Consider resting after finishing some demanding actions.",
+                    "Food can disappear when left out in the open over night.",
+                    "Make sure to remember your way back home."
+                ]
             }
         },
         "actions": {
             "save": {
-                "q": "Do you watn to save your progress? y/n",
+                "q": "Skip to next day? y/n",
                 "y": "Game state saved.",
                 "n": "Saving canceled."
             },
@@ -278,11 +286,19 @@ TEXTS = {
                     "ESC - Pokračovať",
                     "Q - Opustiť Hru"
                 ]
+            },
+            "new_day_loading": {
+                "continue": "Stlač ľubovoľnú klávesu pre pokračovanie.",
+                "tips": [
+                    "Zváž odpočinok po dokončení niektorých náročných akcií.",
+                    "Jedlo môže zmiznúť keď ho necháš vonku cez noc.",
+                    "Zapamätaj si cestu spät domov."
+                ]
             }
         },
         "actions": {
             "save": {
-                "q": "Chces si uložiť svoj pokrok? y/n",
+                "q": "Preskočiť na ďalší deň? y/n",
                 "y": "Stav hry uložený.",
                 "n": "Ukladanie zrušené."
             },

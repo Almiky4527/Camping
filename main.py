@@ -144,13 +144,11 @@ class MainGame:
             game=self,
             name=name,
             data=entity(ENTITY_PLAYER),
-            texture_set=player_texture_set,
             image=player_texture_set[SOUTH][0],
+            texture_set=player_texture_set,
             position=(0, 0),
             parent=self.world
         )
-
-        self.player.set_saturation(50)
         
         self.world.add_child(self.player)
 
@@ -260,6 +258,8 @@ class MainGame:
             self.gui.set_prompt_text(
                 get_text(self.lang, "actions", "save", "y")
             )
+
+            self.menu.set_run(NEW_DAY_LOADING)
         
         elif self.gui.prompt_input_buffer == pg.K_n:
             self.player.stop_action()

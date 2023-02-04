@@ -14,7 +14,7 @@ class Entity (BaseEntity):
 
     NO_FAMILY = ()
 
-    def __init__(self, data : dict, texture_set=None, *args, **kwargs):
+    def __init__(self, data : dict, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.data = data
@@ -41,9 +41,6 @@ class Entity (BaseEntity):
         self.target_position = None
         self.action = None
         self.action_time = 0
-
-        self.texture_set = texture_set    # A dict of texture lists, for animating.
-        self.frame_time = 0
     
     @property
     def attack_cooldown(self):
@@ -243,10 +240,12 @@ class Entity (BaseEntity):
     def light_on_fire(self):
         self.add_family("fire")
         self.set_saturation(100)
+        self.set_texture_set(self.parent.texture_container[self.id + BURNING_SUBTYPE])
     
     def stop_burning(self):
         self.rm_family("fire")
-        self.texture_list = None
+        self.texture_set = None
+        self.image = self.parent.texture_container.get(self.id)
         self.frame_time = 0
     
     def clip_x(self, entity):
@@ -289,6 +288,17 @@ class Entity (BaseEntity):
 
             if self.collision(entity):
                 self.clip_y(entity)
+            
+            # Run away or attack entity
+            if self.is_scared_of_entity(entity):
+                self.start_running()
+                self.action = self.stop_running
+            
+            elif self.is_entity_possible_target(entity):
+                self.target = entity
+                self.target_position = entity.position
+                self.start_running()
+                self.action = self.attack
         
         if self.box.top < self.parent.box.top:
             self.set_box_top(self.parent.box.top)
@@ -299,7 +309,7 @@ class Entity (BaseEntity):
         if not self.vector and (self.texture_list or self.texture_set) and not self.is_burning:
             self.frame_time = (FPS // self.num_of_frames) - 1
 
-        if self.is_immobile or not (self.speed and self.vector):
+        if self.is_immobile:
             return
         
         self.move_x(entities)
@@ -376,60 +386,53 @@ class Entity (BaseEntity):
         self.target_position = tuple(self.position)
         self.action = lambda: self.wait(3)
     
-    def search_for_possible_target(self):
-        entities = self.parent.children
+    def is_entity_possible_target(self, entity):
+        if entity is self or not self.possible_targets:
+            return False
+        
+        for targetting_data in self.possible_targets:
+            family = targetting_data["family"]
+            see_dist = targetting_data["see_dist"]
+            forget_dist = targetting_data["forget_dist"]
+            
+            if not entity.in_family(family):
+                continue
+            
+            vector_to_entity = Vector2(entity.position[0] - self.position[0], entity.position[1] - self.position[1])
 
-        for entity in entities:
-            if entity is self:
+            if vector_to_entity.length() >= forget_dist and entity is self.target:
+                self.forget_target()
                 continue
 
-            for targetting_data in self.possible_targets:
-                family = targetting_data["family"]
-                see_dist = targetting_data["see_dist"]
-                forget_dist = targetting_data["forget_dist"]
-                
-                if not entity.in_family(family):
-                    continue
-                
-                vector_to_entity = Vector2(entity.position) - self.position
+            if vector_to_entity.length() > see_dist:
+                continue
 
-                if vector_to_entity.length() >= forget_dist and entity is self.target:
-                    self.forget_target()
-
-                if vector_to_entity.length() > see_dist:
-                    continue
-
-                self.target = entity
-                self.target_position = entity.position
-                self.start_running()
-                self.action = self.attack
-                return
+            return True
+        
+        return False
     
-    def search_for_run_way_from(self):
-        entities = self.parent.children
+    def is_scared_of_entity(self, entity):
+        if entity is self or not self.run_away_from:
+            return False
 
-        for entity in entities:
-            if entity is self:
+        for run_data in self.run_away_from:
+            family = run_data["family"]
+            see_dist = run_data["see_dist"]
+            run_dist = run_data["run_dist"]
+
+            if not entity.in_family(family):
                 continue
 
-            for run_data in self.run_away_from:
-                family = run_data["family"]
-                see_dist = run_data["see_dist"]
-                run_dist = run_data["run_dist"]
+            vector_to_entity = Vector2(entity.position[0] - self.position[0], entity.position[1] - self.position[1])
 
-                if not entity.in_family(family):
-                    continue
-
-                vector_to_entity = Vector2(entity.position) - self.position
-
-                if vector_to_entity.length() > see_dist:
-                    continue
-
-                run_to_pos = self.position + vector_to_entity * (-run_dist)
-                self.target_position = run_to_pos
-                self.start_running()
-                self.action = self.stop_running
-                return
+            if vector_to_entity.length() > see_dist:
+                continue
+            
+            run_to_pos = self.position + vector_to_entity * (-run_dist)
+            self.target_position = run_to_pos
+            return True
+        
+        return False
     
     def update_direction(self):
         x, y = self.vector
@@ -446,11 +449,6 @@ class Entity (BaseEntity):
 
         if self.is_animal:
             self.update_random_travel()
-
-            if self.run_away_from:
-                self.search_for_run_way_from()
-            elif self.possible_targets:
-                self.search_for_possible_target()
 
         if self.is_burning:
             self.burn()
@@ -477,22 +475,16 @@ class Entity (BaseEntity):
             self.stop_action()
     
     def update_image(self):
-        if self.is_player:
-            self.texture_set = self.parent.texture_container[self.name]
-        elif self.is_animal:
-            self.texture_set = self.parent.texture_container.get_animal_set(self.id)
-        elif self.is_burning:
-            self.texture_set = self.parent.texture_container[self.id + BURNING_SUBTYPE]
-        elif self.in_family("loot"):
+        if self.in_family("loot"):
             self.image = self.parent.texture_container.get(self.id + LOOT_SUBTYPE)
-        else:
+        elif self.in_family("interact_loot"):
             self.image = self.parent.texture_container.get(self.id)
 
         if not self.texture_list:
             return
 
         frame_index = round( self.frame_time // ( FPS // self.num_of_frames ) )
-        self.image = self.texture_list[frame_index]
+        self.set_image( self.texture_list[frame_index] )
         
     def draw(self, screen, *args, **kwargs):
         self.update_image()
@@ -508,7 +500,7 @@ class Entity (BaseEntity):
     def spawn_loot(self, loot):
         if not loot:
             return
-
+        
         for item_id, item_count in loot.items():
             count = randrange( item_count[0], item_count[1]+1 ) if type(item_count) == list else item_count
             

@@ -11,13 +11,16 @@ DEFAULT_BOX_SIZE = (16, 8)
 
 class BaseEntity:
 
-    def __init__(self, image : Surface, position, parent):
+    def __init__(self, image : Surface, texture_set : dict, position, parent):
         self.image = image
         self.rect = self.image.get_rect(midbottom=position)
         
         self.box = Rect( (0, 0), (0, 0) )
         # Cannot use self.set_position, it will be called from the higher class.
         self.box.midbottom = position
+
+        self.texture_set = texture_set # A dict of texture lists, for animating.
+        self.frame_time = 0
 
         self.parent = parent
         
@@ -64,6 +67,14 @@ class BaseEntity:
     def set_box_bottom(self, value):
         y = value - SCALE
         self.set_y(y)
+
+    def set_image(self, image : Surface):
+        self.image = image
+        self.rect = self.image.get_rect(midbottom=self.position)
+    
+    def set_texture_set(self, texture_set : dict):
+        self.texture_set = texture_set
+        self.set_image(texture_set[0][0])
         
     def draw(self, screen : Surface, rect : Rect):
         screen.blit(self.image, rect)

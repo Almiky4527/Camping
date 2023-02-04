@@ -145,7 +145,7 @@ class Player (Entity):
     
     def update_saturation(self):
         stamina_percentage = self.stamina / 100
-        saturation_dif = (1 - stamina_percentage) / FPS
+        saturation_dif = (1 - stamina_percentage)*0.5 / FPS
         saturation = self.saturation - saturation_dif
         self.set_saturation(saturation)
 

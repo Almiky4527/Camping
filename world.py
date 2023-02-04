@@ -96,6 +96,7 @@ class World:
         self.random_despawns()
         self.generate(RANDOM_SPAWNS)
         self.refresh_lootable_entites()
+        self.apply_random_hunger_to_entities()
 
         self.player_sleeps()
     
@@ -115,31 +116,46 @@ class World:
     
     def refresh_lootable_entites(self):
         for child in self.children:
-            if child.in_family("interact_loot") and not child.in_family("loot"):
-                success = 100*0.5 >= randint(0, 100)
+            if not child.in_family("interact_loot") or child.in_family("loot"):
+                continue
+            
+            success = 100*0.5 >= randint(0, 100)
 
-                if not success:
-                    continue
+            if not success:
+                continue
 
-                child.add_family("loot")
+            child.add_family("loot")
+    
+    def apply_random_hunger_to_entities(self):
+        for child in self.children:
+            if not child.saturation:
+                continue
+
+            saturation = child.saturation - randint(20, 30)
+            child.set_saturation(saturation)
+    
+    def despawn_animals(self):
+        pass
+
+    def spawn_animals(self):
+        pass
     
     def player_sleeps(self):
         self.player.set_stamina(100)
-        saturation = self.player.saturation - 20
-        self.player.set_saturation(saturation)
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter
         id_ = data["id"]
         subtype = entity_subtype(id_)
 
-        texture = self.texture_container.get_animal_set(id_)[SOUTH][0] if subtype == "animal" else self.texture_container.get(id_)
+        texture_set = self.texture_container.get_animal_set(id_) if subtype == "animal" else None
+        texture = texture_set[SOUTH][0] if texture_set else self.texture_container.get(id_)
         
         spawn_position = list(position)
         spawn_position[0] += randrange(-sx, sx) if sx else 0
         spawn_position[1] += randrange(-sy, sy) if sy else 0
 
-        new_child = Entity(data=data, image=texture, position=spawn_position, parent=self)
+        new_child = Entity(data=data, image=texture, texture_set=texture_set, position=spawn_position, parent=self)
 
         for child in self.children:
             if child.box.colliderect(new_child.box):

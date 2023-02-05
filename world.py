@@ -1,12 +1,15 @@
 from random import randrange, choices
 
 from utils.classes import CannotSpawnHere
+from utils.identifiers import *
 from world_spawns import *
 from entities import *
 from player import *
 
 
 DAYS_IN_SEASON = 10
+SECONDS_IN_MINUTE = 60
+MAX_ANIMAL_CAP = 6
 
 
 class World:
@@ -19,6 +22,7 @@ class World:
 
         self.children = []
         self.day = 0
+        self.day_uptime = 0
 
     @property
     def animals(self):
@@ -43,8 +47,20 @@ class World:
         return self.game.player
     
     @property
-    def season(self):
+    def season(self) -> int:
         return (self.day // DAYS_IN_SEASON) % 4
+    
+    @property
+    def seconds(self) -> int:
+        return self.day_uptime // FPS
+    
+    @property
+    def can_skip_day(self) -> bool:
+        return True # self.seconds >= SECONDS_IN_MINUTE
+    
+    @property
+    def animal_cap_reached(self) -> bool:
+        return len(self.animals) == MAX_ANIMAL_CAP
 
     @property
     def texture_container(self):
@@ -92,12 +108,17 @@ class World:
     
     def next_day(self):
         self.day += 1
+        self.day_uptime = 0
+
+        spawns = RANDOM_SPAWNS[self.season]
+        animals = RANDOM_ANIMAL_SPAWNS[self.season]
 
         self.random_despawns()
-        self.generate(RANDOM_SPAWNS)
+        self.despawn_animals()
+        self.generate(spawns)
+        self.spawn_animals(animals)
         self.refresh_lootable_entites()
         self.apply_random_hunger_to_entities()
-
         self.player_sleeps()
     
     def random_despawns(self):
@@ -115,6 +136,9 @@ class World:
                 self.remove_child(child)
     
     def refresh_lootable_entites(self):
+        if self.season >= SEASON_AUTUMN:
+            return
+
         for child in self.children:
             if not child.in_family("interact_loot") or child.in_family("loot"):
                 continue
@@ -135,10 +159,41 @@ class World:
             child.set_saturation(saturation)
     
     def despawn_animals(self):
-        pass
+        for animal in self.animals:
+            self.remove_child(animal)
 
-    def spawn_animals(self):
-        pass
+    def spawn_animals(self, spawn_data):
+        for entry in spawn_data:
+            animal_id = entry["id"]
+            count = entry["count"]
+            chance = entry.get("chance", 1)
+            distance_to_player = entry["dtp"]
+
+            success = 100*chance >= randint(0, 100)
+
+            if not success:
+                continue
+                
+            animal_data = entity(animal_id)
+            count = randint( *count ) if type(count) != int else count
+            x, y = self.box.x, self.box.y
+            w, h = self.box.w, self.box.h
+
+            for _ in range(count):
+                if self.animal_cap_reached:
+                    return
+
+                while True:
+                    position = randint(x + 10, x + w - 10), randint(y + 10, y + h - 10)
+                    vector_to_player = Vector2(
+                        self.player.position[0] - position[0],
+                        self.player.position[1] - position[1]
+                    )
+                    
+                    if vector_to_player.length() > distance_to_player:
+                        break
+                
+                self.spawn(position, animal_data)
     
     def player_sleeps(self):
         self.player.set_stamina(100)
@@ -167,6 +222,8 @@ class World:
         screen.fill(self.color)
 
     def run(self):
+        self.day_uptime += 1
+
         for child in self.children:
             child.update()
             child.move(self.children)

@@ -242,8 +242,16 @@ class MainGame:
                 while True: pass
     
     def save(self):
+        if not self.world.can_skip_day:
+            self.player.stop_action()
+            self.gui.set_prompt_text(
+                get_text(self.lang, "actions", "save", "x")
+            )
+            return
+
         self.gui.set_prompt_text(
-            get_text(self.lang, "actions", "save", "q") )
+            get_text(self.lang, "actions", "save", "q")
+        )
 
         if self.gui.prompt_input_buffer == pg.K_y:
             if self.inventory.expanded:

@@ -102,6 +102,9 @@ class GUI:
         # ----------------------------
     
         if self.inventory.expanded:
+            # --- World: Days, Season ---
+            self.print_world_state()
+            # ---------------------------
             return
 
         # --- Player Health Bar ---
@@ -121,10 +124,6 @@ class GUI:
         stamina = round(self.player.stamina)
         self.draw_progress_bar( rect, stamina, colors=(LESS_RED, YELLOW) )
         # --------------------------
-
-        # --- World: Days, Season ---
-        self.print_world_state()
-        # ---------------------------
     
     def draw_progress_bar( self, rect, value, max_value=100, colors=(LESS_RED, GREEN) ):
         pg.draw.rect(self.screen, colors[0], rect)
@@ -172,7 +171,7 @@ class GUI:
         opacity = 255 - ( max( 0, self.prompt_time - (PROMPT_DURATION - 120) ) )*2
         screen_print(self.screen, self.prompt_text, font, colors=colors, inflation=(10, 6), br=2, opacity=opacity, topleft=position)
     
-    def print_world_state( self, position=(SCREEN_W - 60*SCALE, 16) ):
+    def print_world_state( self, position=(SCREEN_W - 60*SCALE, 5*SCALE) ):
         day = self.world.day + 1
         season_name = get_text(self.lang, "world", self.world.season)
         world_info_text = get_text(self.lang, "world", "info_text").format(season=season_name, day=day)
@@ -181,6 +180,19 @@ class GUI:
         font.set_bold(False)
         colors = ( WHITE, SLIGHTLY_LESS_BLACK )
         screen_print(self.screen, world_info_text, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
+
+        self.print_world_time()
+    
+    def print_world_time( self, position=(SCREEN_W - 60*SCALE, 15*SCALE) ):
+        font = self.texture_container.story_font
+        font.set_bold(False)
+        colors = ( WHITE, SLIGHTLY_LESS_BLACK )
+
+        seconds = str( self.world.seconds % 60 )
+        minutes = str( self.world.seconds // 60 )
+        time_text = f"{ minutes.zfill(2) }:{ seconds.zfill(2) }"
+
+        screen_print(self.screen, time_text, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
     
     def get_input(self, events):
         for ev in events:

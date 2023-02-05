@@ -144,7 +144,8 @@ TEXTS = {
             "save": {
                 "q": "Skip to next day? y/n",
                 "y": "Game state saved.",
-                "n": "Saving canceled."
+                "n": "Saving canceled.",
+                "x": "You cannot skip to next day right now."
             },
             "tired": "You are too tired to continue.",
             "inventory_full": "Your inventory is full.",
@@ -300,7 +301,8 @@ TEXTS = {
             "save": {
                 "q": "Preskočiť na ďalší deň? y/n",
                 "y": "Stav hry uložený.",
-                "n": "Ukladanie zrušené."
+                "n": "Ukladanie zrušené.",
+                "x": "Teraz ešte nemôžeš preskočiť na ďalší deň."
             },
             "tired": "Si príliš vyčerpaný aby si pokračoval.",
             "inventory_full": "Tvoj inventár je plný.",

@@ -7,12 +7,10 @@ from entities import *
 from player import *
 
 
-DAYS_IN_SEASON = 10
-SECONDS_IN_MINUTE = 60
-MAX_ANIMAL_CAP = 6
-
-
 class World:
+    DAYS_IN_SEASON = 10
+    TIME_TO_SKIP = 60
+    MAX_ANIMAL_CAP = 5
 
     def __init__(self, game):
         self.game = game
@@ -48,7 +46,7 @@ class World:
     
     @property
     def season(self) -> int:
-        return (self.day // DAYS_IN_SEASON) % 4
+        return (self.day // self.DAYS_IN_SEASON) % 4
     
     @property
     def seconds(self) -> int:
@@ -56,11 +54,11 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return True # self.seconds >= SECONDS_IN_MINUTE
+        return self.seconds >= self.TIME_TO_SKIP
     
     @property
     def animal_cap_reached(self) -> bool:
-        return len(self.animals) == MAX_ANIMAL_CAP
+        return len(self.animals) == self.MAX_ANIMAL_CAP
 
     @property
     def texture_container(self):
@@ -82,6 +80,9 @@ class World:
         for gen_entry in generation_data:
             grid = gen_entry["grid"]
             spawns = gen_entry["spawns"]
+
+            if not spawns:
+                continue
 
             spawn_grid = make_grid(self.box, grid)
             weights = tuple( map( lambda entry: entry["weight"], spawns ) )
@@ -110,6 +111,9 @@ class World:
         self.day += 1
         self.day_uptime = 0
 
+        if self.day % self.DAYS_IN_SEASON == 0:
+            self.next_season()
+
         spawns = RANDOM_SPAWNS[self.season]
         animals = RANDOM_ANIMAL_SPAWNS[self.season]
 
@@ -120,6 +124,31 @@ class World:
         self.refresh_lootable_entites()
         self.apply_random_hunger_to_entities()
         self.player_sleeps()
+    
+    def next_season(self):
+        if self.season == SEASON_SPRING:
+            self.configure_for_season_spring()
+        elif self.season == SEASON_SUMMER:
+            self.configure_for_season_summer()
+        elif self.season == SEASON_AUTUMN:
+            self.configure_for_season_autumn()
+        elif self.season == SEASON_WINTER:
+            self.configure_for_season_winter()
+
+    def configure_for_season_spring(self):
+        pass
+
+    def configure_for_season_summer(self):
+        pass
+
+    def configure_for_season_autumn(self):
+        pass
+
+    def configure_for_season_winter(self):
+        for child in self.children:
+            if child.in_family("bush"):
+                if child.in_family("interact_loot") and child.in_family("loot"):
+                    child.rm_family("loot")
     
     def random_despawns(self):
         for child in self.children:
@@ -136,7 +165,7 @@ class World:
                 self.remove_child(child)
     
     def refresh_lootable_entites(self):
-        if self.season >= SEASON_AUTUMN:
+        if self.season in [SEASON_AUTUMN, SEASON_WINTER]:
             return
 
         for child in self.children:
@@ -197,6 +226,10 @@ class World:
     
     def player_sleeps(self):
         self.player.set_stamina(100)
+
+        if self.player.saturation == 0:
+            health = self.player.health - randint(20, 30)
+            self.player.set_health(health)
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter

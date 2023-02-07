@@ -58,10 +58,6 @@ class Player (Entity):
         return self.selected_slot.in_family("weapon") and self.stamina > ATTACK_STAMINA_PRICE
     
     @property
-    def can_loot(self):
-        return self.stamina > LOOTING_STAMINA_PRICE
-    
-    @property
     def can_light_fire(self):
         return "fire_starter" in self.selected_slot.get("family", [])
     
@@ -188,9 +184,6 @@ class Player (Entity):
                 self.action = self.pickup_item
             
             elif child.in_family("loot"):
-                if not self.can_loot:
-                    continue
-
                 self.action = self.loot
             
             elif child.in_family("hare"):
@@ -207,6 +200,9 @@ class Player (Entity):
             
             elif child.in_family("plant"):
                 self.action = self.attack
+            
+            elif child.in_family("foundation"):
+                self.action = self.build
             
             elif child.in_family("savepoint"):
                 self.action = self.game.save
@@ -232,7 +228,37 @@ class Player (Entity):
         else:
             self.stop_action()
             self.target_position = target_position
-                    
+    
+    def build(self):
+        if not self.selected_slot:
+            self.stop_action()
+            return
+
+        target = self.target
+        required_build_materials = target.data["required_build_materials"]
+        item_id = self.selected_slot["id"]
+
+        for entry in required_build_materials:
+            item_s, amount_required = entry[0], entry[1]
+
+            if not item_id in item_s or amount_required == 0:
+                continue
+
+            self.inventory.pop(self.selected_slot)
+            entry[1] -= 1
+        
+        get_amount = lambda entry: entry[1]
+        building_finished = sum( map(get_amount, required_build_materials) ) == 0
+        
+        if building_finished:
+            building = target.data["output_building"]
+            building_data = entity(building)
+
+            self.world.remove_child(self.target)
+            self.world.spawn(self.target.position, building_data)
+        
+        self.stop_action()
+
     def pickup_item(self):
         item = self.target
 
@@ -259,11 +285,11 @@ class Player (Entity):
         if not self.can_light_fire:
             return
 
-        campfire = self.target
-        target_id = campfire.id
+        target = self.target
+        target_id = target.id
         target_name = get_name(target_id, self.lang)
 
-        if campfire.in_family("fire"):
+        if target.in_family("fire"):
             self.game.gui.set_prompt_text(
                 get_text(self.lang,"actions","fire","already_lit").format(target=target_name)
             )
@@ -278,7 +304,7 @@ class Player (Entity):
         self.inventory.pop(self.selected_slot)
 
         if success:
-            campfire.light_on_fire()
+            target.light_on_fire()
             self.game.gui.set_prompt_text(
                 get_text(self.lang,"actions","fire","lit").format(target=target_name, item=item_name)
             )
@@ -293,12 +319,12 @@ class Player (Entity):
         if not self.can_feed_fire:
             return
         
-        fire = self.target
+        target = self.target
         selected_item = self.selected_slot
         item_id = self.selected_slot["id"]
         item_name = get_name(item_id, self.lang)
         
-        saturation = fire.saturation + selected_item["fire_fuel"]
+        saturation = target.saturation + selected_item["fire_fuel"]
 
         if saturation > 100:
             self.game.gui.set_prompt_text(
@@ -307,7 +333,7 @@ class Player (Entity):
             self.stop_action()
             return
         
-        fire.set_saturation(saturation)
+        target.set_saturation(saturation)
         self.inventory.pop(self.selected_slot)
         self.game.gui.set_prompt_text(
             get_text(self.lang,"actions","fire","feed").format(item=item_name)

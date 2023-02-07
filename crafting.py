@@ -3,14 +3,7 @@ from item_container import *
 from entities import *
 from utils.display import *
 
-'''
-RECIPES = {
-    ITEM_CAMPFIRE: [
-        [ITEM_LOG, 1],
-        [ITEM_STICK, 3]
-    ]
-}
-'''
+
 RECIPES = [
     {
         "result": ITEM_CAMPFIRE,
@@ -43,6 +36,12 @@ RECIPES = [
             [ITEM_PLANT3, 3]
         ]
     },
+    {
+        "result": ITEM_ROPE,
+        "ingredients": [
+            [ITEM_THREAD, 6]
+        ]
+    }
 ]
 
 

@@ -239,12 +239,12 @@ RANDOM_ANIMAL_SPAWNS = {
     SEASON_SUMMER: [
         {
             "id": ANIMAL_HARE,
-            "count": (4, 5),
+            "count": (3, 4),
             "dtp": 700
         },
         {
             "id": ANIMAL_DEER,
-            "count": (0, 3),
+            "count": (0, 2),
             "dtp": 1000
         }
     ],

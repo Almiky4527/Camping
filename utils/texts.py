@@ -26,6 +26,8 @@ TEXTS = {
             ITEM_MATCHES: "Matches",
             ITEM_CAMPFIRE: "Campfire",
 
+            ITEM_CABIN_PLAN: "Cabin Plan",
+
             ROCK0: "Rock",
             ROCK1: "Rock",
             ROCK2: "Rock",
@@ -39,6 +41,11 @@ TEXTS = {
             ITEM_PLANT1: "Plant",
             ITEM_PLANT2: "Plant",
             ITEM_PLANT3: "Parched Plant",
+
+            STONE: "Stone",
+
+            ITEM_THREAD: "Thread",
+            ITEM_ROPE: "Rope",
 
             ENTITY_CAMPFIRE: "Campfire",
             ENTITY_TENT: "Tent",
@@ -54,6 +61,8 @@ TEXTS = {
             ITEM_MATCHES: "Something to start the fire with.",
             ITEM_CAMPFIRE: "Essential for your survival.",
 
+            ITEM_CABIN_PLAN: "50 Logs, 30 Sticks, 20 Ropes, 20 Rocks.",
+
             ROCK0: "A great crafting ingredient.",
             ROCK1: "A great crafting ingredient.",
             ROCK2: "My beloved.",
@@ -67,6 +76,11 @@ TEXTS = {
             ITEM_PLANT1: "A great crafting ingredient.",
             ITEM_PLANT2: "A great crafting ingredient.",
             ITEM_PLANT3: "A great crafting ingredient.",
+
+            STONE: "Or a pebble.",
+
+            ITEM_THREAD: "A great crafting ingredient.",
+            ITEM_ROPE: "Crafting ingredient, building materail.",
         },
         "world": {
             SEASON_SPRING: "Spring",
@@ -183,6 +197,8 @@ TEXTS = {
             ITEM_MATCHES: "Zápalky",
             ITEM_CAMPFIRE: "Táborák",
 
+            ITEM_CABIN_PLAN: "Plán Zrubu",
+
             ROCK0: "Kameň",
             ROCK1: "Kameň",
             ROCK2: "Kameň",
@@ -196,6 +212,11 @@ TEXTS = {
             ITEM_PLANT1: "Rastlina",
             ITEM_PLANT2: "Rastlina",
             ITEM_PLANT3: "Vysušená Rastlina",
+
+            STONE: "Kamienok",
+
+            ITEM_THREAD: "Niť",
+            ITEM_ROPE: "Lano",
 
             ENTITY_CAMPFIRE: "Táborák",
             ENTITY_TENT: "Stan",
@@ -211,6 +232,8 @@ TEXTS = {
             ITEM_MATCHES: "Hodia sa na založenie ohňa.",
             ITEM_CAMPFIRE: "Nevyhnutný na tvoje prežitie.",
 
+            ITEM_CABIN_PLAN: "50 Polien, 30 Palíc, 20 Lán, 20 Kameňov.",
+
             ROCK0: "Skvelá prísada na tvorenie.",
             ROCK1: "Skvelá prísada na tvorenie.",
             ROCK2: "Môj milovaný.",
@@ -224,6 +247,11 @@ TEXTS = {
             ITEM_PLANT1: "Skvelá prísada na tvorenie.",
             ITEM_PLANT2: "Skvelá prísada na tvorenie.",
             ITEM_PLANT3: "Skvelá prísada na tvorenie.",
+
+            STONE: "Alebo okruhliak.",
+
+            ITEM_THREAD: "Skvelá prísada na tvorenie.",
+            ITEM_ROPE: "Prísada na tvorenie, stavebný materiál.",
         },
         "world": {
             SEASON_SPRING: "Jar",

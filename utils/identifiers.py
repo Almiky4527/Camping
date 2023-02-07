@@ -23,6 +23,7 @@ ITEM_AXE = "item.axe"
 ITEM_TENT = "item.tent"
 ITEM_MATCHES = "item.matches"
 ITEM_CAMPFIRE = "item.campfire"
+ITEM_CABIN_PLAN = "item.cabin_plan"
 
 BURNING_SUBTYPE = ".burning"
 
@@ -89,6 +90,9 @@ ENTITY_DEFAULT = "entity.default"
 ENTITY_PLAYER = "entity.player"
 ENTITY_TENT = "entity.tent"
 ENTITY_CAMPFIRE = "entity.campfire"
+
+ENTITY_CABIN_FOUNDATION = "entity.cabin_foundation"
+ENTITY_CABIN = "entity.cabin"
 
 LOOT_SUBTYPE = ".loot"
 # ---------------------------

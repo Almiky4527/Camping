@@ -19,7 +19,7 @@ ITEMS = {
     ITEM_AXE: {
         "family": ["item", "axe", "weapon"],
         "max_count": 1,
-        "attack_damage": 30 # 30
+        "attack_damage": 30
     },
     ITEM_TENT: {
         "family": ["item", "spawn"],
@@ -29,7 +29,12 @@ ITEMS = {
     ITEM_CAMPFIRE: {
         "family": ["item", "spawn"],
         "spawn": ENTITY_CAMPFIRE,
-        "max_count": 2
+        "max_count": 1
+    },
+    ITEM_CABIN_PLAN: {
+        "family": ["item", "spawn", "plan", "cabin"],
+        "spawn": ENTITY_CABIN_FOUNDATION,
+        "max_count": 3
     },
     ITEM_MATCHES: {
         "family": ["item", "fire_starter"],
@@ -39,28 +44,28 @@ ITEMS = {
     ITEM_BERRIES0: {
         "family": ["item", "food", "berries"],
         "food": 5,
-        "max_count": 16
+        "max_count": 64
     },
     ITEM_BLUEBERRIES: {
         "family": ["item", "food", "berries"],
         "food": 5,
-        "max_count": 16
+        "max_count": 64
     },
     ITEM_PLANT0: {
         "family": ["item", "item_plant", "thread_maker"],
-        "max_count": 16
+        "max_count": 32
     },
     ITEM_PLANT1: {
         "family": ["item", "item_plant", "thread_maker"],
-        "max_count": 16
+        "max_count": 32
     },
     ITEM_PLANT2: {
         "family": ["item", "item_plant", "thread_maker"],
-        "max_count": 16
+        "max_count": 32
     },
     ITEM_PLANT3: {
         "family": ["item", "item_plant", "thread_maker"],
-        "max_count": 16
+        "max_count": 32
     },
     STONE: {
         "family": ["item", "stone"],
@@ -72,7 +77,7 @@ ITEMS = {
     },
     ITEM_ROPE: {
         "family": ["item", "rope"],
-        "max_count": 10
+        "max_count": 8
     },
     ITEM_HARE_MEAT: {
         "family": ["item", "meat"],
@@ -132,6 +137,24 @@ ENTITIES = {
         "saturation": 0,
 
         "box_size": [18, 6],
+        "immobile": True
+    },
+    ENTITY_CABIN_FOUNDATION: {
+        "family": ["cabin", "foundation"],
+        "required_build_materials": [
+            [ [ITEM_LOG], 50 ],
+            [ [ITEM_STICK], 30 ],
+            [ [ITEM_ROPE], 20 ],
+            [ [ROCK0, ROCK1, ROCK2, ROCK3, ROCK4], 20 ]
+        ],
+        "output_building": ENTITY_CABIN,
+        "box_size": [62, 20],
+        "immobile": True
+    },
+    ENTITY_CABIN: {
+        "family": ["cabin", "savepoint", "building"],
+        "cold_protection": True,
+        "box_size": [62, 20],
         "immobile": True
     },
     PINE_SMALL: {

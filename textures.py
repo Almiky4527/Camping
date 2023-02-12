@@ -1,11 +1,13 @@
 from pygame import Rect, image
 from pygame.font import SysFont
+import pygame.freetype
 
 from os import path
 from inventory import *
 from entities import *
 
 from utils.functions import *
+from utils.display import SCALE
 from utils.classes import TextureTypeError
 
 
@@ -57,6 +59,28 @@ TEXTURES_RECTS = {
             Rect(118, PLAYER_ROW_1_Y, 12, 28),
             Rect(131, PLAYER_ROW_1_Y, 12, 28),
             Rect(144, PLAYER_ROW_1_Y, 12, 28),
+        ]
+    },
+    "JaneSmith": {
+        SOUTH: [
+            Rect(1, PLAYER_ROW_2_Y, 12, 28),
+            Rect(14, PLAYER_ROW_2_Y, 12, 28),
+            Rect(27, PLAYER_ROW_2_Y, 12, 28),
+        ],
+        NORTH: [
+            Rect(40, PLAYER_ROW_2_Y, 12, 28),
+            Rect(53, PLAYER_ROW_2_Y, 12, 28),
+            Rect(66, PLAYER_ROW_2_Y, 12, 28),
+        ],
+        EAST: [
+            Rect(79, PLAYER_ROW_2_Y, 12, 28),
+            Rect(92, PLAYER_ROW_2_Y, 12, 28),
+            Rect(105, PLAYER_ROW_2_Y, 12, 28),
+        ],
+        WEST: [
+            Rect(118, PLAYER_ROW_2_Y, 12, 28),
+            Rect(131, PLAYER_ROW_2_Y, 12, 28),
+            Rect(144, PLAYER_ROW_2_Y, 12, 28),
         ]
     },
     "item": {
@@ -198,6 +222,10 @@ class TextureContainer:
             texture.set_alpha(SHADOWS_OPACITY)
         
         for texture_list in self["JohnDoe"].values():
+            frame0 = texture_list[0]
+            texture_list.insert(2, frame0)
+        
+        for texture_list in self["JaneSmith"].values():
             frame0 = texture_list[0]
             texture_list.insert(2, frame0)
         

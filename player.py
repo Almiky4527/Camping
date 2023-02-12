@@ -23,6 +23,7 @@ class Player (Entity):
         self.game = game
         self.name = name
         super().__init__(*args, **kwargs)
+        self.data["name"] = name
 
     @property
     def world(self):

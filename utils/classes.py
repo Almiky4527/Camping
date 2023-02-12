@@ -108,3 +108,15 @@ class LanguageError (TypeError):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+    
+
+class NoWorlds (IndexError):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+class WorldLoadingError (FileNotFoundError):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

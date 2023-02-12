@@ -2,7 +2,7 @@ import pygame as pg
 from random import choice
 
 from utils.texts import *
-from utils.functions import screen_print
+from utils.functions import screen_print, scale_
 from utils.display import *
 from utils.colors import *
 
@@ -13,6 +13,7 @@ WORLDS = 2
 SETTINGS = 3
 PAUSE_MENU = 4
 NEW_DAY_LOADING = 5
+SELECT_CHARACTER = 6
 OFF = 0
 
 
@@ -79,7 +80,7 @@ class Menu:
         y = 50*SCALE
         screen_print( screen, get_text(self.lang,"menu","main","title"), *self.text_specs_2, center=(x, y) )
 
-        font.set_bold(False)
+        # font.set_bold(False)
         y = SCREEN_CENTER[1] - 15*SCALE
         screen_print( screen, get_text(self.lang,"menu","main","buttons",0), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] - 0*SCALE
@@ -118,7 +119,7 @@ class Menu:
 
         screen.fill(BLACK)
 
-        font.set_bold(False)
+        # font.set_bold(False)
         y = SCREEN_CENTER[1] - 20*SCALE
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",0), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] - 5*SCALE
@@ -134,7 +135,7 @@ class Menu:
         font = self.story_font
         x = SCREEN_CENTER[0]
 
-        font.set_bold(False)
+        # font.set_bold(False)
         y = SCREEN_CENTER[1] + 10*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","title"), *self.text_specs_3, center=(x, y) )
         
@@ -150,7 +151,7 @@ class Menu:
 
     def draw_new_day_loading(self, screen):
         font = self.story_font
-        font.set_bold(False)
+        # font.set_bold(False)
 
         screen.fill(BLACK)
 
@@ -164,6 +165,29 @@ class Menu:
 
         if self.new_day_timer >= 100:
             screen_print( screen, get_text(self.lang,"menu","new_day_loading","continue"), *self.text_specs_1, center=(x, y - 25*SCALE) )
+    
+    def draw_select_character(self, screen):
+        font = self.story_font
+        # font.set_bold(False)
+
+        texture_container = self.game.texture_container
+
+        screen.fill(BLACK)
+        x, y = SCREEN_CENTER[0], SCREEN_CENTER[1] - 50*SCALE
+        screen_print( screen, get_text(self.lang, "menu", "select_character", "title"), *self.text_specs_2, center=(x, y) )
+        
+        y = y + 100*SCALE
+        x = SCREEN_CENTER[0] - 30*SCALE
+        screen_print( screen, '1', *self.text_specs_2, center=(x, y) )
+        char_1_texture = scale_( texture_container["JohnDoe"][0][0], 2 )
+        rect = char_1_texture.get_rect( midbottom=(x, y - 10*SCALE) )
+        screen.blit(char_1_texture, rect)
+
+        x = SCREEN_CENTER[0] + 30*SCALE
+        screen_print( screen, '2', *self.text_specs_2, center=(x, y) )
+        char_2_texture = scale_( texture_container["JaneSmith"][0][0], 2 )
+        rect = char_1_texture.get_rect( midbottom=(x, y - 10*SCALE) )
+        screen.blit(char_2_texture, rect)
 
     def draw(self, screen):
         if self.running == MAIN_MENU:
@@ -176,6 +200,8 @@ class Menu:
             self.draw_pause_menu(screen)
         elif self.running == NEW_DAY_LOADING:
             self.draw_new_day_loading(screen)
+        elif self.running == SELECT_CHARACTER:
+            self.draw_select_character(screen)
         else:
             pass
 
@@ -190,10 +216,7 @@ class Menu:
                     self.game.load_save()
                     self.set_run(OFF)
                 elif ev.key == pg.K_n:
-                    self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","main","loading_new") )
-                    self.game.load_new()
-                    self.set_run(OFF)
+                    self.set_run(SELECT_CHARACTER)
                 elif ev.key == pg.K_w:
                     self.set_run(WORLDS)
                 elif ev.key == pg.K_s:
@@ -202,36 +225,49 @@ class Menu:
                     self.game.quit()
     
     def run_worlds(self, events):
+        def _run_world():
+            if len(self.worlds) == 0:
+                self.set_run(SELECT_CHARACTER)
+                return
+
+            self.game.gui.set_prompt_text(
+                get_text(self.lang, "menu", "worlds", "load")
+            )
+            self.game.load_save()
+            self.set_run(OFF)
+        
+        def _scroll_worlds(dif):
+            n = len(self.worlds)
+            if n == 0:
+                return
+
+            i = min( max( 0, self.game.world_index+dif ), n-1 )
+            if i == self.game.world_index:
+                return
+
+            self.game.set_world_index(i)
+        
+        def _del_world():
+            if len(self.worlds) == 0:
+                return
+
+            self.game.gui.set_prompt_text(
+                get_text(self.lang, "menu", "worlds", "delete").format(world=self.game.world_name)
+            )
+            self.game.delete_world()
+
         for ev in events:
             if ev.type == pg.KEYDOWN:
                 if ev.key == pg.K_ESCAPE:
                     self.set_run(MAIN_MENU)
                 elif ev.key == pg.K_RETURN:
-                    self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","worlds","load")
-                    )
-                    self.game.load_save()
-                    self.set_run(OFF)
+                    _run_world()
                 elif ev.key == pg.K_UP:
-                    n = len(self.game.worlds)
-                    if n == 0: continue
-                    i = max( 0, self.game.world_index - 1 )
-                    if i == self.game.world_index: continue
-                    self.game.set_world_index(i)
+                    _scroll_worlds(-1)
                 elif ev.key == pg.K_DOWN:
-                    n = len(self.game.worlds)
-                    if n == 0: continue
-                    i = min( n-1, self.game.world_index + 1 )
-                    if i == self.game.world_index: continue
-                    self.game.set_world_index(i)
+                    _scroll_worlds(+1)
                 elif ev.key == pg.K_DELETE:
-                    if len(self.worlds) == 0:
-                        continue
-
-                    self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","worlds","delete").format(world=self.game.world_name)
-                    )
-                    self.game.delete_world()
+                    _del_world()
     
     def run_settings(self, events):
         for ev in events:
@@ -290,6 +326,24 @@ class Menu:
                 
                 self.new_day_timer = 0
                 self.set_run(OFF)
+    
+    def run_select_character(self, events):
+        selected_character_name = ""
+
+        for ev in events:
+            if ev.type == pg.KEYDOWN:
+                if ev.key == pg.K_1:
+                    selected_character_name = "JohnDoe"
+                elif ev.key == pg.K_2:
+                    selected_character_name = "JaneSmith"
+                else:
+                    continue
+
+                self.game.gui.set_prompt_text(
+                    get_text(self.lang, "menu", "main", "loading_new")
+                )
+                self.game.load_new(player_name=selected_character_name)
+                self.set_run(OFF)
 
     def run(self, events):
         for ev in events:
@@ -306,6 +360,8 @@ class Menu:
             self.run_pause_menu(events)
         elif self.running == NEW_DAY_LOADING:
             self.run_new_day_loading(events)
+        elif self.running == SELECT_CHARACTER:
+            self.run_select_character(events)
         else:
             pass
         

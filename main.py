@@ -137,8 +137,7 @@ class MainGame:
         for item_data_and_count in STARTING_ITEMS:
             self.inventory.add( item( *item_data_and_count ) )
 
-    def setup_player(self):
-        name = "JohnDoe"
+    def setup_player(self, name="JohnDoe"):
         player_texture_set = self.texture_container[name]
         
         self.player = Player(
@@ -214,7 +213,7 @@ class MainGame:
         # Quit pygame.
         pg.quit()
     
-    def load_new(self):
+    def load_new(self, player_name):
         last_world_num = int( self.worlds[-1][6:] ) if len(self.worlds) > 0 else 0
         world_name = f"World {last_world_num+1}"
 
@@ -222,7 +221,7 @@ class MainGame:
         self.set_world_index(last_world_num)
 
         self.setup_world()
-        self.setup_player()
+        self.setup_player(player_name)
         self.setup_inventory()
 
         self.saveloadstream.save(world_name)
@@ -232,15 +231,13 @@ class MainGame:
             self.set_world_index(world_index)
 
         if len(self.worlds) == 0:
-            self.load_new()
+            raise NoWorlds
 
         else:
             err_while_loading = self.saveloadstream.load(self.world_name)
 
             if err_while_loading:
-                # Infinite while loop... Temporary so the game wont break.
-                # IMPLEMENT HANDLING FOR ERRORS WHILE LOADING SAVE FILES.
-                while True: pass
+                raise WorldLoadingError("unable to find world")
     
     def save(self):
         if not self.world.can_skip_day:

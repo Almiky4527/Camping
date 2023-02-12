@@ -82,11 +82,13 @@ class SaveLoadStream:
     def load_player(self, player_data : dict):
         game = self.game
         parent = self.game.world
-        player_texture_set = self.texture_container["JohnDoe"]
+        name = player_data["name"]
+        player_texture_set = self.texture_container[name]
         player_position = player_data["position"]
 
         game.player = Player(
             game=game,
+            name=name,
             data=player_data,
             texture_set=player_texture_set,
             image=player_texture_set[0][0],

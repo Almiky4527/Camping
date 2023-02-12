@@ -103,6 +103,11 @@ TEXTS = {
                 "loading_save": "Loading last played world...",
                 "loading_new": "Generating new world..."
             },
+            "select_character": {
+                "title": "Select character",
+                "M": "M - Male",
+                "F": "F - Female"
+            },
             "worlds": {
                 "load": "Loading world...",
                 "delete": "{world} deleted.",
@@ -273,6 +278,11 @@ TEXTS = {
                 ],
                 "loading_save": "Načítavam posledne hraný svet...",
                 "loading_new": "Vytváram nový svet..."
+            },
+            "select_character": {
+                "title": "Vyber postavu",
+                "M": "M - Muž",
+                "F": "F - Žena"
             },
             "worlds": {
                 "load": "Načítavam svet...",

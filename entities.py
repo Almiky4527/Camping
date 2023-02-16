@@ -477,6 +477,8 @@ class Entity (BaseEntity):
     def update_image(self):
         if self.in_family("loot"):
             self.image = self.parent.texture_container.get(self.id + LOOT_SUBTYPE)
+        elif self.parent.season == SEASON_WINTER:
+            pass
         elif self.in_family("interact_loot"):
             self.image = self.parent.texture_container.get(self.id)
 

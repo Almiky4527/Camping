@@ -120,6 +120,18 @@ TEXTURES_RECTS = {
         PLANT1: Rect(167, FOLIAGE_ROW_Y + 22, 7, 21),
         PLANT2: Rect(175, FOLIAGE_ROW_Y, 7, 21),
         PLANT3: Rect(175, FOLIAGE_ROW_Y + 22, 7, 21),
+
+        "autumn." + PINE_SMALL: Rect(217, FOLIAGE_ROW_Y, 28, 70),
+        "autumn." + PINE_LARGE: Rect(185, FOLIAGE_ROW_Y, 31, 110),
+        "autumn." + OAK_SMALL: Rect(347, FOLIAGE_ROW_Y, 35, 67),
+        "autumn." + OAK_LARGE: Rect(309, FOLIAGE_ROW_Y, 37, 100),
+
+        "winter." + PINE_SMALL: Rect(278, FOLIAGE_ROW_Y, 28, 70),
+        "winter." + PINE_LARGE: Rect(246, FOLIAGE_ROW_Y, 31, 110),
+        "winter." + OAK_SMALL: Rect(347, FOLIAGE_ROW_Y, 35, 67),
+        "winter." + OAK_LARGE: Rect(309, FOLIAGE_ROW_Y, 37, 100),
+        "winter." + BUSH_LARGE: Rect(136, 69, 30, 18),
+        "winter." + BUSH_SMALL: Rect(136, 88, 20, 14),
     },
     "inventory": {
         SLOT_DEFAULT: Rect(1, INVENTORY_ROW_1_Y, 22, 22),
@@ -131,7 +143,9 @@ TEXTURES_RECTS = {
         ENTITY_TENT: Rect(28, OBJECTS_ROW_1_Y, 54, 39),
         ENTITY_CAMPFIRE: Rect(83, OBJECTS_ROW_1_Y, 18, 19),
         ENTITY_CABIN_FOUNDATION: Rect(209, OBJECTS_ROW_1_Y, 62, 22),
-        ENTITY_CABIN: Rect(140, OBJECTS_ROW_1_Y, 68, 70)
+        ENTITY_CABIN: Rect(140, OBJECTS_ROW_1_Y, 68, 70),
+
+        "winter." + ENTITY_CABIN: Rect(272, OBJECTS_ROW_1_Y, 68, 70),
     },
     "shadows": {
         SHADOW_SMALL: Rect(1, SHADOWS_ROW_Y, 12, 3),

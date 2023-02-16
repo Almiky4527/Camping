@@ -333,7 +333,7 @@ class Menu:
             self.new_day_random_tip = choice( TEXTS[self.lang]["menu"]["new_day_loading"]["tips"] )
 
         if self.new_day_timer < 100:
-            self.new_day_timer += 10/FPS
+            self.new_day_timer += 1000/FPS
 
         for ev in events:
             if ev.type == pg.KEYDOWN:

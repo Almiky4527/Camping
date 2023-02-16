@@ -8,7 +8,7 @@ from player import *
 
 
 class World:
-    DAYS_IN_SEASON = 10
+    DAYS_IN_SEASON = 1
     TIME_TO_SKIP = 60
     MAX_ANIMAL_CAP = 5
 
@@ -54,7 +54,7 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return self.seconds >= self.TIME_TO_SKIP
+        return True # self.seconds >= self.TIME_TO_SKIP
     
     @property
     def animal_cap_reached(self) -> bool:
@@ -136,19 +136,73 @@ class World:
             self.configure_for_season_winter()
 
     def configure_for_season_spring(self):
-        pass
+        for child in self.children:
+            if not child.is_immobile:
+                continue
+            
+            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+                default_texture = self.texture_container.get(child.id)
+                try:
+                    season_appropriate_texture = self.texture_container.get("spring." + child.id)
+                except KeyError:
+                    season_appropriate_texture = default_texture
+                child.set_image(season_appropriate_texture)
 
     def configure_for_season_summer(self):
-        pass
+        for child in self.children:
+            if not child.is_immobile:
+                continue
+            
+            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+                default_texture = self.texture_container.get(child.id)
+                try:
+                    season_appropriate_texture = self.texture_container.get("summer." + child.id)
+                except KeyError:
+                    season_appropriate_texture = default_texture
+                child.set_image(season_appropriate_texture)
 
     def configure_for_season_autumn(self):
-        pass
+        for child in self.children:
+            if not child.is_immobile:
+                continue
+            
+            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+                default_texture = self.texture_container.get(child.id)
+                try:
+                    season_appropriate_texture = self.texture_container.get("autumn." + child.id)
+                except KeyError:
+                    season_appropriate_texture = default_texture
+                child.set_image(season_appropriate_texture)
 
     def configure_for_season_winter(self):
         for child in self.children:
             if child.in_family("bush"):
                 if child.in_family("interact_loot") and child.in_family("loot"):
                     child.rm_family("loot")
+            
+            if not child.is_immobile:
+                continue
+            
+            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+                default_texture = self.texture_container.get(child.id)
+                try:
+                    season_appropriate_texture = self.texture_container.get("winter." + child.id)
+                except KeyError:
+                    season_appropriate_texture = default_texture
+                child.set_image(season_appropriate_texture)
+        
+        # Doesn't work??? Plants are too strong?????
+        is_plant = lambda child : child.in_family("plant")
+        plants = filter(is_plant, self.children)
+
+        for plant in plants:
+            self.remove_child(plant)
+
+        n = 0
+        for child in self.children:
+            if is_plant(child):
+                n += 1
+        print(n, "plants found")
     
     def random_despawns(self):
         for child in self.children:

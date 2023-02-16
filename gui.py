@@ -171,7 +171,7 @@ class GUI:
         opacity = 255 - ( max( 0, self.prompt_time - (PROMPT_DURATION - 120) ) )*2
         screen_print(self.screen, self.prompt_text, font, colors=colors, inflation=(10, 6), br=2, opacity=opacity, topleft=position)
     
-    def print_world_state( self, position=(SCREEN_W - 60*SCALE, 5*SCALE) ):
+    def print_world_state( self, position=(10*SCALE, 5*SCALE) ):
         day = self.world.day + 1
         season_name = get_text(self.lang, "world", self.world.season)
         world_info_text = get_text(self.lang, "world", "info_text").format(season=season_name, day=day)
@@ -183,7 +183,7 @@ class GUI:
 
         self.print_world_time()
     
-    def print_world_time( self, position=(SCREEN_W - 60*SCALE, 15*SCALE) ):
+    def print_world_time( self, position=(10*SCALE, 15*SCALE) ):
         font = self.texture_container.story_font
         font.set_bold(False)
         colors = ( WHITE, SLIGHTLY_LESS_BLACK )

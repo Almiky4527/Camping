@@ -68,6 +68,7 @@ class SaveLoadStream:
         
         game.world = World(game)
         game.world.load(world_data)
+        game.world.next_season()
         print("Loaded World.")
     
     def load_inventory(self, inventory_data : dict):

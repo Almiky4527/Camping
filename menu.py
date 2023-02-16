@@ -43,6 +43,10 @@ class Menu:
         return self.story_font, (WHITE, SLIGHTLY_LESS_BLACK), (5*SCALE, 6*SCALE), 4
     
     @property
+    def text_specs_1_locked(self):
+        return self.story_font, (GRAY, SLIGHTLY_LESS_BLACK), (5*SCALE, 6*SCALE), 4
+    
+    @property
     def text_specs_2(self):
         return self.title_font, (WHITE, SLIGHTLY_LESS_BLACK), (40*SCALE, 5*SCALE), 12
     
@@ -80,9 +84,14 @@ class Menu:
         y = 50*SCALE
         screen_print( screen, get_text(self.lang,"menu","main","title"), *self.text_specs_2, center=(x, y) )
 
-        # font.set_bold(False)
+        font.set_bold(False)
         y = SCREEN_CENTER[1] - 15*SCALE
-        screen_print( screen, get_text(self.lang,"menu","main","buttons",0), *self.text_specs_1, center=(x, y) )
+
+        if len(self.worlds) == 0:
+            screen_print( screen, get_text(self.lang,"menu","main","buttons",0), *self.text_specs_1_locked, center=(x, y) )
+        else:
+            screen_print( screen, get_text(self.lang,"menu","main","buttons",0), *self.text_specs_1, center=(x, y) )
+
         y = SCREEN_CENTER[1] - 0*SCALE
         screen_print( screen, get_text(self.lang,"menu","main","buttons",1), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] + 15*SCALE
@@ -119,7 +128,7 @@ class Menu:
 
         screen.fill(BLACK)
 
-        # font.set_bold(False)
+        font.set_bold(False)
         y = SCREEN_CENTER[1] - 20*SCALE
         screen_print( screen, get_text(self.lang,"menu","settings","buttons",0), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] - 5*SCALE
@@ -135,7 +144,7 @@ class Menu:
         font = self.story_font
         x = SCREEN_CENTER[0]
 
-        # font.set_bold(False)
+        font.set_bold(False)
         y = SCREEN_CENTER[1] + 10*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","title"), *self.text_specs_3, center=(x, y) )
         
@@ -151,7 +160,7 @@ class Menu:
 
     def draw_new_day_loading(self, screen):
         font = self.story_font
-        # font.set_bold(False)
+        font.set_bold(False)
 
         screen.fill(BLACK)
 
@@ -168,7 +177,7 @@ class Menu:
     
     def draw_select_character(self, screen):
         font = self.story_font
-        # font.set_bold(False)
+        font.set_bold(False)
 
         texture_container = self.game.texture_container
 
@@ -208,13 +217,20 @@ class Menu:
         self.game.gui.print_prompt()
                     
     def run_main_menu(self, events):
+        def _load_last_world():
+            if len(self.worlds) == 0:
+                return
+
+            self.game.gui.set_prompt_text(
+                get_text(self.lang, "menu", "main", "loading_save")
+            )
+            self.game.load_save()
+            self.set_run(OFF)
+
         for ev in events:
             if ev.type == pg.KEYDOWN:
                 if ev.key == pg.K_c:
-                    self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","main","loading_save") )
-                    self.game.load_save()
-                    self.set_run(OFF)
+                    _load_last_world()
                 elif ev.key == pg.K_n:
                     self.set_run(SELECT_CHARACTER)
                 elif ev.key == pg.K_w:

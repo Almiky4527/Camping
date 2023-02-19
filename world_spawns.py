@@ -274,8 +274,8 @@ RANDOM_ANIMAL_SPAWNS = {
 
 
 RANDOM_DESPAWNS = {
-    "plant": 0.2,
-    "item_plant": 0.5,
+    "plant": 0.4,
+    "item_plant": 0.6,
     "food": 0.4,
-    "meat": 0.4
+    "meat": 0.5
 }

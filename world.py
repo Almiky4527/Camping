@@ -1,4 +1,4 @@
-from random import randrange, choices
+from random import randrange, choices, randint, random
 
 from utils.classes import CannotSpawnHere
 from utils.identifiers import *
@@ -8,7 +8,7 @@ from player import *
 
 
 class World:
-    DAYS_IN_SEASON = 1
+    DAYS_IN_SEASON = 10
     TIME_TO_SKIP = 60
     MAX_ANIMAL_CAP = 5
 
@@ -54,7 +54,7 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return True # self.seconds >= self.TIME_TO_SKIP
+        return self.seconds >= self.TIME_TO_SKIP
     
     @property
     def animal_cap_reached(self) -> bool:
@@ -75,6 +75,10 @@ class World:
             return 
 
         self.children.remove(child)
+    
+    def list_chidren_in_family(self, family : str):
+        _filter = lambda child: child.in_family(family)
+        return list( filter(_filter, self.children) )
     
     def generate(self, generation_data):
         for gen_entry in generation_data:
@@ -175,11 +179,13 @@ class World:
                 child.set_image(season_appropriate_texture)
 
     def configure_for_season_winter(self):
+        bushes = self.list_chidren_in_family("bush")
+
+        for bush in bushes:
+            if bush.in_family("interact_loot") and bush.in_family("loot"):
+                bush.rm_family("loot")
+
         for child in self.children:
-            if child.in_family("bush"):
-                if child.in_family("interact_loot") and child.in_family("loot"):
-                    child.rm_family("loot")
-            
             if not child.is_immobile:
                 continue
             
@@ -191,31 +197,21 @@ class World:
                     season_appropriate_texture = default_texture
                 child.set_image(season_appropriate_texture)
         
-        # Doesn't work??? Plants are too strong?????
-        is_plant = lambda child : child.in_family("plant")
-        plants = filter(is_plant, self.children)
+        plants = self.list_chidren_in_family("plant")
 
         for plant in plants:
             self.remove_child(plant)
-
-        n = 0
-        for child in self.children:
-            if is_plant(child):
-                n += 1
-        print(n, "plants found")
     
     def random_despawns(self):
-        for child in self.children:
-            for family in RANDOM_DESPAWNS:
-                if not child.in_family(family):
-                    continue
-                
-                success_chance = RANDOM_DESPAWNS[family]
-                success = 100*success_chance >= randint(0, 100)
+        for family, despawn_chance in RANDOM_DESPAWNS.items():
+            children_in_this_family = self.list_chidren_in_family(family)
 
-                if not success:
+            for child in children_in_this_family:
+                do_despawn = despawn_chance >= random()
+
+                if not do_despawn:
                     continue
-                
+
                 self.remove_child(child)
     
     def refresh_lootable_entites(self):
@@ -226,7 +222,7 @@ class World:
             if not child.in_family("interact_loot") or child.in_family("loot"):
                 continue
             
-            success = 100*0.5 >= randint(0, 100)
+            success = 0.5 >= random()
 
             if not success:
                 continue

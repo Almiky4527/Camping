@@ -59,7 +59,7 @@ TEXTURES_RECTS = {
             Rect(118, PLAYER_ROW_1_Y, 12, 28),
             Rect(131, PLAYER_ROW_1_Y, 12, 28),
             Rect(144, PLAYER_ROW_1_Y, 12, 28),
-        ]
+        ],
     },
     "JaneSmith": {
         SOUTH: [
@@ -81,7 +81,7 @@ TEXTURES_RECTS = {
             Rect(118, PLAYER_ROW_2_Y, 12, 28),
             Rect(131, PLAYER_ROW_2_Y, 12, 28),
             Rect(144, PLAYER_ROW_2_Y, 12, 28),
-        ]
+        ],
     },
     "item": {
         DEFAULT: Rect(1, ITEM_ROW_1_Y, 16, 16),
@@ -136,7 +136,7 @@ TEXTURES_RECTS = {
     "inventory": {
         SLOT_DEFAULT: Rect(1, INVENTORY_ROW_1_Y, 22, 22),
         SLOT_PLUS: Rect(24, INVENTORY_ROW_1_Y, 22, 22),
-        SLOT_EQUALS: Rect(47, INVENTORY_ROW_1_Y, 22, 22)
+        SLOT_EQUALS: Rect(47, INVENTORY_ROW_1_Y, 22, 22),
     },
     "objects": {
         DEFAULT: Rect(1, OBJECTS_ROW_1_Y, 26, 26),
@@ -160,12 +160,14 @@ TEXTURES_RECTS = {
 
         SHADOW_SUBTYPE + BUSH_LARGE: Rect(90, SHADOWS_ROW_Y, 30, 6),
         SHADOW_SUBTYPE + BUSH_SMALL: Rect(90, SHADOWS_ROW_Y + 7, 20, 6),
+
+        SHADOW_SUBTYPE + ANIMAL_HARE: Rect(0, 332, 13, 9),
     },
     ENTITY_CAMPFIRE + BURNING_SUBTYPE: {
         SOUTH: [
             Rect(102, OBJECTS_ROW_1_Y, 18, 19),
-            Rect(121, OBJECTS_ROW_1_Y, 18, 19)
-        ]
+            Rect(121, OBJECTS_ROW_1_Y, 18, 19),
+        ],
     },
     "animal": {
         SOUTH: [
@@ -187,8 +189,26 @@ TEXTURES_RECTS = {
             Rect(118, ANIMAL_ROW_Y, 12, 12),
             Rect(131, ANIMAL_ROW_Y, 12, 12),
             Rect(144, ANIMAL_ROW_Y, 12, 12),
-        ]
-    }
+        ],
+    },
+    ANIMAL_HARE: {
+        SOUTH: [
+            Rect(187, ANIMAL_ROW_Y, 9, 9),
+            Rect(197, ANIMAL_ROW_Y, 9, 9),
+        ],
+        NORTH: [
+            Rect(237, ANIMAL_ROW_Y, 9, 9),
+            Rect(247, ANIMAL_ROW_Y, 9, 9),
+        ],
+        EAST: [
+            Rect(207, ANIMAL_ROW_Y, 14, 9),
+            Rect(222, ANIMAL_ROW_Y, 14, 9),
+        ],
+        WEST: [
+            Rect(157, ANIMAL_ROW_Y, 14, 9),
+            Rect(172, ANIMAL_ROW_Y, 14, 9),
+        ],
+    },
 }
 
 

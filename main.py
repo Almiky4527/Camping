@@ -258,9 +258,11 @@ class MainGame:
             self.player.stop_action()
             
             # Skip to the next day
-            self.world.next_day()
+            # self.world.next_day()
+            # Moved to menu, bcs when loading new day changes
+            # in world could be seen for a split second
+            self.screen.fill(BLACK)
 
-            self.saveloadstream.save(self.world_name)
             self.gui.set_prompt_text(
                 get_text(self.lang, "actions", "save", "y")
             )

@@ -266,6 +266,10 @@ class Entity (BaseEntity):
             if self.collision(entity):
                 self.clip_x(entity)
         
+        # Only player cannot leave "world's borders".
+        if not self.id == ENTITY_PLAYER:
+            return
+
         if self.box.left < self.parent.box.left:
             self.set_box_left(self.parent.box.left)
         if self.box.right > self.parent.box.right:
@@ -299,6 +303,10 @@ class Entity (BaseEntity):
                 self.target_position = entity.position
                 self.start_running()
                 self.action = self.attack
+        
+        # Only player cannot leave "world's borders".
+        if not self.id == ENTITY_PLAYER:
+            return
         
         if self.box.top < self.parent.box.top:
             self.set_box_top(self.parent.box.top)

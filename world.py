@@ -280,6 +280,9 @@ class World:
         if self.player.saturation == 0:
             health = self.player.health - randint(20, 30)
             self.player.set_health(health)
+        elif self.player.saturation >= 20:
+            health = self.player.health + randint(10, 30)
+            self.player.set_health(health)
 
     def spawn( self, position, data, scatter=(0, 0) ):
         sx, sy = scatter

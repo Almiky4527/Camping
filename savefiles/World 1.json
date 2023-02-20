@@ -17,19 +17,19 @@
     "health": 100,
     "speed": 2,
     "stamina": 100,
-    "saturation": 66.43640666666916,
+    "saturation": 65.14119750000279,
     "attack_damage": 10,
     "attack_cooldown": 0.5,
     "id": "entity.player",
     "position": [
-      681,
-      -1029
+      134,
+      -2001
     ],
     "name": "JohnDoe",
-    "direction": 0
+    "direction": 1
   },
   "Inventory": {
-    "slot_index": 4,
+    "slot_index": 1,
     "slots": [
       {
         "family": [
@@ -46,12 +46,11 @@
       {
         "family": [
           "item",
-          "item_plant",
-          "thread_maker"
+          "thread"
         ],
-        "max_count": 32,
-        "id": "item.plant1",
-        "count": 1
+        "max_count": 16,
+        "id": "item.thread",
+        "count": 13
       },
       {},
       {},
@@ -65,14 +64,24 @@
         "food": 5,
         "max_count": 64,
         "id": "item.berries0",
-        "count": 9
+        "count": 38
       },
-      {},
+      {
+        "family": [
+          "item",
+          "food",
+          "berries"
+        ],
+        "food": 5,
+        "max_count": 64,
+        "id": "item.blueberries",
+        "count": 4
+      },
       {}
     ]
   },
   "World": {
-    "day": 1,
+    "day": 4,
     "children": [
       {
         "position": [
@@ -5974,42 +5983,6 @@
       },
       {
         "position": [
-          240,
-          -1344
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            240,
-            -1344
-          ]
-        }
-      },
-      {
-        "position": [
           580,
           -1324
         ],
@@ -6793,75 +6766,6 @@
           "id": "tree.pine_large",
           "position": [
             9,
-            -1119
-          ]
-        }
-      },
-      {
-        "position": [
-          192,
-          -1052
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "pine",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.pine_large",
-          "position": [
-            192,
-            -1052
-          ]
-        }
-      },
-      {
-        "position": [
-          550,
-          -1119
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.oak_small",
-          "position": [
-            550,
             -1119
           ]
         }
@@ -8356,75 +8260,6 @@
       },
       {
         "position": [
-          -580,
-          -577
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            -580,
-            -577
-          ]
-        }
-      },
-      {
-        "position": [
-          -384,
-          -524
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.oak_small",
-          "position": [
-            -384,
-            -524
-          ]
-        }
-      },
-      {
-        "position": [
           176,
           -525
         ],
@@ -8489,75 +8324,6 @@
           "position": [
             634,
             -587
-          ]
-        }
-      },
-      {
-        "position": [
-          853,
-          -529
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            853,
-            -529
-          ]
-        }
-      },
-      {
-        "position": [
-          1072,
-          -530
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.oak_small",
-          "position": [
-            1072,
-            -530
           ]
         }
       },
@@ -9242,72 +9008,6 @@
           "position": [
             -1068,
             -287
-          ]
-        }
-      },
-      {
-        "position": [
-          -377,
-          -237
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.oak_small",
-          "position": [
-            -377,
-            -237
-          ]
-        }
-      },
-      {
-        "position": [
-          -172,
-          -283
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "pine",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.pine_small",
-          "position": [
-            -172,
-            -283
           ]
         }
       },
@@ -10238,39 +9938,6 @@
           "position": [
             -44,
             -14
-          ]
-        }
-      },
-      {
-        "position": [
-          479,
-          -12
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.oak_small",
-          "position": [
-            479,
-            -12
           ]
         }
       },
@@ -11284,42 +10951,6 @@
       },
       {
         "position": [
-          638,
-          220
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            638,
-            220
-          ]
-        }
-      },
-      {
-        "position": [
           859,
           254
         ],
@@ -12208,39 +11839,6 @@
       },
       {
         "position": [
-          398,
-          536
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "pine",
-            "small"
-          ],
-          "max_health": 300,
-          "health": 300,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": 2,
-            "item.stick": [
-              0,
-              2
-            ]
-          },
-          "id": "tree.pine_small",
-          "position": [
-            398,
-            536
-          ]
-        }
-      },
-      {
-        "position": [
           565,
           528
         ],
@@ -13082,42 +12680,6 @@
           "position": [
             62,
             808
-          ]
-        }
-      },
-      {
-        "position": [
-          160,
-          840
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            160,
-            840
           ]
         }
       },
@@ -19537,42 +19099,6 @@
       },
       {
         "position": [
-          -2600,
-          2965
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "tree",
-            "oak",
-            "large"
-          ],
-          "max_health": 500,
-          "health": 500,
-          "box_size": [
-            4,
-            2
-          ],
-          "immobile": true,
-          "loot": {
-            "item.log": [
-              3,
-              4
-            ],
-            "item.stick": [
-              0,
-              3
-            ]
-          },
-          "id": "tree.oak_large",
-          "position": [
-            -2600,
-            2965
-          ]
-        }
-      },
-      {
-        "position": [
           -2340,
           3000
         ],
@@ -20709,34 +20235,6 @@
       },
       {
         "position": [
-          110,
-          -884
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock2",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          479,
-          -876
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock2",
-          "count": 1
-        }
-      },
-      {
-        "position": [
           1774,
           -902
         ],
@@ -20760,34 +20258,6 @@
           ],
           "max_count": 1,
           "id": "item.rock2",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          -563,
-          -552
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          1290,
-          -603
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
           "count": 1
         }
       },
@@ -20849,48 +20319,6 @@
       },
       {
         "position": [
-          -652,
-          -161
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          -398,
-          -211
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          852,
-          -175
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock4",
-          "count": 1
-        }
-      },
-      {
-        "position": [
           -3371,
           133
         ],
@@ -20947,20 +20375,6 @@
       },
       {
         "position": [
-          -1630,
-          546
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock0",
-          "count": 1
-        }
-      },
-      {
-        "position": [
           -1018,
           494
         ],
@@ -20970,20 +20384,6 @@
           ],
           "max_count": 1,
           "id": "item.rock0",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          164,
-          440
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
           "count": 1
         }
       },
@@ -21068,34 +20468,6 @@
           ],
           "max_count": 1,
           "id": "item.rock2",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          -159,
-          926
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
-          "count": 1
-        }
-      },
-      {
-        "position": [
-          121,
-          837
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock3",
           "count": 1
         }
       },
@@ -21521,20 +20893,6 @@
       },
       {
         "position": [
-          -1246,
-          2993
-        ],
-        "data": {
-          "family": [
-            "item"
-          ],
-          "max_count": 1,
-          "id": "item.rock1",
-          "count": 1
-        }
-      },
-      {
-        "position": [
           1885,
           3044
         ],
@@ -21681,7 +21039,8 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot"
+            "interact_loot",
+            "loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -22159,7 +21518,8 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot"
+            "interact_loot",
+            "loot"
           ],
           "max_health": 50,
           "health": 50,
@@ -22510,7 +21870,8 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot"
+            "interact_loot",
+            "loot"
           ],
           "max_health": 50,
           "health": 50,
@@ -22541,8 +21902,7 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 50,
           "health": 50,
@@ -22829,8 +22189,7 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -22957,8 +22316,7 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 50,
           "health": 50,
@@ -23341,8 +22699,7 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -23373,8 +22730,7 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 50,
           "health": 50,
@@ -23501,8 +22857,7 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -24045,8 +23400,7 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -24333,11 +23687,10 @@
             "foliage",
             "bush",
             "large",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 50,
-          "health": 50,
+          "health": 20,
           "interact_loot": {
             "item.berries0": [
               2,
@@ -24517,38 +23870,6 @@
       },
       {
         "position": [
-          -2521,
-          3007
-        ],
-        "data": {
-          "family": [
-            "foliage",
-            "bush",
-            "large",
-            "interact_loot",
-            "loot"
-          ],
-          "max_health": 50,
-          "health": 50,
-          "interact_loot": {
-            "item.berries0": [
-              2,
-              5
-            ]
-          },
-          "looting_time": 4,
-          "immobile": true,
-          "loot": {
-            "item.stick": [
-              1,
-              4
-            ]
-          },
-          "id": "bush.large"
-        }
-      },
-      {
-        "position": [
           -1206,
           2995
         ],
@@ -24557,8 +23878,7 @@
             "foliage",
             "bush",
             "small",
-            "interact_loot",
-            "loot"
+            "interact_loot"
           ],
           "max_health": 30,
           "health": 30,
@@ -24613,152 +23933,8 @@
       },
       {
         "position": [
-          -2899,
-          -2983
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2332,
-          -3066
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -4089,
-          -2644
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3866,
-          -2689
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -4077,
-          -2720
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3745,
-          -2790
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           -3838,
           -2711
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2762,
-          -2735
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1950,
-          -2658
         ],
         "data": {
           "family": [
@@ -24793,43 +23969,6 @@
       },
       {
         "position": [
-          -2098,
-          -2733
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1547,
-          -2643
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
           2063,
           -2732
         ],
@@ -24844,150 +23983,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          1988,
-          -2623
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2630,
-          -2638
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          2619,
-          -2710
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          2664,
-          -2643
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -2986,
-          -2449
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2885,
-          -2393
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2276,
-          -2369
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2060,
-          -2430
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
         }
       },
       {
@@ -25010,24 +24005,6 @@
       },
       {
         "position": [
-          -1983,
-          -2424
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           -1582,
           -2421
         ],
@@ -25042,78 +24019,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1633,
-          -2359
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1384,
-          -2435
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1417,
-          -2398
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2504,
-          -2371
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
         }
       },
       {
@@ -25136,60 +24041,6 @@
       },
       {
         "position": [
-          2588,
-          -2313
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3765,
-          -2145
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3485,
-          -2188
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           3408,
           -2109
         ],
@@ -25204,42 +24055,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          3636,
-          -2173
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          724,
-          -1862
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
         }
       },
       {
@@ -25262,62 +24077,7 @@
       },
       {
         "position": [
-          2590,
-          -1822
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
           -2381,
-          -1486
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2183,
-          -1506
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1654,
           -1486
         ],
         "data": {
@@ -25353,78 +24113,6 @@
       },
       {
         "position": [
-          2614,
-          -1573
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2557,
-          -1473
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          4083,
-          -1554
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -4081,
-          -1195
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           2695,
           -1137
         ],
@@ -25443,79 +24131,6 @@
       },
       {
         "position": [
-          3077,
-          -1167
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          3418,
-          -1190
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -3316,
-          -898
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3225,
-          -918
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           -3286,
           -908
         ],
@@ -25530,60 +24145,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3159,
-          -834
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -3049,
-          -830
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -799,
-          -880
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
         }
       },
       {
@@ -25624,80 +24185,8 @@
       },
       {
         "position": [
-          2208,
-          -957
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2021,
-          -827
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3830,
-          -623
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
           -3888,
           -690
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3729,
-          -613
         ],
         "data": {
           "family": [
@@ -25732,169 +24221,6 @@
       },
       {
         "position": [
-          263,
-          -684
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -2965,
-          -336
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2953,
-          -215
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -1354,
-          -338
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -1626,
-          -304
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -725,
-          -327
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -581,
-          -342
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -597,
-          -338
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          682,
-          -237
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           1658,
           -296
         ],
@@ -25913,132 +24239,6 @@
       },
       {
         "position": [
-          2483,
-          -251
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -663,
-          -59
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -812,
-          73
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -909,
-          -77
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -332,
-          -67
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          1426,
-          3
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -2073,
-          237
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           -2046,
           343
         ],
@@ -26053,96 +24253,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1946,
-          378
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1639,
-          304
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          116,
-          291
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          122,
-          278
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2495,
-          246
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
         }
       },
       {
@@ -26166,565 +24276,6 @@
       },
       {
         "position": [
-          7,
-          580
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          477,
-          625
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          478,
-          564
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          429,
-          546
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          462,
-          626
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2727,
-          628
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2655,
-          516
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3698,
-          552
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3626,
-          637
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3775,
-          641
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3923,
-          669
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          4065,
-          665
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          4096,
-          655
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -481,
-          930
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -243,
-          835
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2487,
-          1221
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -2410,
-          1220
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2458,
-          1218
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1388,
-          1243
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -3678,
-          1513
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3857,
-          1456
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -1623,
-          1548
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1771,
-          1532
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2639,
-          1505
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2676,
-          1450
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2535,
-          1491
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2629,
-          1834
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2586,
-          1761
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2776,
-          1767
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3354,
-          1735
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          3758,
-          1849
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
           -3625,
           2083
         ],
@@ -26743,262 +24294,8 @@
       },
       {
         "position": [
-          -3686,
-          2189
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
           -3639,
           2083
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2312,
-          2010
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -944,
-          2335
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          86,
-          2321
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          195,
-          2350
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2349,
-          2349
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2626,
-          2457
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2575,
-          2355
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3351,
-          2705
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3379,
-          2660
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2085,
-          2744
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          1945,
-          2689
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -173,
-          3041
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          725,
-          3064
         ],
         "data": {
           "family": [
@@ -27038,62 +24335,15 @@
       },
       {
         "position": [
-          768,
-          -1118
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_starter"
-          ],
-          "success_chance": 0.7,
-          "max_count": 32,
-          "id": "item.matches",
-          "count": 32
-        }
-      },
-      {
-        "position": [
-          868,
-          -1040
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_fuel"
-          ],
-          "fire_fuel": 20,
-          "max_count": 4,
-          "id": "item.log",
-          "count": 4
-        }
-      },
-      {
-        "position": [
-          866,
-          -1022
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_fuel"
-          ],
-          "fire_fuel": 20,
-          "max_count": 4,
-          "id": "item.log",
-          "count": 4
-        }
-      },
-      {
-        "position": [
           730,
           -902
         ],
         "data": {
           "family": [
-            "campfire"
+            "campfire",
+            "fire"
           ],
-          "saturation": 0,
+          "saturation": 51.90233333342218,
           "box_size": [
             18,
             6
@@ -27104,54 +24354,6 @@
             730,
             -902
           ]
-        }
-      },
-      {
-        "position": [
-          848,
-          -930
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_fuel"
-          ],
-          "fire_fuel": 5,
-          "max_count": 16,
-          "id": "item.stick",
-          "count": 4
-        }
-      },
-      {
-        "position": [
-          874,
-          -1004
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_fuel"
-          ],
-          "fire_fuel": 20,
-          "max_count": 4,
-          "id": "item.log",
-          "count": 4
-        }
-      },
-      {
-        "position": [
-          874,
-          -986
-        ],
-        "data": {
-          "family": [
-            "item",
-            "fire_fuel"
-          ],
-          "fire_fuel": 20,
-          "max_count": 4,
-          "id": "item.log",
-          "count": 1
         }
       },
       {
@@ -27169,13 +24371,13 @@
               [
                 "item.log"
               ],
-              35
+              0
             ],
             [
               [
                 "item.stick"
               ],
-              24
+              11
             ],
             [
               [
@@ -27191,7 +24393,7 @@
                 "item.rock3",
                 "item.rock4"
               ],
-              14
+              2
             ]
           ],
           "output_building": "entity.cabin",
@@ -27227,154 +24429,8 @@
       },
       {
         "position": [
-          358,
-          -2955
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          644,
-          -2928
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3195,
-          -2671
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          1615,
-          -2686
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          1337,
-          -2685
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          1709,
-          -2737
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
           2177,
           -2658
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2245,
-          -2699
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          4043,
-          -2693
         ],
         "data": {
           "family": [
@@ -27410,45 +24466,8 @@
       },
       {
         "position": [
-          -2210,
-          -2082
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
           -1845,
           -2078
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -438,
-          -1842
         ],
         "data": {
           "family": [
@@ -27479,132 +24498,6 @@
             "item.plant1": 1
           },
           "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          222,
-          -1811
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          267,
-          -1838
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          480,
-          -1889
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1392,
-          -1484
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          1497,
-          -1461
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          1510,
-          -1439
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2024,
-          -1479
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
         }
       },
       {
@@ -27647,42 +24540,6 @@
       },
       {
         "position": [
-          -2760,
-          -941
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2755,
-          -942
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
           -2848,
           -885
         ],
@@ -27719,222 +24576,6 @@
       },
       {
         "position": [
-          -704,
-          -924
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          934,
-          -892
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          872,
-          -892
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          1074,
-          -954
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3227,
-          -535
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3259,
-          -560
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3432,
-          -232
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3664,
-          -284
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -3213,
-          -308
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2948,
-          -270
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3233,
-          -276
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          449,
-          -234
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
           -1670,
           26
         ],
@@ -27949,96 +24590,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1596,
-          15
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2284,
-          -49
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2248,
-          -12
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2239,
-          26
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3650,
-          -78
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
         }
       },
       {
@@ -28061,119 +24612,8 @@
       },
       {
         "position": [
-          -1144,
-          337
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -1000,
-          356
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -300,
-          328
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -459,
-          265
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          333,
-          318
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
           2092,
           364
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          2017,
-          300
         ],
         "data": {
           "family": [
@@ -28227,513 +24667,6 @@
       },
       {
         "position": [
-          -463,
-          613
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -460,
-          612
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -422,
-          524
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2425,
-          596
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          2769,
-          664
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -3502,
-          957
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2474,
-          988
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2283,
-          855
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          115,
-          1289
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3999,
-          1180
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          4068,
-          1218
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -2974,
-          1545
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2263,
-          1532
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2368,
-          1556
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2478,
-          1502
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -859,
-          1491
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          2317,
-          1421
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          -2452,
-          1753
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2519,
-          2103
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          -2152,
-          2027
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2171,
-          2132
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -2029,
-          2039
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1277,
-          2184
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3553,
-          2086
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
-        }
-      },
-      {
-        "position": [
-          1801,
-          2425
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3712,
-          2419
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3700,
-          2479
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3838,
-          2315
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
           373,
           2757
         ],
@@ -28748,98 +24681,6 @@
             "item.plant0": 1
           },
           "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -3226,
-          3009
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -3200,
-          3079
-        ],
-        "data": {
-          "family": [
-            "plant",
-            "parched"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant3": 1
-          },
-          "id": "plant.3"
-        }
-      },
-      {
-        "position": [
-          -2998,
-          2923
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant0": 1
-          },
-          "id": "plant.0"
-        }
-      },
-      {
-        "position": [
-          -1380,
-          2990
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant1": 1
-          },
-          "id": "plant.1"
-        }
-      },
-      {
-        "position": [
-          3849,
-          3034
-        ],
-        "data": {
-          "family": [
-            "plant"
-          ],
-          "max_health": 10,
-          "health": 10,
-          "immobile": true,
-          "loot": {
-            "item.plant2": 1
-          },
-          "id": "plant.2"
         }
       },
       {
@@ -28862,8 +24703,3136 @@
       },
       {
         "position": [
-          -3157,
-          -1403
+          -3682,
+          -2379
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -34,
+          -2410
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          1785,
+          -2036
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -1260,
+          -1841
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          2486,
+          -1855
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2445,
+          -1238
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          2324,
+          -1163
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -650,
+          -867
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2757,
+          -853
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1766,
+          -544
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -4131,
+          -390
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3129,
+          -383
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3000,
+          -288
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -1177,
+          -322
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -549,
+          -386
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2891,
+          21
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2914,
+          -80
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3461,
+          253
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -4055,
+          1573
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          2882,
+          1829
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3520,
+          2410
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -219,
+          2636
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          177,
+          2729
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -3060,
+          2977
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2047,
+          3023
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          74,
+          -1670
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 20,
+          "max_count": 4,
+          "id": "item.log",
+          "count": 4
+        }
+      },
+      {
+        "position": [
+          74,
+          -1720
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 20,
+          "max_count": 4,
+          "id": "item.log",
+          "count": 2
+        }
+      },
+      {
+        "position": [
+          826,
+          -927
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_starter"
+          ],
+          "success_chance": 0.7,
+          "max_count": 32,
+          "id": "item.matches",
+          "count": 30
+        }
+      },
+      {
+        "position": [
+          591,
+          -983
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 20,
+          "max_count": 4,
+          "id": "item.log",
+          "count": 3
+        }
+      },
+      {
+        "position": [
+          -3624,
+          -2988
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3893,
+          -3014
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3099,
+          -3032
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -675,
+          -3079
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1291,
+          -2997
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -1793,
+          -2739
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -919,
+          -2613
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -800,
+          -2745
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          149,
+          -2733
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3449,
+          -2448
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          132,
+          -2488
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          -3316,
+          -2024
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3228,
+          -2047
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2584,
+          -1714
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          2178,
+          -1764
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -2077,
+          -1421
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3981,
+          -1272
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3451,
+          -1205
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2507,
+          -951
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2504,
+          -819
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2726,
+          -844
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2302,
+          -574
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1571,
+          -581
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2552,
+          -616
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          255,
+          -358
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          374,
+          -371
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          684,
+          -5
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          638,
+          -2
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2366,
+          310
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -783,
+          333
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          3784,
+          349
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3632,
+          296
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2761,
+          635
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2755,
+          601
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2852,
+          657
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2359,
+          1260
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2999,
+          1562
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          65,
+          2111
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          1883,
+          2033
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          1950,
+          2181
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3646,
+          2420
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2998,
+          2627
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          -3827,
+          3021
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          765,
+          2933
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          724,
+          2986
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -1182,
+          3024
+        ],
+        "data": {
+          "family": [
+            "item",
+            "food",
+            "berries"
+          ],
+          "food": 5,
+          "max_count": 64,
+          "id": "item.blueberries",
+          "count": 1
+        }
+      },
+      {
+        "position": [
+          -2532,
+          3020
+        ],
+        "data": {
+          "family": [
+            "item",
+            "food",
+            "berries"
+          ],
+          "food": 5,
+          "max_count": 64,
+          "id": "item.berries0",
+          "count": 1
+        }
+      },
+      {
+        "position": [
+          -2482,
+          3015
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 5,
+          "max_count": 16,
+          "id": "item.stick",
+          "count": 1
+        }
+      },
+      {
+        "position": [
+          -2561,
+          3034
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 5,
+          "max_count": 16,
+          "id": "item.stick",
+          "count": 1
+        }
+      },
+      {
+        "position": [
+          140,
+          -1701
+        ],
+        "data": {
+          "family": [
+            "item",
+            "fire_fuel"
+          ],
+          "fire_fuel": 20,
+          "max_count": 4,
+          "id": "item.log",
+          "count": 4
+        }
+      },
+      {
+        "position": [
+          -1940,
+          -2644
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2046,
+          -2749
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -149,
+          -2720
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          459,
+          -2688
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          457,
+          -2736
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          683,
+          -2643
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3872,
+          -2365
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3885,
+          -2356
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2500,
+          -2369
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2549,
+          -2456
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          1380,
+          -2370
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1149,
+          -2444
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -683,
+          -2035
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -718,
+          -2133
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -931,
+          -2081
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1612,
+          -2060
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          1613,
+          -2036
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          1119,
+          -1754
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          995,
+          -1815
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1191,
+          -1813
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1150,
+          -1713
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3310,
+          -1761
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          3430,
+          -1744
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          3444,
+          -1831
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3637,
+          -1765
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3616,
+          -1781
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3787,
+          -1496
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -3683,
+          -1583
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -3361,
+          -1460
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          -3456,
+          -1411
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          -1816,
+          -1530
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2224,
+          -1197
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2250,
+          -1176
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2186,
+          -1135
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -1814,
+          -1159
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1129,
+          -936
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -719,
+          -664
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -703,
+          -621
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -569,
+          -682
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3867,
+          -250
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -3745,
+          -312
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          -2800,
+          -334
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2975,
+          -285
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2803,
+          -279
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -1697,
+          68
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3876,
+          41
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          3752,
+          8
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          3849,
+          -41
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3459,
+          349
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3434,
+          288
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -715,
+          324
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          630,
+          218
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          649,
+          222
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          420,
+          375
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3904,
+          543
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3938,
+          672
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -3904,
+          520
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -2048,
+          633
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2246,
+          619
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -2075,
+          642
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          877,
+          651
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          836,
+          632
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          793,
+          585
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2021,
+          622
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3883,
+          683
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          3811,
+          642
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          903,
+          987
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          729,
+          949
+        ],
+        "data": {
+          "family": [
+            "plant",
+            "parched"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant3": 1
+          },
+          "id": "plant.3"
+        }
+      },
+      {
+        "position": [
+          956,
+          1165
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          897,
+          1235
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2982,
+          1248
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          2946,
+          1258
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          646,
+          1435
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          825,
+          1549
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          2269,
+          1416
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant2": 1
+          },
+          "id": "plant.2"
+        }
+      },
+      {
+        "position": [
+          3634,
+          1432
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3867,
+          1499
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3726,
+          1460
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3584,
+          1727
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3558,
+          1871
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -1130,
+          1840
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -3697,
+          2181
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -671,
+          2037
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -610,
+          2089
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -444,
+          2087
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3425,
+          2053
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3522,
+          2106
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3589,
+          2078
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -1275,
+          2613
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1745,
+          2719
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          1616,
+          2699
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          3906,
+          2753
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant1": 1
+          },
+          "id": "plant.1"
+        }
+      },
+      {
+        "position": [
+          -547,
+          3004
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -639,
+          2943
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          -439,
+          2921
+        ],
+        "data": {
+          "family": [
+            "plant"
+          ],
+          "max_health": 10,
+          "health": 10,
+          "immobile": true,
+          "loot": {
+            "item.plant0": 1
+          },
+          "id": "plant.0"
+        }
+      },
+      {
+        "position": [
+          3022,
+          2092
         ],
         "data": {
           "family": [
@@ -28898,8 +27867,8 @@
       },
       {
         "position": [
-          -512,
-          763
+          1398,
+          559
         ],
         "data": {
           "family": [
@@ -28934,44 +27903,8 @@
       },
       {
         "position": [
-          -385,
-          1154
-        ],
-        "data": {
-          "family": [
-            "animal",
-            "hare",
-            "small"
-          ],
-          "max_health": 50,
-          "max_speed": 3,
-          "default_speed": 2,
-          "reach_size": [
-            10,
-            5
-          ],
-          "health": 50,
-          "speed": 2,
-          "max_travel_dist": 200,
-          "travel_chance": 0.005,
-          "run_away_from": [
-            {
-              "family": "player",
-              "see_dist": 200,
-              "run_dist": 1
-            }
-          ],
-          "loot": {
-            "item.hare_meat": 1,
-            "item.here_hide": 1
-          },
-          "id": "animal.hare"
-        }
-      },
-      {
-        "position": [
-          -1102,
-          2959
+          -1630,
+          -1997
         ],
         "data": {
           "family": [

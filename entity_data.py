@@ -142,8 +142,8 @@ ENTITIES = {
     ENTITY_CABIN_FOUNDATION: {
         "family": ["cabin", "foundation"],
         "required_build_materials": [
-            [ [ITEM_LOG], 50 ],
-            [ [ITEM_STICK], 30 ],
+            [ [ITEM_LOG], 100 ],
+            [ [ITEM_STICK], 50 ],
             [ [ITEM_ROPE], 20 ],
             [ [ROCK0, ROCK1, ROCK2, ROCK3, ROCK4], 20 ]
         ],

@@ -24,6 +24,8 @@ class Player (Entity):
         self.name = name
         super().__init__(*args, **kwargs)
         self.data["name"] = name
+        
+        self.energy = 100
 
     @property
     def world(self):
@@ -90,6 +92,9 @@ class Player (Entity):
     def checkout_item(self):
         print(self.selected_slot.data)
 
+    def set_energy(self, value : int):
+        self.energy = max( 0, min(value, 100) )
+
     def get_input(self, events):
         keys = key.get_pressed()
         
@@ -126,7 +131,7 @@ class Player (Entity):
              # Stop action when too tired
             if self.stamina == MIN_STAMINA_FOR_ACTION:
                 self.game.gui.set_prompt_text(
-                    get_text(self.lang,"actions","tired")
+                    get_text(self.lang, "actions", "tired")
                 )
                 self.stop_action()
             return
@@ -145,6 +150,12 @@ class Player (Entity):
         saturation_dif = (1 - stamina_percentage)*0.5 / FPS
         saturation = self.saturation - saturation_dif
         self.set_saturation(saturation)
+
+    def update_energy(self):
+        stamina_percentage = self.stamina / 100
+        energy_dif = (1 - stamina_percentage)*1.0 / FPS
+        energy = self.energy - energy_dif
+        self.set_energy(energy)
 
     def update_vector(self, keys):
         if keys[pg.K_w] or keys[pg.K_a] or keys[pg.K_s] or keys[pg.K_d]:
@@ -436,6 +447,7 @@ class Player (Entity):
         super().update()
         self.update_stamina()
         self.update_saturation()
+        self.update_energy()
     
     def die(self):
         self.set_health(0)

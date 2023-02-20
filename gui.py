@@ -124,6 +124,12 @@ class GUI:
         stamina = round(self.player.stamina)
         self.draw_progress_bar( rect, stamina, colors=(LESS_RED, YELLOW) )
         # --------------------------
+
+        # --- Player Energy Bar ---
+        rect = pg.Rect(100, 88, 100, 16)
+        energy = round(self.player.energy)
+        self.draw_progress_bar( rect, energy, colors=(LESS_RED, YELLOW) )
+        # --------------------------
     
     def draw_progress_bar( self, rect, value, max_value=100, colors=(LESS_RED, GREEN) ):
         pg.draw.rect(self.screen, colors[0], rect)

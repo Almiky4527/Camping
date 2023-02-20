@@ -277,6 +277,9 @@ class World:
     def player_sleeps(self):
         self.player.set_stamina(100)
 
+        energy_plus = max(50, self.player.saturation)
+        self.player.set_energy(self.player.energy + energy_plus)
+
         if self.player.saturation == 0:
             health = self.player.health - randint(20, 30)
             self.player.set_health(health)
@@ -313,6 +316,10 @@ class World:
         for child in self.children:
             child.update()
             child.move(self.children)
+        
+        # Skip to next day when player runs out of energy
+        if self.player.energy == 0:
+            self.game._save()
         
     def clean(self):
         for child in self.children:

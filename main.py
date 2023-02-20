@@ -252,22 +252,7 @@ class MainGame:
         )
 
         if self.gui.prompt_input_buffer == pg.K_y:
-            if self.inventory.expanded:
-                self.inventory.toggle_expand()
-
-            self.player.stop_action()
-            
-            # Skip to the next day
-            # self.world.next_day()
-            # Moved to menu, bcs when loading new day changes
-            # in world could be seen for a split second
-            self.screen.fill(BLACK)
-
-            self.gui.set_prompt_text(
-                get_text(self.lang, "actions", "save", "y")
-            )
-
-            self.menu.set_run(NEW_DAY_LOADING)
+            self._save()
         
         elif self.gui.prompt_input_buffer == pg.K_n:
             self.player.stop_action()
@@ -277,6 +262,24 @@ class MainGame:
             )
         
         self.gui.prompt_input_buffer = None
+    
+    def _save(self):
+        if self.inventory.expanded:
+            self.inventory.toggle_expand()
+
+        self.player.stop_action()
+        
+        # Skip to the next day
+        # self.world.next_day()
+        # Moved to menu, bcs when loading new day changes
+        # in world could be seen for a split second
+        self.screen.fill(BLACK)
+
+        self.gui.set_prompt_text(
+            get_text(self.lang, "actions", "save", "y")
+        )
+
+        self.menu.set_run(NEW_DAY_LOADING)
         
     def delete_world(self):
         self.saveloadstream.delete_file(self.world_name)

@@ -105,6 +105,8 @@ TEXTURES_RECTS = {
         ITEM_ROPE: Rect(154, ITEM_ROW_1_Y, 16, 16),
         ITEM_BERRIES0: Rect(154, ITEM_ROW_2_Y, 16, 16),
         ITEM_BLUEBERRIES: Rect(171, ITEM_ROW_2_Y, 16, 16),
+        ITEM_HARE_MEAT: Rect(188, ITEM_ROW_2_Y, 16, 16),
+        ITEM_HARE_MEAT_COOKED: Rect(205, ITEM_ROW_2_Y, 16, 16),
     },
     "foliage": {
         DEFAULT: Rect(1, FOLIAGE_ROW_Y, 28, 70),

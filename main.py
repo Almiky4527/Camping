@@ -1,4 +1,5 @@
 import pygame as pg
+from random import random, randint
 
 from saving import *
 from menu import *
@@ -252,7 +253,9 @@ class MainGame:
         )
 
         if self.gui.prompt_input_buffer == pg.K_y:
-            self._save()
+            savepoint = self.player.target
+            save_type = "tent" if savepoint.in_family("tent") else "cabin" if savepoint.in_family("cabin") else "outside"
+            self._save(save_type)
         
         elif self.gui.prompt_input_buffer == pg.K_n:
             self.player.stop_action()
@@ -263,11 +266,44 @@ class MainGame:
         
         self.gui.prompt_input_buffer = None
     
-    def _save(self):
+    def _save(self, save_type):
+        def _player_hurt_on_sleep():
+            if not self.world.season in [SEASON_AUTUMN, SEASON_WINTER]:
+                return
+
+            get_hurt = 0.5 >= random()
+            
+            if get_hurt:
+                health = self.player.health - randint(5, 15)
+                self.player.set_health(health)
+
         if self.inventory.expanded:
             self.inventory.toggle_expand()
 
         self.player.stop_action()
+
+        if save_type == "outside":
+            _player_hurt_on_sleep()
+        
+        elif save_type == "tent":
+            tent = self.player.target
+            is_burning_campfire = lambda child: child.in_family("campfire") and child.in_family("fire")
+            burning_campfires = filter( is_burning_campfire, self.world.children )
+
+            if burning_campfires:
+                dist_to_tent = lambda child: ( pg.Vector2(tent.position) - child.position ).length()
+                nearest_burning_campfire = min(burning_campfires, dist_to_tent)
+                dist_to_nearest_burning_campfire = ( pg.Vector2(tent.position) - nearest_burning_campfire.position ).length()
+
+                if dist_to_nearest_burning_campfire <= 50:
+                    pass
+                else:
+                    _player_hurt_on_sleep()
+            else:
+                _player_hurt_on_sleep()
+            
+        elif save_type == "cabin":
+            pass
         
         # Skip to the next day
         # self.world.next_day()

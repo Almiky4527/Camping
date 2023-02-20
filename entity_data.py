@@ -80,7 +80,8 @@ ITEMS = {
         "max_count": 8
     },
     ITEM_HARE_MEAT: {
-        "family": ["item", "meat"],
+        "family": ["item", "meat", "cookable"],
+        "cooking_gives": ITEM_HARE_MEAT_COOKED,
         "max_count": 16
     },
     ITEM_HARE_MEAT_COOKED: {

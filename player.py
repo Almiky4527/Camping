@@ -26,6 +26,7 @@ class Player (Entity):
         self.data["name"] = name
         
         self.energy = 100
+        self.energy_warned = False
 
     @property
     def world(self):
@@ -157,6 +158,12 @@ class Player (Entity):
         energy = self.energy - energy_dif
         self.set_energy(energy)
 
+        if self.energy <= 10 and not self.energy_warned:
+            self.game.gui.set_prompt_text(
+                get_text(self.lang, "actions", "energy_low")
+            )
+            self.energy_warned = True
+
     def update_vector(self, keys):
         if keys[pg.K_w] or keys[pg.K_a] or keys[pg.K_s] or keys[pg.K_d]:
             self.stop_action()
@@ -219,17 +226,20 @@ class Player (Entity):
             elif child.in_family("savepoint"):
                 self.action = self.game.save
             
-            elif child.is_burning:
-                if not self.can_feed_fire:
-                    self.action = self.isnpect_fire
-                else:
-                    self.action = self.feed_fire
-            
             elif child.in_family("campfire"):
-                if not self.can_light_fire:
-                    continue
+                if not child.is_burning:
+                    if not self.can_light_fire:
+                        continue
 
-                self.action = self.light_fire
+                    self.action = self.light_fire
+                else:
+                    if not self.can_feed_fire:
+                        if self.selected_slot.in_family("cookable"):
+                            self.action = self.cook
+                        else:
+                            self.action = self.isnpect_fire
+                    else:
+                        self.action = self.feed_fire
 
             else:
                 continue
@@ -269,6 +279,17 @@ class Player (Entity):
             self.world.remove_child(self.target)
             self.world.spawn(self.target.position, building_data)
         
+        self.stop_action()
+    
+    def cook(self):
+        if not self.selected_slot:
+            self.stop_action()
+            return
+
+        cooking_gives = self.selected_slot.data["cooking_gives"]
+        self.inventory.pop(self.selected_slot)
+        self.parent.spawn( self.position, item(cooking_gives) )
+
         self.stop_action()
 
     def pickup_item(self):

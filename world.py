@@ -279,6 +279,7 @@ class World:
 
         energy_plus = max(50, self.player.saturation)
         self.player.set_energy(self.player.energy + energy_plus)
+        self.player.energy_warned = False
 
         if self.player.saturation == 0:
             health = self.player.health - randint(20, 30)
@@ -319,7 +320,7 @@ class World:
         
         # Skip to next day when player runs out of energy
         if self.player.energy == 0:
-            self.game._save()
+            self.game._save("outside")
         
     def clean(self):
         for child in self.children:

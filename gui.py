@@ -158,7 +158,7 @@ class GUI:
 
         screen_print(self.screen, text, font, colors=colors, inflation=(8, 6), br=4, center=position)
     
-    def print_item_info( self, item_data : dict, position=(10, 10), colors=(WHITE, SLIGHTLY_LESS_BLACK) ):
+    def print_item_info( self, item_data : dict, position=(10, 100), colors=(WHITE, SLIGHTLY_LESS_BLACK) ):
         lines = textify_data(item_data)
         font = self.texture_container.inventory_font
         x, y = position

@@ -167,6 +167,7 @@ TEXTS = {
                 "x": "You cannot skip to next day right now."
             },
             "tired": "You are too tired to continue.",
+            "energy_low": "You feel like you're going to pass out soon.",
             "inventory_full": "Your inventory is full.",
             "fire": {
                 "lit": "You lit the {target} using your {item}.",
@@ -343,6 +344,7 @@ TEXTS = {
                 "x": "Teraz ešte nemôžeš preskočiť na ďalší deň."
             },
             "tired": "Si príliš vyčerpaný aby si pokračoval.",
+            "energy_low": "Máš pocit že čoskoro omdlieš.",
             "inventory_full": "Tvoj inventár je plný.",
             "fire": {
                 "lit": "Zapálil si {target} použitím {item}.",

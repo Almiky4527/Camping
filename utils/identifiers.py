@@ -46,6 +46,9 @@ STONE = "item.stone"
 ITEM_THREAD = "item.thread"
 ITEM_ROPE = "item.rope"
 
+ITEM_JACKET = "item.jacket"
+ITEM_HAT = "item.hat"
+
 ITEM_HARE_MEAT = "item.hare_meat"
 ITEM_HARE_HIDE = "item.here_hide"
 ITEM_HARE_MEAT_COOKED = "item.hare_meat_cooked"

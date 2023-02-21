@@ -8,6 +8,8 @@ from utils.classes import ContainerFull
 SLOT_DEFAULT = "slot.default"
 SLOT_PLUS = "slot.splus"
 SLOT_EQUALS = "slot.equals"
+SLOT_WEAR_JACKET = "slot.wear.jacket"
+SLOT_WEAR_HAT = "slot.wear.hat"
 
 
 class ItemSlot:

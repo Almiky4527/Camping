@@ -22,6 +22,13 @@ class Inventory (ItemContainer):
 
         self.crafting = Crafting(self)
 
+        x, y = SCREEN_CENTER[0] - 22*SCALE, SCREEN_CENTER[1] - 13*SCALE
+        img_slot_hat = self.texture_container.get(SLOT_WEAR_HAT)
+        self.clothes_slot_1 = ItemSlot( img_slot_hat, {}, (x, y) )
+        x = SCREEN_CENTER[0] + 22*SCALE
+        img_slot_jacket = self.texture_container.get(SLOT_WEAR_JACKET)
+        self.clothes_slot_2 = ItemSlot( img_slot_jacket, {}, (x, y) )
+
     @property
     def font(self):
         return self.texture_container.inventory_font
@@ -68,6 +75,10 @@ class Inventory (ItemContainer):
         slot_num_position = SLOT_POS[0] + w // 2 - SCALE, SLOT_POS[1] - h // 2 + SCALE
 
         screen_print(screen, slot_num, self.font, colors=(WHITE, LIGHT_GRAY), topleft=slot_num_position)
+    
+    def draw_clothes_slots(self, screen):
+        self.clothes_slot_1.draw(screen, self.texture_container)
+        self.clothes_slot_2.draw(screen, self.texture_container)
 
     def draw_dragging_item(self, screen):
         if not self.mouse_keys[0] or not self.dragging_slot:
@@ -82,6 +93,7 @@ class Inventory (ItemContainer):
 
         if self.expanded:
             super().draw(screen, self.texture_container)
+            self.draw_clothes_slots(screen)
             self.draw_dragging_item(screen)
         else:
             self.draw_small(screen)
@@ -141,7 +153,11 @@ class Inventory (ItemContainer):
         self.player.stop_action()
     
     def update_hover_slot(self):
-        all_slots = self.slots + self.crafting.slots + [self.crafting.output_slot]
+        all_slots = self.slots + self.crafting.slots + [
+            self.crafting.output_slot,
+            self.clothes_slot_1,
+            self.clothes_slot_2
+        ]
 
         for slot in all_slots:
             if slot.collidepoint(self.mouse_pos):
@@ -151,7 +167,11 @@ class Inventory (ItemContainer):
         self.hover_slot = {}
         
     def start_dragging(self):
-        all_slots = self.slots + self.crafting.slots + [self.crafting.output_slot]
+        all_slots = self.slots + self.crafting.slots + [
+            self.crafting.output_slot,
+            self.clothes_slot_1,
+            self.clothes_slot_2
+        ]
 
         for slot in all_slots:
             if slot.collidepoint(self.mouse_pos):
@@ -164,7 +184,10 @@ class Inventory (ItemContainer):
         if not self.dragging_slot:
             return
         
-        slots = self.slots + self.crafting.slots
+        slots = self.slots + self.crafting.slots + [
+            self.clothes_slot_1,
+            self.clothes_slot_2
+        ]
 
         if self.dragging_slot is self.crafting.output_slot:
             self.crafting.output_taken()
@@ -173,8 +196,24 @@ class Inventory (ItemContainer):
             if slot.collidepoint(self.mouse_pos):
                 if self.dragging_slot is self.crafting.output_slot and slot:
                     self.add(self.dragging_slot)
+
+                elif slot is self.clothes_slot_1:
+                    if self.dragging_slot.in_family("wearable") and self.dragging_slot.in_family("hat"):
+                        self.move_slot(self.dragging_slot, slot)
+                    else:
+                        continue
+
+                elif slot is self.clothes_slot_2:
+                    if self.dragging_slot.in_family("wearable") and self.dragging_slot.in_family("jacket"):
+                        self.move_slot(self.dragging_slot, slot)
+                    else:
+                        continue
+
                 else:
-                    self.move_slot(self.dragging_slot, slot)
+                    if self.dragging_slot in [self.clothes_slot_1, self.clothes_slot_2] and slot:
+                        self.player.drop_item(dropall=True, slot=self.dragging_slot)
+                    else:
+                        self.move_slot(self.dragging_slot, slot)
                 
                 self.dragging_slot = {}
                 break

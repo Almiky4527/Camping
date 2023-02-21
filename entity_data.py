@@ -79,6 +79,16 @@ ITEMS = {
         "family": ["item", "rope"],
         "max_count": 8
     },
+    ITEM_JACKET: {
+        "family": ["item", "wearable", "jacket"],
+        "warmth": 0.6,
+        "max_count": 1
+    },
+    ITEM_HAT: {
+        "family": ["item", "wearable", "hat"],
+        "warmth": 0.2,
+        "max_count": 1
+    },
     ITEM_HARE_MEAT: {
         "family": ["item", "meat", "cookable"],
         "cooking_gives": ITEM_HARE_MEAT_COOKED,

@@ -103,6 +103,8 @@ TEXTURES_RECTS = {
         STONE: Rect(120, ITEM_ROW_1_Y, 16, 16),
         ITEM_THREAD: Rect(137, ITEM_ROW_1_Y, 16, 16),
         ITEM_ROPE: Rect(154, ITEM_ROW_1_Y, 16, 16),
+        ITEM_JACKET: Rect(171, ITEM_ROW_1_Y, 16, 16),
+        ITEM_HAT: Rect(188, ITEM_ROW_1_Y, 16, 16),
         ITEM_BERRIES0: Rect(154, ITEM_ROW_2_Y, 16, 16),
         ITEM_BLUEBERRIES: Rect(171, ITEM_ROW_2_Y, 16, 16),
         ITEM_HARE_MEAT: Rect(188, ITEM_ROW_2_Y, 16, 16),
@@ -139,6 +141,8 @@ TEXTURES_RECTS = {
         SLOT_DEFAULT: Rect(1, INVENTORY_ROW_1_Y, 22, 22),
         SLOT_PLUS: Rect(24, INVENTORY_ROW_1_Y, 22, 22),
         SLOT_EQUALS: Rect(47, INVENTORY_ROW_1_Y, 22, 22),
+        SLOT_WEAR_JACKET: Rect(70, INVENTORY_ROW_1_Y, 22, 22),
+        SLOT_WEAR_HAT: Rect(93, INVENTORY_ROW_1_Y, 22, 22),
     },
     "objects": {
         DEFAULT: Rect(1, OBJECTS_ROW_1_Y, 26, 26),

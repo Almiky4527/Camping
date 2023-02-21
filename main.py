@@ -132,7 +132,9 @@ class MainGame:
             [ITEM_AXE],
             [ITEM_TENT],
             [ITEM_MATCHES, 32],
-            [ITEM_CABIN_PLAN]
+            [ITEM_CABIN_PLAN],
+            [ITEM_JACKET],
+            [ITEM_HAT]
         ]
 
         for item_data_and_count in STARTING_ITEMS:

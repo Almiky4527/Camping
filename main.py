@@ -124,6 +124,7 @@ class MainGame:
     def setup_world(self):
         self.world = World(self)
         self.world.generate(INITIAL_GENERATION)
+        self.world.next_season()
 
     def setup_inventory(self):
         self.inventory = Inventory( [ {} for _ in range(9) ], self )
@@ -282,23 +283,21 @@ class MainGame:
         if self.inventory.expanded:
             self.inventory.toggle_expand()
 
-        self.player.stop_action()
-
         if save_type == "outside":
             _player_hurt_on_sleep()
         
         elif save_type == "tent":
             tent = self.player.target
             is_burning_campfire = lambda child: child.in_family("campfire") and child.in_family("fire")
-            burning_campfires = filter( is_burning_campfire, self.world.children )
+            burning_campfires = list( filter( is_burning_campfire, self.world.children ) )
 
             if burning_campfires:
                 dist_to_tent = lambda child: ( pg.Vector2(tent.position) - child.position ).length()
-                nearest_burning_campfire = min(burning_campfires, dist_to_tent)
+                nearest_burning_campfire = min(burning_campfires, key=dist_to_tent)
                 dist_to_nearest_burning_campfire = ( pg.Vector2(tent.position) - nearest_burning_campfire.position ).length()
 
-                if dist_to_nearest_burning_campfire <= 50:
-                    pass
+                if dist_to_nearest_burning_campfire <= 150:
+                    print("sleeping near campfire")
                 else:
                     _player_hurt_on_sleep()
             else:
@@ -306,6 +305,8 @@ class MainGame:
             
         elif save_type == "cabin":
             pass
+
+        self.player.stop_action()
         
         # Skip to the next day
         # self.world.next_day()

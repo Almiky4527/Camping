@@ -359,7 +359,7 @@ class Entity (BaseEntity):
             self.target.damage(self.attack_damage)
             
             if self.stamina:
-                stamina = self.stamina - 5
+                stamina = self.stamina - ( 5 + self.hot*100 )
                 self.set_stamina(stamina)
             
             self.action_time = 0
@@ -485,6 +485,8 @@ class Entity (BaseEntity):
     def update_image(self):
         if self.in_family("loot"):
             self.image = self.parent.texture_container.get(self.id + LOOT_SUBTYPE)
+        elif self.in_family("fire"):
+            self.set_texture_set(self.parent.texture_container[self.id + BURNING_SUBTYPE])
         elif self.parent.season == SEASON_WINTER:
             pass
         elif self.in_family("interact_loot"):

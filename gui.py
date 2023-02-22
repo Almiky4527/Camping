@@ -110,8 +110,12 @@ class GUI:
         # --- Player Health Bar ---
         rect = pg.Rect(100, 16, 100, 16)
         health = round(self.player.health)
-        self.draw_progress_bar(rect, health)
+        self.draw_health_bar(rect, health)
         # -------------------------
+
+        # --- Player Temperature ---
+        self.print_temperature()
+        # --------------------------
     
         # --- Player Saturation Bar ---
         rect = pg.Rect(100, 40, 100, 16)
@@ -122,7 +126,7 @@ class GUI:
         # --- Player Stamina Bar ---
         rect = pg.Rect(100, 64, 100, 16)
         stamina = round(self.player.stamina)
-        self.draw_progress_bar( rect, stamina, colors=(LESS_RED, YELLOW) )
+        self.draw_stamina_bar(rect, stamina)
         # --------------------------
 
         # --- Player Energy Bar ---
@@ -141,6 +145,25 @@ class GUI:
         value_percentage = value / max_value
         rect.w *= value_percentage
         pg.draw.rect(self.screen, colors[1], rect)
+    
+    def draw_health_bar(self, rect, value):
+        cold_bar_rect = rect.copy()
+        self.draw_progress_bar(rect, value)
+
+        bar = pg.Surface(cold_bar_rect.size)
+        bar.fill(CYAN)
+        a = min( 255*(self.player.cold*10), 255 )
+        bar.set_alpha(a)
+        self.screen.blit(bar, cold_bar_rect)
+    
+    def draw_stamina_bar(self, rect, value):
+        self.draw_progress_bar( rect, value, colors=(LESS_RED, YELLOW) )
+    
+        bar = pg.Surface(rect.size)
+        bar.fill(RED)
+        a = min( 255*(self.player.hot*8), 150 )
+        bar.set_alpha(a)
+        self.screen.blit(bar, rect)
     
     def print_item_name( self, item_data : dict, position=(45, 90), colors=(STORY_TEXT_WHITE, SLIGHTLY_LESS_BLACK) ):
         item_id = item_data["id"]
@@ -199,6 +222,18 @@ class GUI:
         time_text = f"{ minutes.zfill(2) }:{ seconds.zfill(2) }"
 
         screen_print(self.screen, time_text, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
+    
+    def print_temperature( self, position=(70*SCALE, 5*SCALE) ):
+        font = self.texture_container.story_font
+        font.set_bold(False)
+        colors = ( WHITE, SLIGHTLY_LESS_BLACK )
+
+        temp = f"{ round(self.player.temperature, 2) }°C"
+        cold, hot = self.player.cold, self.player.hot
+        state = f"cold ({ round(cold*100) }%)" if cold else f"hot ({ round(hot*100) }%)" if hot else "normal"
+        screen_print(self.screen, temp, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
+        position = position[0], position[1] + 10*SCALE
+        screen_print(self.screen, state, font, colors=colors, inflation=(10, 6), br=3, topleft=position)
     
     def get_input(self, events):
         for ev in events:

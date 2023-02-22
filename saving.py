@@ -75,8 +75,10 @@ class SaveLoadStream:
         game = self.game
         inventory_slots = inventory_data["slots"]
         inventory_slot_index = inventory_data["slot_index"]
+        cs1 = inventory_data["clothes_slot_1"]
+        cs2 = inventory_data["clothes_slot_2"]
 
-        game.inventory = Inventory(inventory_slots, game)
+        game.inventory = Inventory(inventory_slots, game, cs1, cs2)
         game.inventory.slot_index = inventory_slot_index
         print("Loaded Inventory.")
     

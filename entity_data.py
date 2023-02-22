@@ -129,6 +129,8 @@ ENTITIES = {
         "box_size": [10, 2],
         "reach_size": [20, 10],
 
+        "temperature": 37,
+
         "health": 100,
         "speed": 2,
         "stamina": 100,

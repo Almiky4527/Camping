@@ -18,6 +18,8 @@ MIN_STAMINA_FOR_ACTION = 0
 
 
 class Player (Entity):
+    NORMAL_TEMPERATURE = 37
+    NORMAL_TEMPERATURE_RANGE = [36.5, 37.5]
 
     def __init__(self, game, name="JohnDoe", *args, **kwargs):
         self.game = game
@@ -82,6 +84,27 @@ class Player (Entity):
             return False
         
         return self.target and self.in_reach_of_action and self.action == self.loot
+    
+    @property
+    def temperature(self):
+        return self.data["temperature"]
+    
+    @property
+    def cold(self):
+        return round( abs( 1 - min( self.temperature / self.NORMAL_TEMPERATURE_RANGE[0], 1 ) ), 2 )
+    
+    @property
+    def hot(self):
+        return round( abs( 1 - max( self.temperature / self.NORMAL_TEMPERATURE_RANGE[1], 1 ) ), 2 )
+    
+    @property
+    def warmth(self):
+        clothes_slot_1, clothes_slot_2 = self.inventory.clothes_slot_1, self.inventory.clothes_slot_2
+        return clothes_slot_1.get("warmth", 0) + clothes_slot_2.get("warmth", 0)
+    
+    @property
+    def is_warming_up(self):
+        return self.action == self.warm_up
 
     @property
     def is_sprinting(self):
@@ -95,6 +118,12 @@ class Player (Entity):
 
     def set_energy(self, value : int):
         self.energy = max( 0, min(value, 100) )
+    
+    def set_temperature(self, value: int):
+        self.data["temperature"] = value
+    
+    def set_attack_cooldown(self, value : float):
+        self.data["attack_cooldown"] = max(0, value)
 
     def get_input(self, events):
         keys = key.get_pressed()
@@ -116,8 +145,6 @@ class Player (Entity):
                     self.checkout()
                 elif ev.key == pg.K_i:
                     self.checkout_item()
-                elif ev.key == pg.K_k:
-                    self.die()
 
             elif ev.type == pg.MOUSEBUTTONDOWN:
                 if ev.button == pg.BUTTON_LEFT:
@@ -140,9 +167,23 @@ class Player (Entity):
         stamina = self.stamina
 
         if self.is_sprinting:
-            stamina = self.stamina - (10 / FPS)
+            if self.hot >= 0.13:
+                stamina = self.stamina - (14 / FPS)
+            elif self.hot >= 0.07:
+                stamina = self.stamina - (12 / FPS)
+            elif self.hot >= 0.03:
+                stamina = self.stamina - (11 / FPS)
+            else:
+                stamina = self.stamina - (10 / FPS)
         elif not self.is_moving:
-            stamina = self.stamina + (5 / FPS)
+            if self.cold >= 0.15:
+                stamina = self.stamina + (2 / FPS)
+            elif self.cold >= 0.08:
+                stamina = self.stamina + (3 / FPS)
+            elif self.cold >= 0.03:
+                stamina = self.stamina + (4 / FPS)
+            else:
+                stamina = self.stamina + (5 / FPS)
         
         self.set_stamina(stamina)
     
@@ -163,6 +204,26 @@ class Player (Entity):
                 get_text(self.lang, "actions", "energy_low")
             )
             self.energy_warned = True
+        
+    def update_temperature(self):
+        world_temp = self.world.temperature
+
+        if self.cold >= 0.02:
+            self.set_attack_cooldown(0.8)
+        else:
+            self.set_attack_cooldown(0.5)
+
+        if self.temperature == world_temp + 10.5:
+            return
+
+        if world_temp + 10.5 < self.NORMAL_TEMPERATURE and not self.is_warming_up:
+            dif = ( 0.05 - (self.warmth/20) ) / FPS
+            temp = self.temperature - dif
+            self.set_temperature(temp)
+        elif world_temp + 10.5 > self.NORMAL_TEMPERATURE:
+            dif = ( 0.01 + (self.warmth/20) ) / FPS
+            temp = self.temperature + dif
+            self.set_temperature(temp)
 
     def update_vector(self, keys):
         if keys[pg.K_w] or keys[pg.K_a] or keys[pg.K_s] or keys[pg.K_d]:
@@ -268,6 +329,9 @@ class Player (Entity):
 
             self.inventory.pop(self.selected_slot)
             entry[1] -= 1
+            
+            stamina = self.stamina - ( 10 + self.hot*100 )
+            self.set_stamina(stamina)
         
         get_amount = lambda entry: entry[1]
         building_finished = sum( map(get_amount, required_build_materials) ) == 0
@@ -392,7 +456,14 @@ class Player (Entity):
                 get_text(self.lang,"actions","fire","inspect",2)
             )
         
-        self.stop_action()
+        # self.stop_action()
+
+        self. action = self.warm_up
+    
+    def warm_up(self):
+        dif = ( 0.01 + (self.warmth/20) ) / FPS
+        temp = self.temperature + dif
+        self.set_temperature(temp)
     
     def loot(self):
         target_name = get_name(self.target.id, self.lang)
@@ -412,7 +483,7 @@ class Player (Entity):
             self.action_time = 0
         else:
             self.action_time += 1
-            stamina = self.stamina - (10 / FPS)
+            stamina = self.stamina - ( ( 10 + self.hot*10 ) / FPS )
             self.set_stamina(stamina)
 
         if not self.target.in_family("loot"):
@@ -469,6 +540,7 @@ class Player (Entity):
         self.update_stamina()
         self.update_saturation()
         self.update_energy()
+        self.update_temperature()
     
     def die(self):
         self.set_health(0)

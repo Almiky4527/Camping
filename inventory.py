@@ -8,7 +8,7 @@ SLOT_POS = 45, 45
 
 class Inventory (ItemContainer):
 
-    def __init__(self, slots, parent):
+    def __init__(self, slots, parent, clothes_slot_1=None, clothes_slot_2=None):
         self.parent = parent
         self.expanded = False
 
@@ -24,10 +24,10 @@ class Inventory (ItemContainer):
 
         x, y = SCREEN_CENTER[0] - 22*SCALE, SCREEN_CENTER[1] - 13*SCALE
         img_slot_hat = self.texture_container.get(SLOT_WEAR_HAT)
-        self.clothes_slot_1 = ItemSlot( img_slot_hat, {}, (x, y) )
+        self.clothes_slot_1 = ItemSlot( img_slot_hat, clothes_slot_1 if clothes_slot_1 else {}, (x, y) )
         x = SCREEN_CENTER[0] + 22*SCALE
         img_slot_jacket = self.texture_container.get(SLOT_WEAR_JACKET)
-        self.clothes_slot_2 = ItemSlot( img_slot_jacket, {}, (x, y) )
+        self.clothes_slot_2 = ItemSlot( img_slot_jacket, clothes_slot_2 if clothes_slot_2 else {}, (x, y) )
 
     @property
     def font(self):
@@ -53,7 +53,9 @@ class Inventory (ItemContainer):
     def data(self):
         return {
             "slot_index": self.slot_index,
-            "slots": self.slots_data
+            "slots": self.slots_data,
+            "clothes_slot_1": dict(self.clothes_slot_1),
+            "clothes_slot_2": dict(self.clothes_slot_2)
         }
 
     def add_item(self, item):
@@ -150,6 +152,10 @@ class Inventory (ItemContainer):
         
         self.expanded = not self.expanded
         self.player.stop_moving()
+
+        if self.player.is_warming_up:
+            return
+            
         self.player.stop_action()
     
     def update_hover_slot(self):

@@ -46,7 +46,18 @@ class World:
     
     @property
     def season(self) -> int:
-        return (self.day // self.DAYS_IN_SEASON) % 4
+        return 3 + ( (self.day // self.DAYS_IN_SEASON) % 4 )
+    
+    @property
+    def temperature(self) -> int:
+        if self.season == SEASON_SPRING:
+            return 26
+        elif self.season == SEASON_SUMMER:
+            return 36
+        elif self.season == SEASON_AUTUMN:
+            return 12
+        elif self.season == SEASON_WINTER:
+            return 0
     
     @property
     def seconds(self) -> int:
@@ -54,7 +65,7 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return self.seconds >= self.TIME_TO_SKIP
+        return True # self.seconds >= self.TIME_TO_SKIP
     
     @property
     def animal_cap_reached(self) -> bool:

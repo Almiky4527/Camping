@@ -33,6 +33,7 @@ TEXTS = {
             ROCK2: "Rock",
             ROCK3: "Rock",
             ROCK4: "Rock",
+            STONE: "Stone",
 
             ITEM_BERRIES0: "Berries",
             ITEM_BLUEBERRIES: "Wild Blueberries",
@@ -42,16 +43,28 @@ TEXTS = {
             ITEM_PLANT2: "Plant",
             ITEM_PLANT3: "Parched Plant",
 
-            STONE: "Stone",
-
             ITEM_THREAD: "Thread",
             ITEM_ROPE: "Rope",
+            ITEM_JACKET: "Jacket",
+            ITEM_HAT: "Hat",
 
             ENTITY_CAMPFIRE: "Campfire",
             ENTITY_TENT: "Tent",
 
             BUSH_LARGE: "Large Bush",
             BUSH_SMALL: "Small Bush",
+
+            ITEM_HARE_MEAT: "Hare Meat",
+            ITEM_HARE_MEAT_COOKED: "Coodek Hare Meat",
+            ITEM_HARE_HIDE: "Hare Hide",
+            ITEM_DEER_MEAT: "Deer Meat",
+            ITEM_DEER_MEAT_COOKED: "Cooked Deer Meat",
+            ITEM_DEER_HIDE: "Deer Hide",
+            ITEM_WOLF_MEAT: "Wolf Meat",
+            ITEM_WOLF_MEAT_COOKED: "Cooked Wolf Meat",
+            ITEM_WOLF_HIDE: "Wolf Hide",
+
+            ITEM_4D617877656C6C: "Maxwell",
         },
         "legends": {
             ITEM_LOG: "Good for fire or building.",
@@ -61,14 +74,15 @@ TEXTS = {
             ITEM_MATCHES: "Something to start the fire with.",
             ITEM_CAMPFIRE: "Essential for your survival.",
 
-            ITEM_CABIN_PLAN: "50 Logs, 30 Sticks, 20 Ropes, 20 Rocks.",
+            ITEM_CABIN_PLAN: "100 Logs, 50 Sticks, 20 Ropes, 20 Rocks.",
 
             ROCK0: "A great crafting ingredient.",
             ROCK1: "A great crafting ingredient.",
-            ROCK2: "My beloved.",
+            ROCK2: "Hides no secret...",
             ROCK3: "A great crafting ingredient.",
             ROCK4: "A great crafting ingredient.",
-
+            STONE: "Or a pebble.",
+            
             ITEM_BERRIES0: "A light source of food.",
             ITEM_BLUEBERRIES: "A light source of food.",
 
@@ -77,10 +91,22 @@ TEXTS = {
             ITEM_PLANT2: "A great crafting ingredient.",
             ITEM_PLANT3: "A great crafting ingredient.",
 
-            STONE: "Or a pebble.",
-
             ITEM_THREAD: "A great crafting ingredient.",
             ITEM_ROPE: "Crafting ingredient, building materail.",
+            ITEM_JACKET: "Keeps you warm in cold weather.",
+            ITEM_HAT: "Keeps you warm in cold weather.",
+
+            ITEM_HARE_MEAT: "Needs to be cooked before eating.",
+            ITEM_HARE_MEAT_COOKED: "A better food source.",
+            ITEM_HARE_HIDE: "Can be used to make a hat.",
+            ITEM_DEER_MEAT: "Needs to be cooked before eating.",
+            ITEM_DEER_MEAT_COOKED: "A great food source.",
+            ITEM_DEER_HIDE: "Can be used to make a coat.",
+            ITEM_WOLF_MEAT: "Needs to be cooked before eating.",
+            ITEM_WOLF_MEAT_COOKED: "A great food source.",
+            ITEM_WOLF_HIDE: "Can be used to make a coat.",
+
+            ITEM_4D617877656C6C: "My beloved.",
         },
         "world": {
             SEASON_SPRING: "Spring",
@@ -210,6 +236,7 @@ TEXTS = {
             ROCK2: "Kameň",
             ROCK3: "Kameň",
             ROCK4: "Kameň",
+            STONE: "Kamienok",
 
             ITEM_BERRIES0: "Bobule",
             ITEM_BLUEBERRIES: "Divoké Čučoriedky",
@@ -219,16 +246,28 @@ TEXTS = {
             ITEM_PLANT2: "Rastlina",
             ITEM_PLANT3: "Vysušená Rastlina",
 
-            STONE: "Kamienok",
-
             ITEM_THREAD: "Niť",
             ITEM_ROPE: "Lano",
+            ITEM_JACKET: "Kabát",
+            ITEM_HAT: "Čapica",
 
             ENTITY_CAMPFIRE: "Táborák",
             ENTITY_TENT: "Stan",
 
             BUSH_LARGE: "Veľký Ker",
             BUSH_SMALL: "Malý Ker",
+
+            ITEM_HARE_MEAT: "Králičia Mäso",
+            ITEM_HARE_MEAT_COOKED: "Uvarené Králičia Mäso",
+            ITEM_HARE_HIDE: "Králičia Kožušina",
+            ITEM_DEER_MEAT: "Jelenie Mäso",
+            ITEM_DEER_MEAT_COOKED: "Uvarené Jelenie Mäso",
+            ITEM_DEER_HIDE: "Jelenia Kožušina",
+            ITEM_WOLF_MEAT: "Vlčie Mäso",
+            ITEM_WOLF_MEAT_COOKED: "Uvarené Vlčie Mäso",
+            ITEM_WOLF_HIDE: "Vlčia Kožušina",
+
+            ITEM_4D617877656C6C: "Maxwell"
         },
         "legends": {
             ITEM_LOG: "Dobré na oheň alebo stavanie.",
@@ -238,13 +277,14 @@ TEXTS = {
             ITEM_MATCHES: "Hodia sa na založenie ohňa.",
             ITEM_CAMPFIRE: "Nevyhnutný na tvoje prežitie.",
 
-            ITEM_CABIN_PLAN: "50 Polien, 30 Palíc, 20 Lán, 20 Kameňov.",
+            ITEM_CABIN_PLAN: "100 Polien, 50 Palíc, 20 Lán, 20 Kameňov.",
 
             ROCK0: "Skvelá prísada na tvorenie.",
             ROCK1: "Skvelá prísada na tvorenie.",
-            ROCK2: "Môj milovaný.",
+            ROCK2: "Neskrýva žiadnu tajnosť...",
             ROCK3: "Skvelá prísada na tvorenie.",
             ROCK4: "Skvelá prísada na tvorenie.",
+            STONE: "Alebo okruhliak.",
 
             ITEM_BERRIES0: "Ľahký zdroj potravy.",
             ITEM_BLUEBERRIES: "Ľahký zdroj potravy.",
@@ -254,10 +294,22 @@ TEXTS = {
             ITEM_PLANT2: "Skvelá prísada na tvorenie.",
             ITEM_PLANT3: "Skvelá prísada na tvorenie.",
 
-            STONE: "Alebo okruhliak.",
-
             ITEM_THREAD: "Skvelá prísada na tvorenie.",
             ITEM_ROPE: "Prísada na tvorenie, stavebný materiál.",
+            ITEM_JACKET: "Udrží ťa v teple v chladnom počasí.",
+            ITEM_HAT: "Udrží ťa v teple v chladnom počasí.",
+
+            ITEM_HARE_MEAT: "Musí sa uvariť pred jedením.",
+            ITEM_HARE_MEAT_COOKED: "Lepší zdroj potravy.",
+            ITEM_HARE_HIDE: "Môže sa použiť na výrobu čapice.",
+            ITEM_DEER_MEAT: "Musí sa uvariť pred jedením.",
+            ITEM_DEER_MEAT_COOKED: "Skvelí zdroj potravy.",
+            ITEM_DEER_HIDE: "Môže sa použiť na výrobu kabátu.",
+            ITEM_WOLF_MEAT: "Musí sa uvariť pred jedením.",
+            ITEM_WOLF_MEAT_COOKED: "Skvelí zdroj potravy.",
+            ITEM_WOLF_HIDE: "Môže sa použiť na výrobu kabátu.",
+
+            ITEM_4D617877656C6C: "Môj milovaný."
         },
         "world": {
             SEASON_SPRING: "Jar",

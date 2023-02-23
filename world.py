@@ -46,7 +46,7 @@ class World:
     
     @property
     def season(self) -> int:
-        return 3 + ( (self.day // self.DAYS_IN_SEASON) % 4 )
+        return 0 + ( (self.day // self.DAYS_IN_SEASON) % 4 )
     
     @property
     def temperature(self) -> int:
@@ -65,7 +65,7 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return True # self.seconds >= self.TIME_TO_SKIP
+        return self.seconds >= self.TIME_TO_SKIP # True
     
     @property
     def animal_cap_reached(self) -> bool:
@@ -245,7 +245,7 @@ class World:
             if not child.saturation:
                 continue
 
-            saturation = child.saturation - randint(20, 30)
+            saturation = child.saturation - randint(50, 70)
             child.set_saturation(saturation)
     
     def despawn_animals(self):
@@ -295,8 +295,13 @@ class World:
         if self.player.saturation == 0:
             health = self.player.health - randint(20, 30)
             self.player.set_health(health)
+
         elif self.player.saturation >= 20:
-            health = self.player.health + randint(10, 30)
+            if self.player.temperature >= self.player.NORMAL_TEMPERATURE_RANGE[0]:
+                health = self.player.health + randint(30, 50)
+            else:
+                health = self.player.health + randint(10, 30)
+
             self.player.set_health(health)
 
     def spawn( self, position, data, scatter=(0, 0) ):

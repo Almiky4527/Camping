@@ -67,17 +67,22 @@ ITEMS = {
         "family": ["item", "item_plant", "thread_maker"],
         "max_count": 32
     },
+    ROCK2: {
+        "family": ["item", "cookable"],
+        "cooking_gives": ITEM_4D617877656C6C,
+        "max_count": 1
+    },
     STONE: {
         "family": ["item", "stone"],
         "max_count": 8
     },
     ITEM_THREAD: {
         "family": ["item", "thread"],
-        "max_count": 16
+        "max_count": 32
     },
     ITEM_ROPE: {
         "family": ["item", "rope"],
-        "max_count": 8
+        "max_count": 20
     },
     ITEM_JACKET: {
         "family": ["item", "wearable", "jacket"],
@@ -102,6 +107,10 @@ ITEMS = {
     ITEM_HARE_HIDE: {
         "family": ["item", "hide", "hare_hide"],
         "max_count": 16
+    },
+    ITEM_4D617877656C6C: {
+        "family": ["item", "cat"],
+        "max_count": 1
     }
 }
 

@@ -41,6 +41,20 @@ RECIPES = [
         "ingredients": [
             [ITEM_THREAD, 6]
         ]
+    },
+    {
+        "result": ITEM_JACKET,
+        "ingredients": [
+            [ITEM_DEER_HIDE, 1],
+            [ITEM_THREAD, 20]
+        ]
+    },
+    {
+        "result": ITEM_HAT,
+        "ingredients": [
+            [ITEM_HARE_HIDE, 2],
+            [ITEM_THREAD, 10]
+        ]
     }
 ]
 

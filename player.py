@@ -207,13 +207,17 @@ class Player (Entity):
         
     def update_temperature(self):
         world_temp = self.world.temperature
+        
+        if self.cold >= 0.10:
+            health = self.health - 1 / FPS
+            self.set_health(health)
 
         if self.cold >= 0.02:
             self.set_attack_cooldown(0.8)
         else:
             self.set_attack_cooldown(0.5)
 
-        if self.temperature == world_temp + 10.5:
+        if world_temp + 10.4 < self.temperature < world_temp + 10.6:
             return
 
         if world_temp + 10.5 < self.NORMAL_TEMPERATURE and not self.is_warming_up:
@@ -403,14 +407,14 @@ class Player (Entity):
         if success:
             target.light_on_fire()
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","lit").format(target=target_name, item=item_name)
+                get_text(self.lang, "actions", "fire", "lit").format(target=target_name, item=item_name)
             )
+            self. action = self.warm_up
         else:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","fail").format(item=item_name)
+                get_text(self.lang, "actions", "fire", "fail").format(item=item_name)
             )
-
-        self.stop_action()
+            self.stop_action()
 
     def feed_fire(self):
         if not self.can_feed_fire:
@@ -425,7 +429,7 @@ class Player (Entity):
 
         if saturation > 100:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","no_feed")
+                get_text(self.lang, "actions", "fire", "no_feed")
             )
             self.stop_action()
             return
@@ -433,9 +437,11 @@ class Player (Entity):
         target.set_saturation(saturation)
         self.inventory.pop(self.selected_slot)
         self.game.gui.set_prompt_text(
-            get_text(self.lang,"actions","fire","feed").format(item=item_name)
+            get_text(self.lang ,"actions", "fire", "feed").format(item=item_name)
         )
-        self.stop_action()
+
+        # self.stop_action()
+        self. action = self.warm_up
     
     def isnpect_fire(self):
         fire = self.target
@@ -445,19 +451,18 @@ class Player (Entity):
             return
         elif saturation >= 80:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","inspect",0)
+                get_text(self.lang, "actions", "fire", "inspect", 0)
             )
         elif saturation >= 20:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","inspect",1)
+                get_text(self.lang, "actions", "fire", "inspect", 1)
             )
         else:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","fire","inspect",2)
+                get_text(self.lang, "actions", "fire", "inspect", 2)
             )
         
         # self.stop_action()
-
         self. action = self.warm_up
     
     def warm_up(self):
@@ -468,7 +473,7 @@ class Player (Entity):
     def loot(self):
         target_name = get_name(self.target.id, self.lang)
         self.game.gui.set_prompt_text(
-            get_text(self.lang,"actions","loot","search").format(target=target_name)
+            get_text(self.lang, "actions", "loot", "search").format(target=target_name)
         )
 
         stamina = self.stamina - (LOOTING_STAMINA_PRICE / FPS)
@@ -512,11 +517,11 @@ class Player (Entity):
 
             entity_name = get_name(spawn_id, self.lang)
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","place","success").format(thing=entity_name)
+                get_text(self.lang, "actions", "place", "success").format(thing=entity_name)
             )
         except CannotSpawnHere:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","place","fail")
+                get_text(self.lang, "actions", "place", "fail")
             )
     
     def eat_item(self):
@@ -525,14 +530,14 @@ class Player (Entity):
 
         if self.saturation + food_value > 100:
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","eat","fail")
+                get_text(self.lang, "actions", "eat", "fail")
             )
         else:
             self.set_saturation(self.saturation + food_value)
             self.inventory.pop(self.selected_slot)
             item_name = get_name(item_id, self.lang)
             self.game.gui.set_prompt_text(
-                get_text(self.lang,"actions","eat","success").format(food=item_name)
+                get_text(self.lang, "actions", "eat", "success").format(food=item_name)
             )
 
     def update(self):

@@ -298,13 +298,15 @@ class MainGame:
 
                 if dist_to_nearest_burning_campfire <= 150:
                     print("sleeping near campfire")
+                    self.player.set_temperature(self.player.NORMAL_TEMPERATURE)
                 else:
                     _player_hurt_on_sleep()
             else:
                 _player_hurt_on_sleep()
             
         elif save_type == "cabin":
-            pass
+            print("sleeping in cabin")
+            self.player.set_temperature(self.player.NORMAL_TEMPERATURE)
 
         self.player.stop_action()
         

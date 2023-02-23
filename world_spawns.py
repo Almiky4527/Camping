@@ -38,28 +38,34 @@ INITIAL_GENERATION = [
             },
             {
                 "id": ROCK0,
-                "weight": 2,
+                "weight": 3,
                 "scatter": (50, 30)
             },
             {
                 "id": ROCK1,
-                "weight": 2,
+                "weight": 3,
                 "scatter": (50, 30)
             },
             {
                 "id": ROCK2,
-                "weight": 1,
+                "weight": 3,
                 "scatter": (50, 30)
             },
             {
                 "id": ROCK3,
-                "weight": 2,
+                "weight": 3,
                 "scatter": (50, 30)
             },
             {
                 "id": ROCK4,
-                "weight": 2,
+                "weight": 3,
                 "scatter": (50, 30)
+            },
+            {
+                "id": STONE,
+                "weight": 2,
+                "scatter": (100, 60),
+                "scattered_positions": (1, 2)
             }
         ]
     },

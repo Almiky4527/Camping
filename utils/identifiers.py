@@ -60,6 +60,8 @@ ITEM_DEER_MEAT_COOKED = "item.deer_meat_cooked"
 ITEM_WOLF_MEAT = "item.wolf_meat"
 ITEM_WOLF_HIDE = "item.wolf_hide"
 ITEM_WOLF_MEAT_COOKED = "item.wolf_meat_cooked"
+
+ITEM_4D617877656C6C = "item.4d617877656c6c"
 # -------------
 
 

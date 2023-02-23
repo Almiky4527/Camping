@@ -91,7 +91,12 @@ class Camera:
         shadow_id = SHADOW_SUBTYPE + entity_id
 
         if shadow_id in self.texture_container:
-            return self.texture_container.get(shadow_id)
+            shadow_s = self.texture_container.get(shadow_id)
+
+            if type(shadow_s) == list:
+                return shadow_s[entity.direction]
+
+            return shadow_s
 
         elif entity.in_family("small"):
             return self.texture_container["shadows"][SHADOW_SMALL]

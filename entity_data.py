@@ -328,12 +328,12 @@ ENTITIES = {
         "health": 100,
         "speed": 2,
         "reach_size": [20, 10],
-        "max_travel_dist": 300,
+        "max_travel_dist": 300, # 300
         "travel_chance": 0.001,
         "run_away_from": [
             {
                 "family": "player",
-                "see_dist": 350,
+                "see_dist": 300, # 300
                 "run_dist": 2
             }
         ],

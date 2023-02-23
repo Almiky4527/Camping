@@ -30,6 +30,7 @@ ITEM_ROW_1_Y = 214
 ITEM_ROW_2_Y = 231
 
 ANIMAL_ROW_Y = 464
+ANIMAL_ROW_2_Y = 480
 
 INVENTORY_ROW_1_Y = 384
 
@@ -171,6 +172,12 @@ TEXTURES_RECTS = {
         SHADOW_SUBTYPE + BUSH_SMALL: Rect(90, SHADOWS_ROW_Y + 7, 20, 6),
 
         SHADOW_SUBTYPE + ANIMAL_HARE: Rect(0, 332, 13, 9),
+        SHADOW_SUBTYPE + ANIMAL_DEER: [
+            Rect(63, 351, 9, 14),
+            Rect(73, 351, 9, 14),
+            Rect(40, 355, 22, 3),
+            Rect(40, 351, 22, 3),
+        ],
     },
     ENTITY_CAMPFIRE + BURNING_SUBTYPE: {
         SOUTH: [
@@ -218,6 +225,28 @@ TEXTURES_RECTS = {
             Rect(172, ANIMAL_ROW_Y, 14, 9),
         ],
     },
+    ANIMAL_DEER: {
+        SOUTH: [
+            Rect(1, ANIMAL_ROW_2_Y, 7, 22),
+            Rect(9, ANIMAL_ROW_2_Y, 7, 22),
+            Rect(17, ANIMAL_ROW_2_Y, 7, 22),
+        ],
+        NORTH: [
+            Rect(25, ANIMAL_ROW_2_Y, 7, 22),
+            Rect(33, ANIMAL_ROW_2_Y, 7, 22),
+            Rect(41, ANIMAL_ROW_2_Y, 7, 22),
+        ],
+        EAST: [
+            Rect(49, ANIMAL_ROW_2_Y, 25, 21),
+            Rect(75, ANIMAL_ROW_2_Y, 25, 21),
+            Rect(101, ANIMAL_ROW_2_Y, 25, 21),
+        ],
+        WEST: [
+            Rect(127, ANIMAL_ROW_2_Y, 25, 21),
+            Rect(153, ANIMAL_ROW_2_Y, 25, 21),
+            Rect(179, ANIMAL_ROW_2_Y, 25, 21),
+        ],
+    },
 }
 
 
@@ -262,7 +291,11 @@ class TextureContainer:
                     self.sets[texture_set_key][texture_key] = texture
         
         for texture in self["shadows"].values():
-            texture.set_alpha(SHADOWS_OPACITY)
+            if type(texture) == list:
+                for _texture in texture:
+                    _texture.set_alpha(SHADOWS_OPACITY)
+            else:
+                texture.set_alpha(SHADOWS_OPACITY)
         
         for texture_list in self["JohnDoe"].values():
             frame0 = texture_list[0]
@@ -273,6 +306,10 @@ class TextureContainer:
             texture_list.insert(2, frame0)
         
         for texture_list in self["animal"].values():
+            frame0 = texture_list[0]
+            texture_list.insert(2, frame0)
+        
+        for texture_list in self[ANIMAL_DEER].values():
             frame0 = texture_list[0]
             texture_list.insert(2, frame0)
 

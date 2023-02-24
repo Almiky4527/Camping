@@ -65,6 +65,7 @@ class Entity (BaseEntity):
     @property
     def direction_to_action(self):
         return directionalize(self.vector_to_action)
+        # return self.vector_to_action.normalize()
 
     @property
     def max_health(self):
@@ -105,6 +106,10 @@ class Entity (BaseEntity):
     @property
     def is_item(self):
         return self.in_family("item")
+    
+    @property
+    def is_projectile(self):
+        return self.in_family("projectile")
     
     @property
     def is_interactable(self):
@@ -338,7 +343,10 @@ class Entity (BaseEntity):
             self.target_position = self.target.position
 
         if self.target_position and not self.in_reach_of_action:
-            self.vector = self.direction_to_action
+            if self.is_projectile:
+                self.vector = self.vector_to_action.normalize()*3
+            else:
+                self.vector = self.direction_to_action
         elif self.target_position:
             self.stop_moving()
         
@@ -352,6 +360,8 @@ class Entity (BaseEntity):
             return
 
         if self.is_immobile and self.action:
+            self.action()
+        elif self.is_projectile and self.in_reach_of_action:
             self.action()
         elif self.target and self.in_reach_of_action:
             self.action()
@@ -378,6 +388,29 @@ class Entity (BaseEntity):
 
             if self.in_family("die_on_attack") and self.is_alive:
                 self.set_health(0)
+    
+    def projectile_hit(self):
+        def _scan_for_hit_entities():
+            for child in self.parent.children:
+                if child.is_immobile or child is self:
+                    continue
+
+                if self.in_reach(child.position):
+                    return child
+            
+            return
+
+        self.stop_moving()
+        hit_entity = _scan_for_hit_entities()
+
+        if hit_entity:
+            hit_entity.damage(self.attack_damage)
+        else:
+            projectile_item_data = item( self.data["projectile_item"] )
+            self.parent.spawn(self.position, projectile_item_data)
+
+        self.set_health(0)
+        self.stop_action()
     
     def forget_target(self):
         self.stop_action()
@@ -510,8 +543,6 @@ class Entity (BaseEntity):
         super().draw(screen, *args, **kwargs)
 
     def die(self):
-        print(f"{self.id}: i died!")
-
         self.set_health(0)
         self.parent.remove_child(self)
 

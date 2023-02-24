@@ -113,6 +113,8 @@ TEXTURES_RECTS = {
         ITEM_ROCK_TRAP: Rect(205, ITEM_ROW_1_Y, 16, 16),
         ITEM_ROCK_TRAP_PRIMED: Rect(222, ITEM_ROW_1_Y, 16, 16),
         ITEM_NOOSE_TRAP: Rect(239, ITEM_ROW_1_Y, 16, 16),
+        ITEM_BOW: Rect(256, ITEM_ROW_1_Y, 16, 16),
+        ITEM_ARROW: Rect(273, ITEM_ROW_1_Y, 16, 16),
         ITEM_4D617877656C6C: Rect(358, ITEM_ROW_2_Y, 16, 16),
     },
     "foliage": {
@@ -158,6 +160,7 @@ TEXTURES_RECTS = {
         "winter." + ENTITY_CABIN: Rect(272, OBJECTS_ROW_1_Y, 68, 70),
         ENTITY_ROCK_TRAP: Rect(49, 174, 15, 12),
         ENTITY_NOOSE_TRAP: Rect(28, 170, 20, 16),
+        ENTITY_ARROW: Rect(67, 170, 15, 16),
     },
     "shadows": {
         SHADOW_SMALL: Rect(1, SHADOWS_ROW_Y, 12, 3),
@@ -182,6 +185,8 @@ TEXTURES_RECTS = {
             Rect(40, 355, 22, 3),
             Rect(40, 351, 22, 3),
         ],
+
+        SHADOW_SUBTYPE + ENTITY_ARROW: Rect(253, SHADOWS_ROW_Y, 12, 4),
     },
     ENTITY_CAMPFIRE + BURNING_SUBTYPE: {
         SOUTH: [

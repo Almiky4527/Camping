@@ -134,6 +134,9 @@ class MainGame:
             [ITEM_TENT],
             [ITEM_MATCHES, 32],
             [ITEM_CABIN_PLAN],
+            [ITEM_BOW],
+            [ITEM_ARROW, 10],
+            [ITEM_SPAWN_HARE]
         ]
 
         for item_data_and_count in STARTING_ITEMS:

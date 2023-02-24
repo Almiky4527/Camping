@@ -65,6 +65,9 @@ ITEM_ROCK_TRAP = "item.rock_trap"
 ITEM_ROCK_TRAP_PRIMED = "item.rock_trap_primed"
 ITEM_NOOSE_TRAP = "item.noose_trap"
 
+ITEM_BOW = "item.bow"
+ITEM_ARROW = "item.arrow"
+
 # Testing
 ITEM_SPAWN_HARE = "item.spawn_hare"
 ITEM_SPAWN_BEAR = "item.spawn_bear"
@@ -109,6 +112,8 @@ ENTITY_CABIN = "entity.cabin"
 
 ENTITY_ROCK_TRAP = "entity.rock_trap"
 ENTITY_NOOSE_TRAP = "entity.noose_trap"
+
+ENTITY_ARROW = "entity.arrow"
 
 LOOT_SUBTYPE = ".loot"
 # ---------------------------

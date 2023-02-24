@@ -64,6 +64,10 @@ class Player (Entity):
         return self.selected_slot.in_family("weapon") and self.stamina > ATTACK_STAMINA_PRICE
     
     @property
+    def can_shoot(self):
+        return self.selected_slot.in_family("projectile_shooter")
+    
+    @property
     def can_light_fire(self):
         return "fire_starter" in self.selected_slot.get("family", [])
     
@@ -260,6 +264,10 @@ class Player (Entity):
     def query_action(self):
         target_position = position_from_screen( mouse.get_pos(), self.camera.topleft )
 
+        if self.can_shoot:
+            self.shoot(target_position)
+            return
+
         for child in self.camera.scene:
             if not child.rect.collidepoint(target_position) or child is self:
                 continue
@@ -315,6 +323,35 @@ class Player (Entity):
         else:
             self.stop_action()
             self.target_position = target_position
+        
+    def shoot(self, target_position):
+        def _scan_inventory_for_ammunition(ammo_id):
+            for slot in self.inventory:
+                if not slot:
+                    continue
+
+                if slot["id"] == ammo_id:
+                    return self.inventory.pop(slot)["projectile"]
+                
+            return 
+        
+        projectile_shooter = self.selected_slot
+        ammunition_id = projectile_shooter["ammunition"]
+        projectile_entity_id = _scan_inventory_for_ammunition(ammunition_id)
+
+        if not projectile_entity_id:
+            return
+        
+        vector_to_position = Vector2(target_position) - self.position
+        projectile_data = entity(projectile_entity_id)
+        projectile_entity = self.world.spawn(self.position, projectile_data)
+        projectile_entity.target_position = target_position
+        projectile_entity.action = projectile_entity.projectile_hit
+        
+        angle = Vector2(-1, 1).angle_to(-vector_to_position)
+        image = projectile_entity.image
+        image = pg.transform.rotate(image, -angle)
+        projectile_entity.set_image(image)
     
     def build(self):
         if not self.selected_slot:

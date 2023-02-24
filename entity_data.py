@@ -122,6 +122,16 @@ ITEMS = {
         "spawn": ENTITY_NOOSE_TRAP,
         "max_count": 1
     },
+    ITEM_BOW: {
+        "family": ["item", "bow", "projectile_shooter"],
+        "ammunition": ITEM_ARROW,
+        "max_count": 1
+    },
+    ITEM_ARROW: {
+        "family": ["item", "arrow", "projectile_item"],
+        "projectile": ENTITY_ARROW,
+        "max_count": 10
+    },
     ITEM_SPAWN_HARE: {
         "family": ["item", "spawn"],
         "spawn": ANIMAL_HARE,
@@ -457,6 +467,18 @@ ENTITIES = {
             ITEM_STICK: [1, 2],
             ITEM_THREAD: [0, 1]
         }
+    },
+    ENTITY_ARROW: {
+        "family": ["arrow", "projectile", "die_on_attack"],
+        "max_health": 1,
+        "max_speed": 2,
+        "default_speed": 2,
+        "health": 1,
+        "reach_size": [16, 5],
+        "speed": 2,
+        "attack_damage": 50,
+        "attack_cooldown": 0.01,
+        "projectile_item": ITEM_ARROW
     },
 }
 

@@ -87,7 +87,7 @@ class World:
 
         self.children.remove(child)
     
-    def list_chidren_in_family(self, family : str):
+    def list_children_in_family(self, family : str):
         _filter = lambda child: child.in_family(family)
         return list( filter(_filter, self.children) )
     
@@ -190,7 +190,7 @@ class World:
                 child.set_image(season_appropriate_texture)
 
     def configure_for_season_winter(self):
-        bushes = self.list_chidren_in_family("bush")
+        bushes = self.list_children_in_family("bush")
 
         for bush in bushes:
             if bush.in_family("interact_loot") and bush.in_family("loot"):
@@ -208,14 +208,14 @@ class World:
                     season_appropriate_texture = default_texture
                 child.set_image(season_appropriate_texture)
         
-        plants = self.list_chidren_in_family("plant")
+        plants = self.list_children_in_family("plant")
 
         for plant in plants:
             self.remove_child(plant)
     
     def random_despawns(self):
         for family, despawn_chance in RANDOM_DESPAWNS.items():
-            children_in_this_family = self.list_chidren_in_family(family)
+            children_in_this_family = self.list_children_in_family(family)
 
             for child in children_in_this_family:
                 do_despawn = despawn_chance >= random()
@@ -323,6 +323,7 @@ class World:
                 raise CannotSpawnHere("at least 2 entity boxes are overlapping")
 
         self.add_child(new_child)
+        return new_child
 
     def draw(self, screen):
         screen.fill(self.color)

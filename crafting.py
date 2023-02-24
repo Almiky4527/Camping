@@ -15,25 +15,7 @@ RECIPES = [
     {
         "result": ITEM_THREAD,
         "ingredients": [
-            [ITEM_PLANT0, 3]
-        ]
-    },
-    {
-        "result": ITEM_THREAD,
-        "ingredients": [
-            [ITEM_PLANT1, 3]
-        ]
-    },
-    {
-        "result": ITEM_THREAD,
-        "ingredients": [
-            [ITEM_PLANT2, 3]
-        ]
-    },
-    {
-        "result": ITEM_THREAD,
-        "ingredients": [
-            [ITEM_PLANT3, 3]
+            [ [ITEM_PLANT0, ITEM_PLANT1, ITEM_PLANT2, ITEM_PLANT3], 3 ]
         ]
     },
     {
@@ -54,6 +36,27 @@ RECIPES = [
         "ingredients": [
             [ITEM_HARE_HIDE, 2],
             [ITEM_THREAD, 10]
+        ]
+    },
+    {
+        "result": ITEM_ROCK_TRAP,
+        "ingredients": [
+            [ITEM_STICK, 1],
+            [ [ROCK0, ROCK1, ROCK2, ROCK3, ROCK4], 1 ]
+        ]
+    },
+    {
+        "result": ITEM_ROCK_TRAP_PRIMED,
+        "ingredients": [
+            [ITEM_ROCK_TRAP, 1],
+            [ [ITEM_BERRIES0, ITEM_BLUEBERRIES], 1 ]
+        ]
+    },
+    {
+        "result": ITEM_NOOSE_TRAP,
+        "ingredients": [
+            [ITEM_STICK, 2],
+            [ITEM_THREAD, 1]
         ]
     }
 ]
@@ -100,15 +103,16 @@ class Crafting (ItemContainer):
         num_of_checks = 0
         required_checks = len(ingredients)
 
-        for required_item, required_count in ingredients:
+        for required_item_s, required_count in ingredients:
             for slot in self.slots:
                 if not slot:
                     continue
 
                 item_id, count =  slot["id"], slot["count"]
 
-                if item_id == required_item and count >= required_count:
+                if item_id in required_item_s and count >= required_count:
                     num_of_checks += 1
+                    break
         
         return num_of_checks == required_checks
     
@@ -126,13 +130,14 @@ class Crafting (ItemContainer):
     def output_taken(self):
         input_ingredients = self.recipe_in_use["ingredients"]
 
-        for required_item_id, required_count in input_ingredients:
+        for required_item_id_s, required_count in input_ingredients:
             for slot in self.slots:
                 if not slot:
                     continue
 
-                if slot["id"] == required_item_id:
+                if slot["id"] in required_item_id_s:
                     self.pop_more(slot, required_count)
+                    break
     
     def draw(self, screen):
         if self.expanded:

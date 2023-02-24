@@ -108,6 +108,30 @@ ITEMS = {
         "family": ["item", "hide", "hare_hide"],
         "max_count": 16
     },
+    ITEM_ROCK_TRAP: {
+        "family": ["item"],
+        "max_count": 1
+    },
+    ITEM_ROCK_TRAP_PRIMED: {
+        "family": ["item", "spawn", "trap", "rock_trap"],
+        "spawn": ENTITY_ROCK_TRAP,
+        "max_count": 1
+    },
+    ITEM_NOOSE_TRAP: {
+        "family": ["item", "spawn", "trap", "noose_trap"],
+        "spawn": ENTITY_NOOSE_TRAP,
+        "max_count": 1
+    },
+    ITEM_SPAWN_HARE: {
+        "family": ["item", "spawn"],
+        "spawn": ANIMAL_HARE,
+        "max_count": 1
+    },
+    ITEM_SPAWN_BEAR: {
+        "family": ["item", "spawn"],
+        "spawn": ANIMAL_BEAR,
+        "max_count": 1
+    },
     ITEM_4D617877656C6C: {
         "family": ["item", "cat"],
         "max_count": 1
@@ -306,6 +330,8 @@ ENTITIES = {
         "reach_size": [10, 5],
         "health": 50,
         "speed": 2,
+        "attack_damage": 10,
+        "attack_cooldown": 0.1,
         "max_travel_dist": 200,
         "travel_chance": 0.005,
         "run_away_from": [
@@ -313,6 +339,13 @@ ENTITIES = {
                 "family": "player",
                 "see_dist": 200,
                 "run_dist": 1
+            }
+        ],
+        "possible_targets": [
+            {
+                "family": "hare_lure",
+                "see_dist": 400,
+                "forget_dist": 500
             }
         ],
         "loot": {
@@ -381,7 +414,50 @@ ENTITIES = {
                 "forget_dist": 400
             }
         ]
-    }
+    },
+    ENTITY_ROCK_TRAP: {
+        "family": ["trap", "rock_trap", "hare_lure"],
+        "max_health": 1,
+        "max_speed": 0,
+        "default_speed": 0,
+        "health": 1,
+        "reach_size": [10, 5],
+        "speed": 0,
+        "attack_damage": 50,
+        "attack_cooldown": 0.1,
+        "possible_targets": [
+            {
+                "family": "hare",
+                "see_dist": 20,
+                "forget_dist": 30
+            }
+        ],
+        "loot": {
+            ITEM_ROCK_TRAP: 1
+        }
+    },
+    ENTITY_NOOSE_TRAP: {
+        "family": ["trap", "noose_trap", "die_on_attack"],
+        "max_health": 1,
+        "max_speed": 0,
+        "default_speed": 0,
+        "health": 1,
+        "reach_size": [16, 5],
+        "speed": 0,
+        "attack_damage": 50,
+        "attack_cooldown": 0.05,
+        "possible_targets": [
+            {
+                "family": "hare",
+                "see_dist": 20,
+                "forget_dist": 30
+            }
+        ],
+        "loot": {
+            ITEM_STICK: [1, 2],
+            ITEM_THREAD: [0, 1]
+        }
+    },
 }
 
 

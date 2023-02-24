@@ -61,6 +61,14 @@ ITEM_WOLF_MEAT = "item.wolf_meat"
 ITEM_WOLF_HIDE = "item.wolf_hide"
 ITEM_WOLF_MEAT_COOKED = "item.wolf_meat_cooked"
 
+ITEM_ROCK_TRAP = "item.rock_trap"
+ITEM_ROCK_TRAP_PRIMED = "item.rock_trap_primed"
+ITEM_NOOSE_TRAP = "item.noose_trap"
+
+# Testing
+ITEM_SPAWN_HARE = "item.spawn_hare"
+ITEM_SPAWN_BEAR = "item.spawn_bear"
+
 ITEM_4D617877656C6C = "item.4d617877656c6c"
 # -------------
 
@@ -98,6 +106,9 @@ ENTITY_CAMPFIRE = "entity.campfire"
 
 ENTITY_CABIN_FOUNDATION = "entity.cabin_foundation"
 ENTITY_CABIN = "entity.cabin"
+
+ENTITY_ROCK_TRAP = "entity.rock_trap"
+ENTITY_NOOSE_TRAP = "entity.noose_trap"
 
 LOOT_SUBTYPE = ".loot"
 # ---------------------------

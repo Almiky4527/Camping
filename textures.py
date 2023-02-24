@@ -110,6 +110,9 @@ TEXTURES_RECTS = {
         ITEM_BLUEBERRIES: Rect(171, ITEM_ROW_2_Y, 16, 16),
         ITEM_HARE_MEAT: Rect(188, ITEM_ROW_2_Y, 16, 16),
         ITEM_HARE_MEAT_COOKED: Rect(205, ITEM_ROW_2_Y, 16, 16),
+        ITEM_ROCK_TRAP: Rect(205, ITEM_ROW_1_Y, 16, 16),
+        ITEM_ROCK_TRAP_PRIMED: Rect(222, ITEM_ROW_1_Y, 16, 16),
+        ITEM_NOOSE_TRAP: Rect(239, ITEM_ROW_1_Y, 16, 16),
         ITEM_4D617877656C6C: Rect(358, ITEM_ROW_2_Y, 16, 16),
     },
     "foliage": {
@@ -152,8 +155,9 @@ TEXTURES_RECTS = {
         ENTITY_CAMPFIRE: Rect(83, OBJECTS_ROW_1_Y, 18, 19),
         ENTITY_CABIN_FOUNDATION: Rect(209, OBJECTS_ROW_1_Y, 62, 22),
         ENTITY_CABIN: Rect(140, OBJECTS_ROW_1_Y, 68, 70),
-
         "winter." + ENTITY_CABIN: Rect(272, OBJECTS_ROW_1_Y, 68, 70),
+        ENTITY_ROCK_TRAP: Rect(49, 174, 15, 12),
+        ENTITY_NOOSE_TRAP: Rect(28, 170, 20, 16),
     },
     "shadows": {
         SHADOW_SMALL: Rect(1, SHADOWS_ROW_Y, 12, 3),

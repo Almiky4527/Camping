@@ -50,6 +50,9 @@ TEXTS = {
 
             ENTITY_CAMPFIRE: "Campfire",
             ENTITY_TENT: "Tent",
+            ENTITY_CABIN_FOUNDATION: "Cabin Foundation",
+            ENTITY_ROCK_TRAP: "Rock Trap",
+            ENTITY_NOOSE_TRAP: "Noose Trap",
 
             BUSH_LARGE: "Large Bush",
             BUSH_SMALL: "Small Bush",
@@ -63,6 +66,10 @@ TEXTS = {
             ITEM_WOLF_MEAT: "Wolf Meat",
             ITEM_WOLF_MEAT_COOKED: "Cooked Wolf Meat",
             ITEM_WOLF_HIDE: "Wolf Hide",
+
+            ITEM_ROCK_TRAP: "Rock Trap",
+            ITEM_ROCK_TRAP_PRIMED: "Primed Rock Trap",
+            ITEM_NOOSE_TRAP: "Noose Trap",
 
             ITEM_4D617877656C6C: "Maxwell",
         },
@@ -105,6 +112,10 @@ TEXTS = {
             ITEM_WOLF_MEAT: "Needs to be cooked before eating.",
             ITEM_WOLF_MEAT_COOKED: "A great food source.",
             ITEM_WOLF_HIDE: "Can be used to make a coat.",
+
+            ITEM_ROCK_TRAP: "Needs to be combined with a lure.",
+            ITEM_ROCK_TRAP_PRIMED: "Set it up to catch something.",
+            ITEM_NOOSE_TRAP: "Set it up to catch something.",
 
             ITEM_4D617877656C6C: "My beloved.",
         },
@@ -253,6 +264,9 @@ TEXTS = {
 
             ENTITY_CAMPFIRE: "Táborák",
             ENTITY_TENT: "Stan",
+            ENTITY_CABIN: "Zálkady Zrubu",
+            ENTITY_ROCK_TRAP: "Pasca z Kameňa",
+            ENTITY_NOOSE_TRAP: "Pasca zo Slučky",
 
             BUSH_LARGE: "Veľký Ker",
             BUSH_SMALL: "Malý Ker",
@@ -266,6 +280,10 @@ TEXTS = {
             ITEM_WOLF_MEAT: "Vlčie Mäso",
             ITEM_WOLF_MEAT_COOKED: "Uvarené Vlčie Mäso",
             ITEM_WOLF_HIDE: "Vlčia Kožušina",
+
+            ITEM_ROCK_TRAP: "Pasca z Kameňa",
+            ITEM_ROCK_TRAP_PRIMED: "Pripravená Pasca z Kameňa",
+            ITEM_NOOSE_TRAP: "Pasca zo Slučky",
 
             ITEM_4D617877656C6C: "Maxwell"
         },
@@ -308,6 +326,10 @@ TEXTS = {
             ITEM_WOLF_MEAT: "Musí sa uvariť pred jedením.",
             ITEM_WOLF_MEAT_COOKED: "Skvelí zdroj potravy.",
             ITEM_WOLF_HIDE: "Môže sa použiť na výrobu kabátu.",
+
+            ITEM_ROCK_TRAP: "Musí sa skombinovať s návnadou.",
+            ITEM_ROCK_TRAP_PRIMED: "Postav ju, aby si si niečo ulovili.",
+            ITEM_NOOSE_TRAP: "Postav ju, aby si si niečo ulovili.",
 
             ITEM_4D617877656C6C: "Môj milovaný."
         },

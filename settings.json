@@ -1,7 +1,7 @@
 {
   "language": "English",
   "fullscreen": false,
-  "debug": false,
+  "debug": true,
   "render_shadows": true,
   "world_index": 0,
   "worlds": []

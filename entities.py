@@ -294,6 +294,10 @@ class Entity (BaseEntity):
                 self.clip_y(entity)
             
             # Run away or attack entity
+            # Greatly increases the preformence
+            if entity.is_immobile:
+                continue
+
             if self.is_scared_of_entity(entity):
                 self.start_running()
                 self.action = self.stop_running
@@ -357,7 +361,7 @@ class Entity (BaseEntity):
     def attack(self):
         if self.action_time >= self.attack_cooldown * FPS:
             self.target.damage(self.attack_damage)
-            
+
             if self.stamina:
                 stamina = self.stamina - ( 5 + self.hot*100 )
                 self.set_stamina(stamina)
@@ -371,6 +375,9 @@ class Entity (BaseEntity):
 
             if self.is_animal:
                 self.stop_running()
+
+            if self.in_family("die_on_attack") and self.is_alive:
+                self.set_health(0)
     
     def forget_target(self):
         self.stop_action()
@@ -503,6 +510,8 @@ class Entity (BaseEntity):
         super().draw(screen, *args, **kwargs)
 
     def die(self):
+        print(f"{self.id}: i died!")
+
         self.set_health(0)
         self.parent.remove_child(self)
 

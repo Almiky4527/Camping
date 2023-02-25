@@ -65,7 +65,6 @@ class Entity (BaseEntity):
     @property
     def direction_to_action(self):
         return directionalize(self.vector_to_action)
-        # return self.vector_to_action.normalize()
 
     @property
     def max_health(self):
@@ -372,10 +371,20 @@ class Entity (BaseEntity):
         if self.action_time >= self.attack_cooldown * FPS:
             self.target.damage(self.attack_damage)
 
-            if self.stamina:
+            if self.is_player:
                 stamina = self.stamina - ( 5 + self.hot*100 )
                 self.set_stamina(stamina)
-            
+
+                if not self.target.in_family("plant") and not self.target.in_family("bush"):
+                    weapon = self.selected_slot
+                    durability = weapon.durability - randint(10, 20)
+                    weapon.set_durability(durability)
+                    
+                    if weapon.durability == 0:
+                        self.inventory.pop(weapon)
+                        self.stop_action()
+                        return
+
             self.action_time = 0
         else:
             self.action_time += 1

@@ -48,6 +48,10 @@ class ItemSlot:
     @property
     def family(self):
         return self.data.get( "family", () )
+
+    @property
+    def durability(self):
+        return self.data.get("durability", None)
     
     def in_family(self, value : str):
         if not self.family:
@@ -95,6 +99,9 @@ class ItemSlot:
     
     def set_content(self, data : dict):
         self.data = data
+    
+    def set_durability(self, value : int):
+        self.data["durability"] = max(0, value)
     
     def draw(self, screen, texture_container, position=None):
         if position:

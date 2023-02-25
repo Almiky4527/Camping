@@ -18,8 +18,15 @@ ITEMS = {
     },
     ITEM_AXE: {
         "family": ["item", "axe", "weapon"],
-        "max_count": 1,
-        "attack_damage": 30
+        "durability": 5000,
+        "attack_damage": 30,
+        "max_count": 1
+    },
+    ITEM_IMPROVISED_AXE: {
+        "family": ["item", "axe", "weapon"],
+        "durability": 2000,
+        "attack_damage": 30,
+        "max_count": 1
     },
     ITEM_TENT: {
         "family": ["item", "spawn"],
@@ -95,18 +102,32 @@ ITEMS = {
         "max_count": 1
     },
     ITEM_HARE_MEAT: {
-        "family": ["item", "meat", "cookable"],
+        "family": ["item", "meat", "hare_meat", "cookable"],
         "cooking_gives": ITEM_HARE_MEAT_COOKED,
         "max_count": 16
     },
     ITEM_HARE_MEAT_COOKED: {
-        "family": ["item", "food", "meat"],
+        "family": ["item", "food", "meat", "hare_meat"],
         "food": 15,
         "max_count": 16
     },
     ITEM_HARE_HIDE: {
         "family": ["item", "hide", "hare_hide"],
         "max_count": 16
+    },
+    ITEM_DEER_MEAT: {
+        "family": ["item", "meat", "deer_meat", "cookable"],
+        "cooking_gives": ITEM_DEER_MEAT_COOKED,
+        "max_count": 10
+    },
+    ITEM_DEER_MEAT_COOKED: {
+        "family": ["item", "food", "deer_meat", "meat"],
+        "food": 20,
+        "max_count": 8
+    },
+    ITEM_DEER_HIDE: {
+        "family": ["item", "hide", "deer_hide"],
+        "max_count": 1
     },
     ITEM_ROCK_TRAP: {
         "family": ["item"],
@@ -122,9 +143,19 @@ ITEMS = {
         "spawn": ENTITY_NOOSE_TRAP,
         "max_count": 1
     },
+    ITEM_FEATHER: {
+        "family": ["item", "feather"],
+        "max_count": 32
+    },
+    ITEM_STONE_BLADE: {
+        "family": ["item", "stone_blade"],
+        "attack_damage": 10,
+        "max_count": 8
+    },
     ITEM_BOW: {
         "family": ["item", "bow", "projectile_shooter"],
         "ammunition": ITEM_ARROW,
+        "durability": 100,
         "max_count": 1
     },
     ITEM_ARROW: {
@@ -135,12 +166,12 @@ ITEMS = {
     ITEM_SPAWN_HARE: {
         "family": ["item", "spawn"],
         "spawn": ANIMAL_HARE,
-        "max_count": 1
+        "max_count": 10
     },
     ITEM_SPAWN_BEAR: {
         "family": ["item", "spawn"],
         "spawn": ANIMAL_BEAR,
-        "max_count": 1
+        "max_count": 5
     },
     ITEM_4D617877656C6C: {
         "family": ["item", "cat"],
@@ -234,7 +265,8 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_LOG: [3, 4],
-            ITEM_STICK: [0, 3]
+            ITEM_STICK: [0, 3],
+            ITEM_FEATHER: [0, 1]
         }
     },
     OAK_SMALL: {
@@ -258,7 +290,8 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_LOG: [3, 4],
-            ITEM_STICK: [0, 3]
+            ITEM_STICK: [0, 3],
+            ITEM_FEATHER: [0, 1]
         }
     },
     BUSH_LARGE: {
@@ -273,7 +306,8 @@ ENTITIES = {
 
         "immobile": True,
         "loot": {
-            ITEM_STICK: [1, 4]
+            ITEM_STICK: [1, 4],
+            ITEM_FEATHER: [0, 1]
         }
     },
     BUSH_SMALL: {
@@ -290,6 +324,7 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_STICK: [1, 3],
+            ITEM_FEATHER: [0, 1]
         }
     },
     PLANT0: {
@@ -354,8 +389,8 @@ ENTITIES = {
         "possible_targets": [
             {
                 "family": "hare_lure",
-                "see_dist": 400,
-                "forget_dist": 500
+                "see_dist": 100,
+                "forget_dist": 110
             }
         ],
         "loot": {
@@ -431,7 +466,7 @@ ENTITIES = {
         "max_speed": 0,
         "default_speed": 0,
         "health": 1,
-        "reach_size": [10, 5],
+        "reach_size": [11, 6],
         "speed": 0,
         "attack_damage": 50,
         "attack_cooldown": 0.1,

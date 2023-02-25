@@ -283,5 +283,7 @@ RANDOM_DESPAWNS = {
     "plant": 0.4,
     "item_plant": 0.6,
     "food": 0.4,
-    "meat": 0.5
+    "meat": 0.5,
+    "hide": 0.5,
+    "feather": 0.4
 }

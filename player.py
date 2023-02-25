@@ -13,7 +13,7 @@ WALK_SPEED = 2
 
 FOLIAGE_CUTTING_STAMINA_PRICE = 10
 ATTACK_STAMINA_PRICE = 5
-LOOTING_STAMINA_PRICE = 0.05
+LOOTING_STAMINA_PRICE = 0.03
 MIN_STAMINA_FOR_ACTION = 0
 
 
@@ -275,6 +275,9 @@ class Player (Entity):
             if child.is_item:
                 self.action = self.pickup_item
             
+            elif child.in_family("trap"):
+                self.action = self.attack
+            
             elif child.in_family("loot"):
                 self.action = self.loot
             
@@ -285,7 +288,9 @@ class Player (Entity):
                 self.action = self.attack
             
             elif child.in_family("foliage"):
-                if not self.can_cut_foliage:
+                if child.in_family("bush") and self.selected_slot.in_family("stone_blade"):
+                    self.action = self.attack
+                elif not self.can_cut_foliage:
                     continue
                 
                 self.action = self.attack
@@ -342,6 +347,12 @@ class Player (Entity):
         if not projectile_entity_id:
             return
         
+        durability = projectile_shooter.durability - randint(10, 20)
+        projectile_shooter.set_durability(durability)
+
+        if projectile_shooter.durability == 0:
+            self.inventory.pop(projectile_shooter)
+
         vector_to_position = Vector2(target_position) - self.position
         projectile_data = entity(projectile_entity_id)
         projectile_entity = self.world.spawn(self.position, projectile_data)

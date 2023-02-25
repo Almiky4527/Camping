@@ -244,8 +244,12 @@ class World:
         for child in self.children:
             if not child.saturation:
                 continue
+            
+            if child.is_burning:
+                saturation = child.saturation - randint(50, 70)
+            elif child.is_player:
+                saturation = child.saturation - randint(20, 30)
 
-            saturation = child.saturation - randint(50, 70)
             child.set_saturation(saturation)
     
     def despawn_animals(self):

@@ -13,6 +13,22 @@ RECIPES = [
         ]
     },
     {
+        "result": ITEM_BOW,
+        "ingredients": [
+            [ITEM_STICK, 2],
+            [ITEM_THREAD, 3],
+            [ITEM_ROPE, 1]
+        ]
+    },
+    {
+        "result": ITEM_ARROW,
+        "ingredients": [
+            [ITEM_STICK, 1],
+            [ITEM_FEATHER, 1],
+            [ITEM_STONE_BLADE, 1]
+        ]
+    },
+    {
         "result": ITEM_THREAD,
         "ingredients": [
             [ [ITEM_PLANT0, ITEM_PLANT1, ITEM_PLANT2, ITEM_PLANT3], 3 ]
@@ -22,6 +38,14 @@ RECIPES = [
         "result": ITEM_ROPE,
         "ingredients": [
             [ITEM_THREAD, 6]
+        ]
+    },
+    {
+        "result": ITEM_IMPROVISED_AXE,
+        "ingredients": [
+            [ITEM_STONE_BLADE, 1],
+            [ITEM_STICK, 1],
+            [ITEM_ROPE, 1]
         ]
     },
     {
@@ -58,7 +82,14 @@ RECIPES = [
             [ITEM_STICK, 2],
             [ITEM_THREAD, 1]
         ]
-    }
+    },
+    {
+        "result": ITEM_STONE_BLADE,
+        "ingredients": [
+            [STONE, 1],
+            [ [ROCK0, ROCK1, ROCK2, ROCK3, ROCK4], 0 ]
+        ]
+    },
 ]
 
 
@@ -135,7 +166,9 @@ class Crafting (ItemContainer):
                 if not slot:
                     continue
 
-                if slot["id"] in required_item_id_s:
+                item_id, count =  slot["id"], slot["count"]
+
+                if item_id in required_item_id_s and count >= required_count:
                     self.pop_more(slot, required_count)
                     break
     

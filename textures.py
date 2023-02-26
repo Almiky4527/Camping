@@ -15,6 +15,7 @@ from utils.classes import TextureTypeError
 DEBUG_FONT = "consolas", 12
 INVENTORY_FONT = "consolas", 16
 STORY_FONT = "consolas", 20
+STORY_FONT_CUTSCENES = "consolas", 28
 TITLE_FONT = "consolas", 30
 # -------------
 
@@ -325,6 +326,7 @@ class TextureContainer:
         self.debug_font = SysFont(*DEBUG_FONT)
         self.inventory_font = SysFont(*INVENTORY_FONT)
         self.story_font = SysFont(*STORY_FONT)
+        self.story_font_cutscenes = SysFont(*STORY_FONT_CUTSCENES)
         self.title_font = SysFont(*TITLE_FONT)
 
     def load_texture_from_set(self, textures_image, rect_s, scale):

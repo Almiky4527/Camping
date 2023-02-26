@@ -14,7 +14,27 @@ SETTINGS = 3
 PAUSE_MENU = 4
 NEW_DAY_LOADING = 5
 SELECT_CHARACTER = 6
+CUT_SCENE = 7
 OFF = 0
+
+CUTSCENES = [
+    [
+        "Hello, World!",
+        "Spring."
+    ],
+    [
+        "Summer."
+    ],
+    [
+        "Autumn."
+    ],
+    [
+        "Winter."
+    ],
+    [
+        "The End."
+    ]
+]
 
 
 class Menu:
@@ -25,14 +45,38 @@ class Menu:
 
         self.new_day_timer = 0
         self.new_day_random_tip = ""
+
+        self.cutscene_timer = 0
+        self.cutscene_scene_index = 0
     
     @property
     def lang(self):
         return self.game.lang
     
     @property
+    def cutscene_index(self):
+        world = self.game.world
+        
+        if world.day == 0:
+            return 0
+        elif world.day == world.DAYS_IN_SEASON * SEASON_SUMMER:
+            return 1
+        elif world.day == world.DAYS_IN_SEASON * SEASON_AUTUMN:
+            return 2
+        elif world.day == world.DAYS_IN_SEASON * SEASON_WINTER:
+            return 3
+        elif world.day == world.DAYS_IN_SEASON * 4:
+            return 4
+        elif world.day > world.DAYS_IN_SEASON * SEASON_WINTER:
+            return None
+    
+    @property
     def story_font(self):
         return self.game.texture_container.story_font
+    
+    @property
+    def story_font_cutscenes(self):
+        return self.game.texture_container.story_font_cutscenes
     
     @property
     def title_font(self):
@@ -53,6 +97,10 @@ class Menu:
     @property
     def text_specs_3(self):
         return self.story_font, (WHITE, SLIGHTLY_LESS_BLACK), (5*SCALE, 2*SCALE), 4
+    
+    @property
+    def text_specs_4_cutscenes(self):
+        return self.story_font_cutscenes, (WHITE, SLIGHTLY_LESS_BLACK), (10*SCALE, 5*SCALE), 2
     
     @property
     def worlds(self):
@@ -197,6 +245,24 @@ class Menu:
         char_2_texture = scale_( texture_container["JaneSmith"][0][0], 2 )
         rect = char_1_texture.get_rect( midbottom=(x, y - 10*SCALE) )
         screen.blit(char_2_texture, rect)
+    
+    def draw_cutscene(self, screen):
+        if self.cutscene_index is None:
+            return
+        
+        font = self.story_font
+        font.set_bold(False)
+
+        cutscene = CUTSCENES[self.cutscene_index]
+        text = cutscene[self.cutscene_scene_index]
+        
+        screen.fill(BLACK)
+        x, y = SCREEN_CENTER
+        screen_print( screen, text, *self.text_specs_4_cutscenes, center=(x, y) )
+
+        if self.cutscene_timer / FPS >= 10:
+            y = SCREEN_H - 10*SCALE
+            screen_print( screen, "Press any key to continue.", *self.text_specs_3, center=(x, y) )
 
     def draw(self, screen):
         if self.running == MAIN_MENU:
@@ -211,6 +277,8 @@ class Menu:
             self.draw_new_day_loading(screen)
         elif self.running == SELECT_CHARACTER:
             self.draw_select_character(screen)
+        elif self.running == CUT_SCENE:
+            self.draw_cutscene(screen)
         else:
             pass
 
@@ -345,7 +413,7 @@ class Menu:
                     continue
                 
                 self.new_day_timer = 0
-                self.set_run(OFF)
+                self.set_run(CUT_SCENE)
     
     def run_select_character(self, events):
         selected_character_name = ""
@@ -363,7 +431,24 @@ class Menu:
                     get_text(self.lang, "menu", "main", "loading_new")
                 )
                 self.game.load_new(player_name=selected_character_name)
-                self.set_run(OFF)
+                self.set_run(CUT_SCENE)
+    
+    def run_cutscene(self, events):
+        if self.cutscene_index is None:
+            self.set_run(OFF)
+            return
+
+        cutscene = CUTSCENES[self.cutscene_index]
+        self.cutscene_timer += 1
+        
+        for ev in events:
+            if ev.type == pg.KEYDOWN:
+                self.cutscene_scene_index += 1
+                self.cutscene_timer = 0
+            
+        if self.cutscene_scene_index == len(cutscene):
+            self.cutscene_scene_index = 0
+            self.set_run(OFF)
 
     def run(self, events):
         for ev in events:
@@ -382,6 +467,8 @@ class Menu:
             self.run_new_day_loading(events)
         elif self.running == SELECT_CHARACTER:
             self.run_select_character(events)
+        elif self.running == CUT_SCENE:
+            self.run_cutscene(events)
         else:
             pass
         

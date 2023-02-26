@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame.math import Vector2
-from random import randrange, randint
+from random import randrange, randint, random
 
 from utils.identifiers import *
 from utils.classes import *
@@ -563,6 +563,12 @@ class Entity (BaseEntity):
             return
         
         for item_id, item_count in loot.items():
+            chance = item_count[2] if type(item_count) == list and len(item_count) == 3 else 1
+            success = chance >= random()
+
+            if not success:
+                continue
+
             count = randrange( item_count[0], item_count[1]+1 ) if type(item_count) == list else item_count
             
             for _ in range(count):

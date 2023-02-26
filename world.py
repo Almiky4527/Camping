@@ -55,9 +55,9 @@ class World:
         elif self.season == SEASON_SUMMER:
             return 36
         elif self.season == SEASON_AUTUMN:
-            return 12
+            return 24
         elif self.season == SEASON_WINTER:
-            return 0
+            return 10
     
     @property
     def seconds(self) -> int:

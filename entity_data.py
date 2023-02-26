@@ -253,7 +253,8 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_LOG: 2,
-            ITEM_STICK: [0, 2]
+            ITEM_STICK: [0, 2],
+            ITEM_FEATHER: [0, 1, 0.3]
         }
     },
     PINE_LARGE: {
@@ -266,7 +267,7 @@ ENTITIES = {
         "loot": {
             ITEM_LOG: [3, 4],
             ITEM_STICK: [0, 3],
-            ITEM_FEATHER: [0, 1]
+            ITEM_FEATHER: [0, 1, 0.5]
         }
     },
     OAK_SMALL: {
@@ -278,7 +279,8 @@ ENTITIES = {
         "immobile": True,
         "loot": {
             ITEM_LOG: 2,
-            ITEM_STICK: [0, 2]
+            ITEM_STICK: [0, 2],
+            ITEM_FEATHER: [0, 1, 0.3]
         }
     },
     OAK_LARGE: {
@@ -291,7 +293,7 @@ ENTITIES = {
         "loot": {
             ITEM_LOG: [3, 4],
             ITEM_STICK: [0, 3],
-            ITEM_FEATHER: [0, 1]
+            ITEM_FEATHER: [0, 1, 0.5]
         }
     },
     BUSH_LARGE: {
@@ -300,14 +302,14 @@ ENTITIES = {
         "health": 50,
 
         "interact_loot": {
-            ITEM_BERRIES0: [2, 5]
+            ITEM_BERRIES0: [0, 3]
         },
         "looting_time": 4,
 
         "immobile": True,
         "loot": {
-            ITEM_STICK: [1, 4],
-            ITEM_FEATHER: [0, 1]
+            ITEM_STICK: [1, 3],
+            ITEM_FEATHER: [0, 1, 0.5]
         }
     },
     BUSH_SMALL: {
@@ -316,15 +318,15 @@ ENTITIES = {
         "health": 30,
 
         "interact_loot": {
-            ITEM_BLUEBERRIES: [1, 3]
+            ITEM_BLUEBERRIES: [0, 2]
         },
         
         "looting_time": 2,
 
         "immobile": True,
         "loot": {
-            ITEM_STICK: [1, 3],
-            ITEM_FEATHER: [0, 1]
+            ITEM_STICK: [1, 1],
+            ITEM_FEATHER: [0, 1, 0.5]
         }
     },
     PLANT0: {

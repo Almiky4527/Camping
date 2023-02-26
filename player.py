@@ -13,7 +13,7 @@ WALK_SPEED = 2
 
 FOLIAGE_CUTTING_STAMINA_PRICE = 10
 ATTACK_STAMINA_PRICE = 5
-LOOTING_STAMINA_PRICE = 0.03
+LOOTING_STAMINA_PRICE = 0.05
 MIN_STAMINA_FOR_ACTION = 0
 
 
@@ -224,12 +224,12 @@ class Player (Entity):
         if world_temp + 10.4 < self.temperature < world_temp + 10.6:
             return
 
-        if world_temp + 10.5 < self.NORMAL_TEMPERATURE and not self.is_warming_up:
+        if world_temp + 10.5 < self.temperature and not self.is_warming_up:
             dif = ( 0.05 - (self.warmth/20) ) / FPS
             temp = self.temperature - dif
             self.set_temperature(temp)
-        elif world_temp + 10.5 > self.NORMAL_TEMPERATURE:
-            dif = ( 0.01 + (self.warmth/20) ) / FPS
+        elif world_temp + 10.5 > self.temperature:
+            dif = ( 0.03 + (self.warmth/20) ) / FPS
             temp = self.temperature + dif
             self.set_temperature(temp)
 

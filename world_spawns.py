@@ -245,7 +245,7 @@ RANDOM_ANIMAL_SPAWNS = {
     SEASON_SUMMER: [
         {
             "id": ANIMAL_HARE,
-            "count": (3, 4),
+            "count": (3, 6),
             "dtp": 700
         },
         {
@@ -257,22 +257,34 @@ RANDOM_ANIMAL_SPAWNS = {
     SEASON_AUTUMN: [
         {
             "id": ANIMAL_HARE,
-            "count": (0, 3),
-            "chance": 0.1,
+            "count": (2, 5),
+            "chance": 0.8,
             "dtp": 700
         },
         {
             "id": ANIMAL_DEER,
-            "count": (0, 1),
-            "chance": 0.1,
+            "count": (1, 2),
+            "chance": 0.5,
             "dtp": 1000
         }
     ],
     SEASON_WINTER: [
         {
+            "id": ANIMAL_HARE,
+            "count": (1, 4),
+            "chance": 0.1,
+            "dtp": 700
+        },
+        {
+            "id": ANIMAL_DEER,
+            "count": (1, 2),
+            "chance": 0.3,
+            "dtp": 1000
+        },
+        {
             "id": ANIMAL_BEAR,
             "count": (0, 1),
-            "chance": 0.01,
+            "chance": 0.1,
             "dtp": 1300
         }
     ]

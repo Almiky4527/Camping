@@ -457,8 +457,8 @@ ENTITIES = {
         "possible_targets": [
             {
                 "family": "player",
-                "see_dist": 200,
-                "forget_dist": 400
+                "see_dist": 400,
+                "forget_dist": 500
             }
         ]
     },

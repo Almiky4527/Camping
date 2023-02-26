@@ -22,6 +22,7 @@ TEXTS = {
             ITEM_LOG: "Log of Wood",
             ITEM_STICK: "Wooden Stick",
             ITEM_AXE: "Axe",
+            ITEM_IMPROVISED_AXE: "Makeshift Axe",
             ITEM_TENT: "Tent",
             ITEM_MATCHES: "Matches",
             ITEM_CAMPFIRE: "Campfire",
@@ -71,12 +72,18 @@ TEXTS = {
             ITEM_ROCK_TRAP_PRIMED: "Primed Rock Trap",
             ITEM_NOOSE_TRAP: "Noose Trap",
 
+            ITEM_FEATHER: "Feather",
+            ITEM_STONE_BLADE: "Stone Blade",
+            ITEM_BOW: "Bow",
+            ITEM_ARROW: "Arrow",
+
             ITEM_4D617877656C6C: "Maxwell",
         },
         "legends": {
             ITEM_LOG: "Good for fire or building.",
             ITEM_STICK: "A great crafting ingredient.",
             ITEM_AXE: "A tool, but also a weapon.",
+            ITEM_IMPROVISED_AXE: "Not so durable as the original.",
             ITEM_TENT: "Temporary shelter for your journeys.",
             ITEM_MATCHES: "Something to start the fire with.",
             ITEM_CAMPFIRE: "Essential for your survival.",
@@ -116,6 +123,11 @@ TEXTS = {
             ITEM_ROCK_TRAP: "Needs to be combined with a lure.",
             ITEM_ROCK_TRAP_PRIMED: "Set it up to catch something.",
             ITEM_NOOSE_TRAP: "Set it up to catch something.",
+
+            ITEM_FEATHER: "Used to make arrows.",
+            ITEM_STONE_BLADE: "Used to make arrows, but also a tool.",
+            ITEM_BOW: "It's huntin' time!",
+            ITEM_ARROW: "Wonky, I know, but it works...",
 
             ITEM_4D617877656C6C: "My beloved.",
         },
@@ -182,7 +194,8 @@ TEXTS = {
                 "title": "PAUSED",
                 "buttons": [
                     "M - Return to Main Menu",
-                    "D - Toggle Debug Mode  ",
+                    "D - Toggle Debug Mode",
+                    "F - Toggle Fullscreen",
                     "ESC - Resume",
                     "Q - Quit"
                 ]
@@ -236,6 +249,7 @@ TEXTS = {
             ITEM_LOG: "Poleno Dreva",
             ITEM_STICK: "Drevená Palica",
             ITEM_AXE: "Sekera",
+            ITEM_IMPROVISED_AXE: "Provizórna Sekera",
             ITEM_TENT: "Stan",
             ITEM_MATCHES: "Zápalky",
             ITEM_CAMPFIRE: "Táborák",
@@ -285,12 +299,18 @@ TEXTS = {
             ITEM_ROCK_TRAP_PRIMED: "Pripravená Pasca z Kameňa",
             ITEM_NOOSE_TRAP: "Pasca zo Slučky",
 
+            ITEM_FEATHER: "Využíva sa na výrobu šípov.",
+            ITEM_STONE_BLADE: "Využíva sa na výrobu šípov, ale taktiež je to nástroj.",
+            ITEM_BOW: "Čas na lov!",
+            ITEM_ARROW: "Nepresný, ja viem, ale funguje...",
+
             ITEM_4D617877656C6C: "Maxwell"
         },
         "legends": {
             ITEM_LOG: "Dobré na oheň alebo stavanie.",
             ITEM_STICK: "Skvelá prísada na tvorenie.",
             ITEM_AXE: "Nástroj, ale taktiež zbraň.",
+            ITEM_IMPROVISED_AXE: "Nie tak odolná ako originál.",
             ITEM_TENT: "Dočasný prístrešok na tvoje cesty.",
             ITEM_MATCHES: "Hodia sa na založenie ohňa.",
             ITEM_CAMPFIRE: "Nevyhnutný na tvoje prežitie.",
@@ -330,6 +350,11 @@ TEXTS = {
             ITEM_ROCK_TRAP: "Musí sa skombinovať s návnadou.",
             ITEM_ROCK_TRAP_PRIMED: "Postav ju, aby si si niečo ulovili.",
             ITEM_NOOSE_TRAP: "Postav ju, aby si si niečo ulovili.",
+
+            ITEM_FEATHER: "",
+            ITEM_STONE_BLADE: "",
+            ITEM_BOW: "",
+            ITEM_ARROW: "",
 
             ITEM_4D617877656C6C: "Môj milovaný."
         },
@@ -397,6 +422,7 @@ TEXTS = {
                 "buttons": [
                     "M - Naspäť na Hlavné Menu",
                     "D - Prepnúť Režim Ladenia",
+                    "F - Prepnúť Režim Celej Obrazovky",
                     "ESC - Pokračovať",
                     "Q - Opustiť Hru"
                 ]

@@ -32,6 +32,7 @@ ITEM_ROW_2_Y = 231
 
 ANIMAL_ROW_Y = 464
 ANIMAL_ROW_2_Y = 480
+ANIMAL_ROW_3_Y = 506
 
 INVENTORY_ROW_1_Y = 384
 
@@ -186,6 +187,12 @@ TEXTURES_RECTS = {
             Rect(40, 355, 22, 3),
             Rect(40, 351, 22, 3),
         ],
+        SHADOW_SUBTYPE + ANIMAL_BEAR: [
+            Rect(266, 324, 16, 20),
+            Rect(283, 324, 16, 20),
+            Rect(300, 324, 30, 6),
+            Rect(300, 331, 30, 6),
+        ],
 
         SHADOW_SUBTYPE + ENTITY_ARROW: Rect(253, SHADOWS_ROW_Y, 12, 4),
     },
@@ -257,6 +264,28 @@ TEXTURES_RECTS = {
             Rect(179, ANIMAL_ROW_2_Y, 25, 21),
         ],
     },
+    ANIMAL_BEAR: {
+        SOUTH: [
+            Rect(1, ANIMAL_ROW_3_Y, 14, 22),
+            Rect(16, ANIMAL_ROW_3_Y, 14, 22),
+            Rect(31, ANIMAL_ROW_3_Y, 14, 22),
+        ],
+        NORTH: [
+            Rect(46, ANIMAL_ROW_3_Y, 14, 22),
+            Rect(61, ANIMAL_ROW_3_Y, 14, 22),
+            Rect(76, ANIMAL_ROW_3_Y, 14, 22),
+        ],
+        EAST: [
+            Rect(91, ANIMAL_ROW_3_Y, 30, 18),
+            Rect(122, ANIMAL_ROW_3_Y, 30, 18),
+            Rect(153, ANIMAL_ROW_3_Y, 30, 18),
+        ],
+        WEST: [
+            Rect(184, ANIMAL_ROW_3_Y, 30, 18),
+            Rect(215, ANIMAL_ROW_3_Y, 30, 18),
+            Rect(246, ANIMAL_ROW_3_Y, 30, 18),
+        ],
+    },
 }
 
 
@@ -306,22 +335,17 @@ class TextureContainer:
                     _texture.set_alpha(SHADOWS_OPACITY)
             else:
                 texture.set_alpha(SHADOWS_OPACITY)
-        
-        for texture_list in self["JohnDoe"].values():
-            frame0 = texture_list[0]
-            texture_list.insert(2, frame0)
-        
-        for texture_list in self["JaneSmith"].values():
-            frame0 = texture_list[0]
-            texture_list.insert(2, frame0)
-        
-        for texture_list in self["animal"].values():
-            frame0 = texture_list[0]
-            texture_list.insert(2, frame0)
-        
-        for texture_list in self[ANIMAL_DEER].values():
-            frame0 = texture_list[0]
-            texture_list.insert(2, frame0)
+            
+        def _insert_frame(texture_set : dict, grab_index : int, insert_index : int):
+            for texture_list in texture_set.values():
+                frame = texture_list[grab_index]
+                texture_list.insert(insert_index, frame)
+
+        _insert_frame( self["JohnDoe"], 0, 2 )
+        _insert_frame( self["JaneSmith"], 0, 2 )
+        _insert_frame( self["animal"], 0, 2 )
+        _insert_frame( self[ANIMAL_DEER], 0, 2 )
+        _insert_frame( self[ANIMAL_BEAR], 0, 2 )
 
         self.debug_font = SysFont(*DEBUG_FONT)
         self.inventory_font = SysFont(*INVENTORY_FONT)

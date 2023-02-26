@@ -2,7 +2,7 @@ import pygame as pg
 from random import choice
 
 from utils.texts import *
-from utils.functions import screen_print, scale_
+from utils.functions import screen_print, scale_, parse_text_to_lines
 from utils.display import *
 from utils.colors import *
 
@@ -19,7 +19,15 @@ OFF = 0
 
 CUTSCENES = [
     [
-        "Hello, World!",
+        "There was once a person.",
+        "An ordinary person. Just like you and me.",
+        "They lived in an apartment, worked at an office... they weren't someone special.",
+        "You could say their life was pretty boring.",
+        "But that would change one day...",
+        "...when they decided they didn't like the way things were anymore.",
+        "They craved a change. Even if it meant doing something ridiculous.",
+        "Even if they had to leave the comfort of this life, and live somewhere dangerous.",
+        "And so they decided...",
         "Spring."
     ],
     [
@@ -100,7 +108,7 @@ class Menu:
     
     @property
     def text_specs_4_cutscenes(self):
-        return self.story_font_cutscenes, (WHITE, SLIGHTLY_LESS_BLACK), (10*SCALE, 5*SCALE), 2
+        return self.story_font_cutscenes, (WHITE, BLACK), (10*SCALE, 5*SCALE), 2
     
     @property
     def worlds(self):
@@ -205,6 +213,8 @@ class Menu:
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",2), *self.text_specs_3, topleft=(x, y) )
         y = SCREEN_CENTER[1] + 15*SCALE
         screen_print( screen, get_text(self.lang,"menu","paused","buttons",3), *self.text_specs_3, topleft=(x, y) )
+        y = SCREEN_CENTER[1] + 25*SCALE
+        screen_print( screen, get_text(self.lang,"menu","paused","buttons",4), *self.text_specs_3, topleft=(x, y) )
 
     def draw_new_day_loading(self, screen):
         font = self.story_font
@@ -250,15 +260,19 @@ class Menu:
         if self.cutscene_index is None:
             return
         
-        font = self.story_font
+        font = self.story_font_cutscenes
+        h = font.get_linesize() + 6*SCALE
         font.set_bold(False)
 
         cutscene = CUTSCENES[self.cutscene_index]
         text = cutscene[self.cutscene_scene_index]
+        lines = parse_text_to_lines(text, 48)
         
         screen.fill(BLACK)
         x, y = SCREEN_CENTER
-        screen_print( screen, text, *self.text_specs_4_cutscenes, center=(x, y) )
+        
+        for i, line in enumerate(lines):
+            screen_print( screen, line, *self.text_specs_4_cutscenes, center=( x, y + h*i ) )
 
         if self.cutscene_timer / FPS >= 10:
             y = SCREEN_H - 10*SCALE
@@ -364,19 +378,19 @@ class Menu:
                     self.game.set_fullscreen_mode(not self.game.fullscreen_mode)
                     i = int(self.game.fullscreen_mode)
                     self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","settings","fullscreen",i)
+                        get_text(self.lang, "menu", "settings", "fullscreen", i)
                     )
                 elif ev.key == pg.K_d:
                     self.game.set_debug_mode(not self.game.debug_mode)
                     i = int(self.game.debug_mode)
                     self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","settings","debug",i)
+                        get_text(self.lang, "menu", "settings", "debug", i)
                     )
                 elif ev.key == pg.K_s:
                     self.game.set_render_shadows(not self.game.render_shadows)
                     i = int(self.game.render_shadows)
                     self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","settings","shadows",i)
+                        get_text(self.lang, "menu", "settings", "shadows", i)
                     )
 
     def run_pause_menu(self, events):
@@ -389,11 +403,17 @@ class Menu:
                 elif ev.key == pg.K_m:
                     self.set_run(MAIN_MENU)
                     self.game.clean()
+                elif ev.key == pg.K_f:
+                    self.game.set_fullscreen_mode(not self.game.fullscreen_mode)
+                    i = int(self.game.fullscreen_mode)
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang, "menu", "settings", "fullscreen", i)
+                    )
                 elif ev.key == pg.K_d:
                     self.game.set_debug_mode(not self.game.debug_mode)
                     i = int(self.game.debug_mode)
                     self.game.gui.set_prompt_text(
-                        get_text(self.lang,"menu","settings","debug",i)
+                        get_text(self.lang, "menu", "settings", "debug", i)
                     )
 
     def run_new_day_loading(self, events):

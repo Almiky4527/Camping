@@ -65,6 +65,28 @@ def make_texture(img, scale=None, rect=None, colorkey=BLACK):
 # ---------------------------------------------
 
 
+# --- Texts ---
+def parse_text_to_lines(text : str, max_line_width : int = 32):
+    words = text.split()
+    lines = []
+    line = ""
+
+    for word in words:
+        line += word
+
+        if len(line) > max_line_width:
+            lines.append(line)
+            line = ""
+        else:
+            line += ' '
+    else:
+        if line:
+            lines.append( line.rstrip() )
+    
+    return lines
+# -------------
+
+
 def directionalize(vector : Vector2):
     '''Turns any pygame.math.Vector2 into a vector representing direction for movement of entities (only values of 1, 0, -1 for each axis).'''
     v = vector.copy()
@@ -110,3 +132,9 @@ def make_grid(rect : Rect, positions):
     range_y = range(rect.top, rect.bottom + 1, step_y)
 
     return range_x, range_y
+
+
+if __name__ == "__main__":
+    text = "...when they decided they didn't like the way things were anymore."
+    lines = parse_text_to_lines(text)
+    print(lines)

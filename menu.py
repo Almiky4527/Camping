@@ -17,11 +17,25 @@ SELECT_CHARACTER = 6
 CUT_SCENE = 7
 OFF = 0
 
+
+'''
+        "There was once a person.",
+        "An ordinary person. Just like you and me.",
+        "They lived in an apartment, worked at an office... They weren't someone special.",
+        "You could say their life was pretty boring.",
+        "But that would change one day...",
+        "...when they decided they didn't like the way things were anymore.",
+        "They craved a change. Even if it meant doing something ridiculous.",
+        "Even if they had to leave the comfort of this life, and live somewhere dangerous.",
+        "And so they decided...",
+        "Spring."
+'''
+
 CUTSCENES = [
     [
         "There was once a person.",
         "An ordinary person. Just like you and me.",
-        "They lived in an apartment, worked at an office... they weren't someone special.",
+        "They lived in an apartment, worked at an office... They weren't someone special.",
         "You could say their life was pretty boring.",
         "But that would change one day...",
         "...when they decided they didn't like the way things were anymore.",
@@ -31,9 +45,33 @@ CUTSCENES = [
         "Spring."
     ],
     [
+        "It wasn't easy for them.",
+        "Being out here gave the word \"alone\" a whole new meaning to them."
+        "Relying on noone but themselves. Their skills, their knowledge of the world as it was."
+        "But, that is what they wanted.",
+        "That is what they were here for.",
+        "To put their skills to test, to gain new knowledge.",
+        "And also, to cherish the life they were given.",
+        "To be happy for each and every day, to see the beuty of sunshine once they would wake to a new morn.",
+        "There were times when they wanted to return, of course...",
+        "...go back to their apartment, work back at their office...",
+        "Anything. Just to be, again, in the comfort of that routine they've built.",
+        "But they did not.",
+        "They had to destroy that. To become stronger.",
+        "And it hurt.",
         "Summer."
     ],
     [
+        "Hurt it did. But they pushed through themselves.",
+        "Fought their deepest desire, only thing they wished this whole time they spent here - go back home.",
+        "Yet, they've made it this far.",
+        "They've mastered scavenging for supplies, food.",
+        "Maybe even hunted.",
+        "They seemed unstoppable. Born anew.",
+        "No matter what the world would throw at them, they would jump back to their feet.",
+        "Because that's what mattered, not giving up.",
+        "But, it was getting colder...",
+        "And they sensed, that mentality on it's own, wasn't going to be enough.",
         "Autumn."
     ],
     [
@@ -458,6 +496,8 @@ class Menu:
             self.set_run(OFF)
             return
 
+        # pg.mouse.set_visible(False)
+
         cutscene = CUTSCENES[self.cutscene_index]
         self.cutscene_timer += 1
         
@@ -469,11 +509,14 @@ class Menu:
         if self.cutscene_scene_index == len(cutscene):
             self.cutscene_scene_index = 0
             self.set_run(OFF)
+            # pg.mouse.set_visible(True)
 
     def run(self, events):
         for ev in events:
             if ev.type == pg.QUIT:
                 self.game.quit()
+        
+        pg.mouse.set_visible(False)
 
         if self.running == MAIN_MENU:
             self.run_main_menu(events)
@@ -491,5 +534,8 @@ class Menu:
             self.run_cutscene(events)
         else:
             pass
+        
+        if self.running == OFF:
+            pg.mouse.set_visible(True)
         
         

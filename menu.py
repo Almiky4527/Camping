@@ -29,6 +29,45 @@ OFF = 0
         "Even if they had to leave the comfort of this life, and live somewhere dangerous.",
         "And so they decided...",
         "Spring."
+
+        "Bol raz jeden človek.",
+        "Obyčajný človek. Ako ty alebo ja.",
+        "Žili v byte, pracovali v kancelárii... Neboli niekým výnimočným.",
+        "Dalo by sa povedať, že ich život bol celkom nudný.",
+        "Ale to sa jedného dňa zmenilo...",
+        "...keď sa rozhodli, že sa im už viac nepáčilo, ako sa veci mali.",
+        "Túžili po zmene. Aj keby to malo znamenať že by urobili niečo absurdné.",
+        "Aj keby sa museli vzdať pohodlia tohto života, a žiť niekde nebezpečne.",
+        "A tak sa rozhodli...",
+        "Jar."
+
+        "Nebolo to pre nich ľahké",
+        "Tu, vonku, im slovo \"sám\" dávalo úplne nový význam.",
+        "Spoliehať sa na nikoho, okrem seba samého. Ich zručnosti, ich poznatky o svete ako takom.",
+        "Ale to predsa cheli.",
+        "Preto tu predsa boli.",
+        "Aby otestovali svoje zručnosti, aby nadobudli nové poznatky.",
+        "A taktiež, aby sa starali o život ktorý dostali.",
+        "Aby boli šťastný za každý deň, aby videli tú krásu slnečného svitu nad ránom keď vstávali.",
+        "Samozrejme, boli časi keď sa chceli vrátiť...",
+        "...ísť späť do svojho bytu, zas pracovať vo svojej kancelárií...",
+        "Čokoľvek. Len aby zasa boli v pohodlí tej rutiny ktorú si vybudovali.",
+        "Ale neurobili to.",
+        "Museli to zničiť. Aby sa stali silnejšími.",
+        "A to bolelo.",
+        "Leto."
+
+        "Bolelo. Ale preniesli sa cez seba samích.",
+        "Bojovali so svojou najväčšou súžbou, jediným, čo si najviac zo všetkého želali za ten čas čo tu strávili - ísť späť domov.",
+        "Napriek tomu sa dostali až takto ďaleko.",
+        "Podrobili si hľadanie zásob, potravy.",
+        "Možno že aj lovili.",
+        "Zdali sa byť neporaziteľný. Znovu zrodený.",
+        "Nezáležiac na tom, čo by na nich svet hodil, znova by sa postavili na svoje nohy.",
+        "Lebo na tom záležalo, nevzdávať sa.",
+        "Ale, začínalo byť chladnejšie...",
+        "A tužili, že tá mentalita sama osebe, nebude stačiť...",
+        "Jeseň."
 '''
 
 CUTSCENES = [
@@ -71,7 +110,7 @@ CUTSCENES = [
         "No matter what the world would throw at them, they would jump back to their feet.",
         "Because that's what mattered, not giving up.",
         "But, it was getting colder...",
-        "And they sensed, that mentality on it's own, wasn't going to be enough.",
+        "And they sensed, that mentality on it's own, wasn't going to be enough...",
         "Autumn."
     ],
     [

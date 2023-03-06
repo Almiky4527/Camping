@@ -35,20 +35,6 @@ RECIPES = [
         ]
     },
     {
-        "result": ITEM_ROPE,
-        "ingredients": [
-            [ITEM_THREAD, 6]
-        ]
-    },
-    {
-        "result": ITEM_IMPROVISED_AXE,
-        "ingredients": [
-            [ITEM_STONE_BLADE, 1],
-            [ITEM_STICK, 1],
-            [ITEM_ROPE, 1]
-        ]
-    },
-    {
         "result": ITEM_JACKET,
         "ingredients": [
             [ITEM_DEER_HIDE, 1],
@@ -60,6 +46,20 @@ RECIPES = [
         "ingredients": [
             [ITEM_HARE_HIDE, 2],
             [ITEM_THREAD, 10]
+        ]
+    },
+    {
+        "result": ITEM_ROPE,
+        "ingredients": [
+            [ITEM_THREAD, 6]
+        ]
+    },
+    {
+        "result": ITEM_IMPROVISED_AXE,
+        "ingredients": [
+            [ITEM_STONE_BLADE, 1],
+            [ITEM_STICK, 1],
+            [ITEM_ROPE, 1]
         ]
     },
     {

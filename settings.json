@@ -1,6 +1,6 @@
 {
   "language": "English",
-  "fullscreen": true,
+  "fullscreen": false,
   "debug": false,
   "render_shadows": true,
   "world_index": 1,

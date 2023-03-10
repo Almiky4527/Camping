@@ -242,7 +242,57 @@ TEXTS = {
                 "success": "You ate some delicious {food}.",
                 "fail": "You aren't hungry enough to eat this right now."
             }
-        }
+        },
+        "story": [
+            [
+                "There was once a person.",
+                "An ordinary person. Just like you and me.",
+                "They lived in an apartment, worked at an office... They weren't someone special.",
+                "You could say their life was pretty boring.",
+                "But that would change one day...",
+                "...when they decided they didn't like the way things were anymore.",
+                "They craved a change. Even if it meant doing something ridiculous.",
+                "Even if they had to leave the comfort of this life, and live somewhere dangerous.",
+                "And so they decided...",
+                "Spring."
+            ],
+            [
+                "It wasn't easy for them.",
+                "Being out here gave the word \"alone\" a whole new meaning to them."
+                "Relying on noone but themselves. Their skills, their knowledge of the world as it was."
+                "But, that is what they wanted.",
+                "That is what they were here for.",
+                "To put their skills to test, to gain new knowledge.",
+                "And also, to cherish the life they were given.",
+                "To be happy for each and every day, to see the beuty of sunshine once they would wake to a new morn.",
+                "There were times when they wanted to return, of course...",
+                "...go back to their apartment, work back at their office...",
+                "Anything. Just to be, again, in the comfort of that routine they've built.",
+                "But they did not.",
+                "They had to destroy that. To become stronger.",
+                "And it hurt.",
+                "Summer."
+            ],
+            [
+                "Hurt it did. But they pushed through themselves.",
+                "Fought their deepest desire, only thing they wished this whole time they spent here - go back home.",
+                "Yet, they've made it this far.",
+                "They've mastered scavenging for supplies, food.",
+                "Maybe even hunted.",
+                "They seemed unstoppable. Born anew.",
+                "No matter what the world would throw at them, they would jump back to their feet.",
+                "Because that's what mattered, not giving up.",
+                "But, it was getting colder...",
+                "And they sensed, that mentality on it's own, wasn't going to be enough...",
+                "Autumn."
+            ],
+            [
+                "Winter."
+            ],
+            [
+                "The End."
+            ]
+        ]
     },
     SK: {
         "names": {
@@ -469,7 +519,57 @@ TEXTS = {
                 "success": "Zejdol si chutné {food}.",
                 "fail": "Nie si dosť hladný aby si toto teraz zjedol."
             }
-        }
+        },
+        "story": [
+            [
+                "Bol raz jeden človek.",
+                "Obyčajný človek. Ako ty alebo ja.",
+                "Žili v byte, pracovali v kancelárii... Neboli niekým výnimočným.",
+                "Dalo by sa povedať, že ich život bol celkom nudný.",
+                "Ale to sa jedného dňa zmenilo...",
+                "...keď sa rozhodli, že sa im už viac nepáčilo, ako sa veci mali.",
+                "Túžili po zmene. Aj keby to malo znamenať že by urobili niečo absurdné.",
+                "Aj keby sa museli vzdať pohodlia tohto života, a žiť niekde nebezpečne.",
+                "A tak sa rozhodli...",
+                "Jar."
+            ],
+            [
+                "Nebolo to pre nich ľahké",
+                "Tu, vonku, im slovo \"sám\" dávalo úplne nový význam.",
+                "Spoliehať sa na nikoho, okrem seba samého. Ich zručnosti, ich poznatky o svete ako takom.",
+                "Ale to predsa cheli.",
+                "Preto tu predsa boli.",
+                "Aby otestovali svoje zručnosti, aby nadobudli nové poznatky.",
+                "A taktiež, aby sa starali o život ktorý dostali.",
+                "Aby boli šťastný za každý deň, aby videli tú krásu slnečného svitu nad ránom keď vstávali.",
+                "Samozrejme, boli časi keď sa chceli vrátiť...",
+                "...ísť späť do svojho bytu, zas pracovať vo svojej kancelárií...",
+                "Čokoľvek. Len aby zasa boli v pohodlí tej rutiny ktorú si vybudovali.",
+                "Ale neurobili to.",
+                "Museli to zničiť. Aby sa stali silnejšími.",
+                "A to bolelo.",
+                "Leto."
+            ],
+            [
+                "Bolelo. Ale preniesli sa cez seba samích.",
+                "Bojovali so svojou najväčšou súžbou, jediným, čo si najviac zo všetkého želali za ten čas čo tu strávili - ísť späť domov.",
+                "Napriek tomu sa dostali až takto ďaleko.",
+                "Podrobili si hľadanie zásob, potravy.",
+                "Možno že aj lovili.",
+                "Zdali sa byť neporaziteľný. Znovu zrodený.",
+                "Nezáležiac na tom, čo by na nich svet hodil, znova by sa postavili na svoje nohy.",
+                "Lebo na tom záležalo, nevzdávať sa.",
+                "Ale, začínalo byť chladnejšie...",
+                "A tušili, že tá mentalita sama osebe, nebude stačiť...",
+                "Jeseň."
+            ],
+            [
+                "Zima."
+            ],
+            [
+                "Koniec."
+            ]
+        ]
     }
 }
 # -------------

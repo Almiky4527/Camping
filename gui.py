@@ -114,7 +114,7 @@ class GUI:
         # -------------------------
 
         # --- Player Temperature ---
-        self.print_temperature()
+        # self.print_temperature()
         # --------------------------
     
         # --- Player Saturation Bar ---
@@ -130,9 +130,9 @@ class GUI:
         # --------------------------
 
         # --- Player Energy Bar ---
-        rect = pg.Rect(100, 88, 100, 16)
-        energy = round(self.player.energy)
-        self.draw_progress_bar( rect, energy, colors=(LESS_RED, YELLOW) )
+        # rect = pg.Rect(100, 88, 100, 16)
+        # energy = round(self.player.energy)
+        # self.draw_progress_bar( rect, energy, colors=(LESS_RED, YELLOW) )
         # --------------------------
     
     def draw_progress_bar( self, rect, value, max_value=100, colors=(LESS_RED, GREEN) ):

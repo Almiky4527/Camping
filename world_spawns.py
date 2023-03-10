@@ -64,8 +64,7 @@ INITIAL_GENERATION = [
             {
                 "id": STONE,
                 "weight": 2,
-                "scatter": (100, 60),
-                "scattered_positions": (1, 2)
+                "scatter": (100, 60)
             }
         ]
     },

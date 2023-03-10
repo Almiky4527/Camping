@@ -287,6 +287,26 @@ TEXTS = {
                 "Autumn."
             ],
             [
+                "The weather was becoming colder each day.",
+                "The chilly breeze played eerie swooshing sounds...",
+                "...and sneaked it's way through their clothes.",
+                "Burned to their skin, froze to their bones.",
+                "Making them numb.",
+                "Every little movement felt so much more difficult.",
+                "As if they ware made of wood.",
+                "Just like all the pale trees, now devoid of life.",
+                "Robbed of their beautiful leaves.",
+                "The first flakes of snow were falling from the skies now.",
+                "Covering the ground beneath them, as a white blaket.",
+                "The scenary was charming...",
+                "...but they were suffering.",
+                "Nothing like they could experience watching all the movies.",
+                "It was torture.",
+                "And it was their own doing.",
+                "Because they refused to live like they used to?",
+                "Or because they wanted to prove something?",
+                "Honestly, they weren't sure anymore.",
+                "All this time here, they forgot how life used to be back home.",
                 "Winter."
             ],
             [

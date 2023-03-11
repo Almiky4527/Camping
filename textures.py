@@ -93,6 +93,7 @@ TEXTURES_RECTS = {
         ITEM_AXE: Rect(52, ITEM_ROW_1_Y, 16, 16),
         ITEM_IMPROVISED_AXE: Rect(307, ITEM_ROW_1_Y, 16, 16),
         ITEM_TENT: Rect(69, ITEM_ROW_1_Y, 16, 16),
+        ITEM_CABIN_PLAN: Rect(324, ITEM_ROW_1_Y, 16, 16),
         ITEM_CAMPFIRE: Rect(86, ITEM_ROW_1_Y, 16, 16),
         ITEM_MATCHES: Rect(103, ITEM_ROW_1_Y, 16, 16),
         ROCK0: Rect(1, ITEM_ROW_2_Y, 16, 16),

@@ -298,7 +298,7 @@ TEXTS = {
                 "Robbed of their beautiful leaves.",
                 "The first flakes of snow were falling from the skies now.",
                 "Covering the ground beneath them, as a white blaket.",
-                "The scenary was charming...",
+                "The scenery was charming...",
                 "...but they were suffering.",
                 "Nothing like they could experience watching all the movies.",
                 "It was torture.",
@@ -310,7 +310,19 @@ TEXTS = {
                 "Winter."
             ],
             [
-                "The End."
+                "But in the end...",
+                "...even the cold was not able to stop them.",
+                "They fought for their life. And they had won.",
+                "Overcoming everything that stood in path.",
+                "They survived a whole year, out on their own.",
+                "And then, when looking back on their past life once more...",
+                "...they didn't feel the need to go back anymore.",
+                "This, what they built right here...",
+                "They have found a new home.",
+                "",
+                "Camping",
+                "Inspired by: On My Own, a video game made by Beach Interactive.",
+                "Thank you for playing."
             ]
         ]
     },
@@ -584,10 +596,42 @@ TEXTS = {
                 "Jeseň."
             ],
             [
+                "Počasie bolo deň čo deň chladnejšie.",
+                "Chladný vánok robil strašidelné hviždiace zvuky...",
+                "...a vkrádal sa pomedzi ich oblečenie.",
+                "Pálil im kožu, mrzol im do kostí.",
+                "Robil ich meravými.",
+                "Každý jeden malý pohyb bol oveľa tažší.",
+                "Akoby boli z dreva.",
+                "Presne jak všetky tie bledé stromy, teraz zbavené života.",
+                "Okradnuté o ich nádherné lístie.",
+                "Prvé vločky snehu začínali padať z oblohy.",
+                "Zakrývajúc zem pod nimi, ako bila deka.",
+                "Tá scenéria bola očarujúca...",
+                "...no oni trpeli.",
+                "Toto nemohli zažiť pri pozeraní všetkých tých filmov.",
+                "Bolo to mučenie.",
+                "A bolo to ich vlastným pričinením.",
+                "Lebo odmietali žiť ako kedysi?",
+                "Alebo preto, lebo chceli niečo dokázať?",
+                "Úprimne, neboli si tým už istý.",
+                "Za celý ten čas strávený tu, zabuldi aký bol ich život späť doma.",
                 "Zima."
             ],
             [
-                "Koniec."
+                "Ale nakoniec...",
+                "...ani zima ich nedokázala zastaviť.",
+                "Bojovali za svoj život. A vyhrali.",
+                "Prekonali všetko čo stálo v ceste.",
+                "Prežili celý rok osamote.",
+                "A vtedy, keď sa ešte raz pozerali späť na svoj minulý život...",
+                "...už necítili nutkanie vrátiť sa naspäť.",
+                "Toto, čo vybudovali priamo tu...",
+                "Našli si nový domov.",
+                "",
+                "Kempovačka",
+                "Inšpirované: On My Own, videohra vytvorená spoločnosťou Beach Interactive.",
+                "Ďakujem vám za hranie."
             ]
         ]
     }

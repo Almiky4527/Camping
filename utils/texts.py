@@ -161,10 +161,15 @@ TEXTS = {
                 "load": "Loading world...",
                 "delete": "{world} deleted.",
                 "empty": " Empty ",
+                "world_size_small": [
+                    "Small world size OFF.",
+                    "Small world size ON."
+                ],
                 "buttons": [
                     "UP/DOWN - Scroll Worlds",
                     "ENTER - Play World     ",
                     "DEL - Delete World     ",
+                    "S - Toggle World Size  ",
                     "ESC - Back to Main Menu"
                 ]
             },
@@ -470,10 +475,15 @@ TEXTS = {
                 "load": "Načítavam svet...",
                 "delete": "{world} vymazaný.",
                 "empty": "Prázdny",
+                "world_size_small": [
+                    "Malá veľkosť sveta VYPNUTÁ.",
+                    "Malá veľkosť sveta ZAPNUTÁ."
+                ],
                 "buttons": [
                     "UP/DOWN - Rolovať Svetmi ",
                     "ENTER - Hrať Svet        ",
                     "DEL - Vymazať Svet       ",
+                    "S - Prepnúť Veľkosť Sveta",
                     "ESC - Späť na Hlavné Menu"
                 ]
             },

@@ -146,6 +146,8 @@ class Menu:
         screen_print( screen, get_text(self.lang,"menu","worlds","buttons",2), *self.text_specs_1, center=(x, y) )
         y = SCREEN_CENTER[1] + 22.5*SCALE
         screen_print( screen, get_text(self.lang,"menu","worlds","buttons",3), *self.text_specs_1, center=(x, y) )
+        y = SCREEN_CENTER[1] + 37.5*SCALE
+        screen_print( screen, get_text(self.lang,"menu","worlds","buttons",4), *self.text_specs_1, center=(x, y) )
 
         x = SCREEN_CENTER[0] + 0*SCALE
         y = SCREEN_CENTER[1]
@@ -328,7 +330,13 @@ class Menu:
                 get_text(self.lang, "menu", "worlds", "delete").format(world=self.game.world_name)
             )
             self.game.delete_world()
-
+        
+        def _toggle_world_size():
+            self.game.gui.set_prompt_text(
+                get_text( self.lang, "menu", "worlds", "world_size_small", int(not self.game.world_size_small) )
+            )
+            self.game.set_setting(SET_WORLD_SIZE_SMALL, not self.game.world_size_small)
+            
         for ev in events:
             if ev.type == pg.KEYDOWN:
                 if ev.key == pg.K_ESCAPE:
@@ -341,6 +349,8 @@ class Menu:
                     _scroll_worlds(+1)
                 elif ev.key == pg.K_DELETE:
                     _del_world()
+                elif ev.key == pg.K_s:
+                    _toggle_world_size()
     
     def run_settings(self, events):
         for ev in events:

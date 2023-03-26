@@ -15,12 +15,16 @@ class World:
     def __init__(self, game):
         self.game = game
 
-        self.box = Rect(0, 0, 8000, 6000)
+        self.box = Rect(0, 0, 4000, 3000) if self.size_small else Rect(0, 0, 8000, 6000)
         self.box.center = (0, 0)
 
         self.children = []
         self.day = 0
         self.day_uptime = 0
+    
+    @property
+    def size_small(self):
+        return self.game.world_size_small
 
     @property
     def animals(self):
@@ -74,7 +78,15 @@ class World:
     @property
     def texture_container(self):
         return self.game.texture_container
-
+    '''
+    def switch_size(self):
+        if self.size_small:
+            self.box = Rect(0, 0, 4000, 3000)
+        else:
+            self.box = Rect(0, 0, 8000, 6000)
+        
+        self.box.center = (0, 0)
+    '''
     def add_child(self, child : Entity):
         if child in self.children:
             return
@@ -98,6 +110,9 @@ class World:
 
             if not spawns:
                 continue
+
+            if self.size_small:
+                grid = grid[0]//2, grid[1]//2
 
             spawn_grid = make_grid(self.box, grid)
             weights = tuple( map( lambda entry: entry["weight"], spawns ) )

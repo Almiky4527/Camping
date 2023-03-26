@@ -1,6 +1,17 @@
 DEFAULT = 0
 
 
+# --- Settings ---
+SET_DEBUG = "debug"
+SET_FULLSCREEN = "fullscreen"
+SET_LANGUAGE = "language"
+SET_RENDER_SHADOWS = "render_shadows"
+SET_WORLDS = "worlds"
+SET_WORLD_INDEX = "world_index"
+SET_WORLD_SIZE_SMALL = "world_size_small"
+# ----------------
+
+
 # --- Cardinal Directions and Seasons ---
 SOUTH = 0
 NORTH = 1

@@ -375,10 +375,12 @@ class Entity (BaseEntity):
                 stamina = self.stamina - ( 5 + self.hot*100 )
                 self.set_stamina(stamina)
 
-                if not self.target.in_family("plant") and not self.target.in_family("bush"):
+                if not self.target.in_family("plant") and not self.target.in_family("bush") and not self.target.in_family("trap"):
                     weapon = self.selected_slot
-                    durability = weapon.durability - randint(10, 20)
-                    weapon.set_durability(durability)
+                    
+                    if weapon.durability:
+                        durability = weapon.durability - randint(10, 20)
+                        weapon.set_durability(durability)
                     
                     if weapon.durability == 0:
                         self.inventory.pop(weapon)

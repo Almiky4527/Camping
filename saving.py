@@ -117,7 +117,7 @@ class SaveLoadStream:
                 self.game.set_settings(settings_data)
 
         except FileNotFoundError:
-            print(f"File \"{file}\" not found.")
+            print(f"File \"{file}\" not found. Keeping default settings.")
             return 1
         
         print("Settings loaded successfully.")

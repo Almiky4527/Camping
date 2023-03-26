@@ -11,17 +11,18 @@ from camera import *
 from gui import *
 from inventory import *
 
+from utils.identifiers import *
 from utils.texts import *
 
 
 SETTINGS_DEFAULT = {
-    "language": "English",
-    "fullscreen": False,
-    "debug": False,
-    "render_shadows": True,
-    
-    "world_index": 0,
-    "worlds": []
+    SET_DEBUG: False,
+    SET_FULLSCREEN: False,
+    SET_LANGUAGE: "English",
+    SET_RENDER_SHADOWS: True,
+    SET_WORLDS: [],
+    SET_WORLD_INDEX: 0,
+    SET_WORLD_SIZE_SMALL: False
 }
 
 
@@ -43,49 +44,45 @@ class MainGame:
     @property
     def debug_mode(self):
         return self.settings["debug"]
+    
+    @property
+    def fullscreen_mode(self):
+        return self.settings["fullscreen"]
 
     @property
     def render_shadows(self):
         return self.settings["render_shadows"]
     
     @property
-    def fullscreen_mode(self):
-        return self.settings["fullscreen"]
+    def worlds(self):
+        return self.settings["worlds"]
     
     @property
     def world_index(self):
         return self.settings["world_index"]
     
     @property
-    def world_name(self):
-        return self.worlds[self.world_index] if len(self.worlds) != 0 else get_text(self.lang,"menu","worlds","empty")
+    def world_size_small(self):
+        return self.settings["world_size_small"]
     
     @property
-    def worlds(self):
-        return self.settings["worlds"]
+    def world_name(self):
+        return self.worlds[self.world_index] if len(self.worlds) != 0 else get_text(self.lang, "menu" ,"worlds", "empty")
     
-    def set_language(self, value : str):
-        if value not in LANGUAGES:
-            LanguageError(f"language '{value}' not found")
+    def set_setting(self, key, value):
+        if key not in self.settings:
+            raise Exception(f"invalid setting key: '{key}'")
+    
+        value_type_required = type( self.settings[key] )
         
-        self.settings["language"] = value
-        self.saveloadstream.write_settings()
-    
-    def set_debug_mode(self, value : bool):
-        self.settings["debug"] = value
-        self.saveloadstream.write_settings()
-    
-    def set_render_shadows(self, value : bool):
-        self.settings["render_shadows"] = value
-        self.saveloadstream.write_settings()
-    
-    def set_fullscreen_mode(self, value : bool):
-        self.settings["fullscreen"] = value
-        pg.display.toggle_fullscreen()
-        self.saveloadstream.write_settings()
-    
-    def set_world_index(self, value : int):
-        self.settings["world_index"] = value
+        if type(value) != value_type_required:
+            raise TypeError(f"invalid value type for setting '{key}': '{value}', expected: {value_type_required}, got: {type(value)}")
+        elif key == SET_LANGUAGE and value not in LANGUAGES:
+            raise LanguageError(f"language '{value}' not found")
+        elif key == SET_FULLSCREEN:
+            pg.display.toggle_fullscreen()
+        
+        self.settings[key] = value
         self.saveloadstream.write_settings()
     
     def add_world(self, name : str):
@@ -105,6 +102,7 @@ class MainGame:
         self.screen = pg.display.set_mode(SCREEN_RES, flags=flags, vsync=1)
         pg.display.set_caption(SCREEN_CAPTION)
         self.clock = pg.time.Clock()
+        pg.mouse.set_visible(False)
 
     def setup_main_game(self):
         self.running = False
@@ -220,8 +218,8 @@ class MainGame:
         world_name = f"World {last_world_num+1}"
 
         self.add_world(world_name)
-        self.set_world_index(last_world_num)
-
+        self.set_setting(SET_WORLD_INDEX, last_world_num)
+        
         self.setup_world()
         self.setup_player(player_name)
         self.setup_inventory()
@@ -230,7 +228,7 @@ class MainGame:
     
     def load_save(self, world_index=None):
         if world_index:
-            self.set_world_index(world_index)
+            self.set_setting(SET_WORLD_INDEX, world_index)
 
         if len(self.worlds) == 0:
             raise NoWorlds
@@ -325,7 +323,7 @@ class MainGame:
         self.remove_world(self.world_name)
         
         if self.world_index > 0 and self.world_index != len(self.worlds)-1:
-            self.set_world_index(self.world_index-1)
+            self.set_setting(SET_WORLD_INDEX, self.world_index-1)
         
     # Program is increasing on RAM when reloading game from menu.
     def clean(self):

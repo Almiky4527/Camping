@@ -1,6 +1,7 @@
 import pygame as pg
 from random import choice
 
+from utils.identifiers import *
 from utils.texts import *
 from utils.functions import screen_print, scale_, parse_text_to_lines
 from utils.display import *
@@ -15,6 +16,8 @@ NEW_DAY_LOADING = 5
 SELECT_CHARACTER = 6
 CUT_SCENE = 7
 OFF = 0
+
+SCENES_CURSOR_OFF = [MAIN_MENU, WORLDS, SETTINGS, NEW_DAY_LOADING, SELECT_CHARACTER, CUT_SCENE]
 
 
 class Menu:
@@ -93,15 +96,16 @@ class Menu:
     def switch_language(self):
         i = LANGUAGES.index(self.lang)
         n = len(LANGUAGES)
-        self.game.set_language( LANGUAGES[ (i+1) % n ] )
-
-        lang = self.lang
-        settings_texts = TEXTS[lang]["menu"]["settings"]
-        self.game.gui.set_prompt_text(
-            settings_texts["lang_changed"].format(lang=lang) )
-    
+        next_lang = LANGUAGES[ (i+1) % n ]
+        self.game.set_setting(SET_LANGUAGE, next_lang)
+        
     def set_run(self, value):
         self.running = value
+
+        if value in SCENES_CURSOR_OFF:
+            pg.mouse.set_visible(False)
+        else:
+            pg.mouse.set_visible(True)
     
     def draw_main_menu(self, screen):
         font = self.game.texture_container.story_font
@@ -314,7 +318,7 @@ class Menu:
             if i == self.game.world_index:
                 return
 
-            self.game.set_world_index(i)
+            self.game.set_setting(SET_WORLD_INDEX, i)
         
         def _del_world():
             if len(self.worlds) == 0:
@@ -345,20 +349,23 @@ class Menu:
                     self.set_run(MAIN_MENU)
                 elif ev.key == pg.K_l:
                     self.switch_language()
+                    self.game.gui.set_prompt_text(
+                        get_text(self.lang, "menu", "settings", "lang_changed").format(lang=self.lang)
+                    )
                 elif ev.key == pg.K_f:
-                    self.game.set_fullscreen_mode(not self.game.fullscreen_mode)
+                    self.game.set_setting(SET_FULLSCREEN, not self.game.fullscreen_mode)
                     i = int(self.game.fullscreen_mode)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang, "menu", "settings", "fullscreen", i)
                     )
                 elif ev.key == pg.K_d:
-                    self.game.set_debug_mode(not self.game.debug_mode)
+                    self.game.set_setting(SET_DEBUG, not self.game.debug_mode)
                     i = int(self.game.debug_mode)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang, "menu", "settings", "debug", i)
                     )
                 elif ev.key == pg.K_s:
-                    self.game.set_render_shadows(not self.game.render_shadows)
+                    self.game.set_setting(SET_RENDER_SHADOWS, not self.game.render_shadows)
                     i = int(self.game.render_shadows)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang, "menu", "settings", "shadows", i)
@@ -375,13 +382,13 @@ class Menu:
                     self.set_run(MAIN_MENU)
                     self.game.clean()
                 elif ev.key == pg.K_f:
-                    self.game.set_fullscreen_mode(not self.game.fullscreen_mode)
+                    self.game.set_setting(SET_FULLSCREEN, not self.game.fullscreen_mode)
                     i = int(self.game.fullscreen_mode)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang, "menu", "settings", "fullscreen", i)
                     )
                 elif ev.key == pg.K_d:
-                    self.game.set_debug_mode(not self.game.debug_mode)
+                    self.game.set_setting(SET_DEBUG, not self.game.debug_mode)
                     i = int(self.game.debug_mode)
                     self.game.gui.set_prompt_text(
                         get_text(self.lang, "menu", "settings", "debug", i)
@@ -445,8 +452,6 @@ class Menu:
         for ev in events:
             if ev.type == pg.QUIT:
                 self.game.quit()
-        
-        pg.mouse.set_visible(False)
 
         if self.running == MAIN_MENU:
             self.run_main_menu(events)
@@ -464,8 +469,4 @@ class Menu:
             self.run_cutscene(events)
         else:
             pass
-        
-        if self.running == OFF:
-            pg.mouse.set_visible(True)
-        
         

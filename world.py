@@ -69,7 +69,7 @@ class World:
     
     @property
     def can_skip_day(self) -> bool:
-        return self.seconds >= self.TIME_TO_SKIP # True
+        return self.seconds >= self.TIME_TO_SKIP
     
     @property
     def animal_cap_reached(self) -> bool:
@@ -78,15 +78,7 @@ class World:
     @property
     def texture_container(self):
         return self.game.texture_container
-    '''
-    def switch_size(self):
-        if self.size_small:
-            self.box = Rect(0, 0, 4000, 3000)
-        else:
-            self.box = Rect(0, 0, 8000, 6000)
-        
-        self.box.center = (0, 0)
-    '''
+    
     def add_child(self, child : Entity):
         if child in self.children:
             return
@@ -170,7 +162,7 @@ class World:
             if not child.is_immobile:
                 continue
             
-            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+            if len( set(child.family).intersection( ["tree", "bush", "building"] ) ):
                 default_texture = self.texture_container.get(child.id)
                 try:
                     season_appropriate_texture = self.texture_container.get("spring." + child.id)
@@ -183,7 +175,7 @@ class World:
             if not child.is_immobile:
                 continue
             
-            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+            if len( set(child.family).intersection( ["tree", "bush", "building"] ) ):
                 default_texture = self.texture_container.get(child.id)
                 try:
                     season_appropriate_texture = self.texture_container.get("summer." + child.id)
@@ -196,7 +188,7 @@ class World:
             if not child.is_immobile:
                 continue
             
-            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+            if len( set(child.family).intersection( ["tree", "bush", "building"] ) ):
                 default_texture = self.texture_container.get(child.id)
                 try:
                     season_appropriate_texture = self.texture_container.get("autumn." + child.id)
@@ -215,7 +207,9 @@ class World:
             if not child.is_immobile:
                 continue
             
-            if entity_subtype(child.id) in ["tree", "bush", "building"]:
+            if len( set(child.family).intersection( ["tree", "bush", "building"] ) ):
+                if child.id == "entity.cabin":
+                    print("CABIN IS BUILDING")
                 default_texture = self.texture_container.get(child.id)
                 try:
                     season_appropriate_texture = self.texture_container.get("winter." + child.id)

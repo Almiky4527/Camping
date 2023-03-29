@@ -263,8 +263,8 @@ TEXTS = {
             ],
             [
                 "It wasn't easy for them.",
-                "Being out here gave the word \"alone\" a whole new meaning to them."
-                "Relying on noone but themselves. Their skills, their knowledge of the world as it was."
+                "Being out here gave the word \"alone\" a whole new meaning to them.",
+                "Relying on noone but themselves. Their skills, their knowledge of the world as it was.",
                 "But, that is what they wanted.",
                 "That is what they were here for.",
                 "To put their skills to test, to gain new knowledge.",

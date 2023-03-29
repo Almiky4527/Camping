@@ -4,8 +4,11 @@
   "language": "English",
   "render_shadows": true,
   "worlds": [
-    "World 1"
+    "World 1",
+    "World 2",
+    "World 3",
+    "World 4"
   ],
-  "world_index": 0,
+  "world_index": 3,
   "world_size_small": false
 }

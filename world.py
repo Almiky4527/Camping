@@ -296,7 +296,7 @@ class World:
                     if vector_to_player.length() > distance_to_player:
                         break
                 
-                self.spawn(position, animal_data)
+                self.spawn( position, animal_data.copy() )
     
     def player_sleeps(self):
         self.player.set_stamina(100)
